@@ -1,0 +1,10 @@
+jupyter
+folium
+openpyxl
+pandas
+requests
+seaborn
+numpy
+matplotlib
+openrouteservice
+geopandas
