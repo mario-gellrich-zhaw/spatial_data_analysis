@@ -1,0 +1,31 @@
+#-------------------------------------------------------------------
+# CAS DAENG Challenge
+#-------------------------------------------------------------------
+
+Hintergrund:
+Stellen Sie sich vor, Sie haben als Kunden ein grösseres Unternehmen 
+mit Tankstellen, die über ganz Europa verteilt sind. Für eine Wettbewerbsanalyse 
+möchte der Kunde wissen, wie viele Tankstellen es pro Betreiber in der Schweiz 
+gibt und welche die 5 grössten Betreiber in Bezug auf die gesamte Anzahl der 
+Tankstellen sind. Um die Aufgabe zu lösen, entscheiden Sie sich für den folgenden Ablauf:
+
+1.) Zuerst schauen Sie sich die folgende Website https://wiki.openstreetmap.org/wiki/Key:amenity an, 
+    um das Schlüssel-Wert-Paar zu finden, mit dem Sie Daten von OpenStreetMap erhalten können.
+
+2.) Dann bereiten Sie ein Jupyter-Notebook vor, in dem die Overpass Web API verwendet wird, 
+    um die Daten abzurufen. 
+	
+	# Overpass turbo query
+	query = f"""
+        [out:json];
+        area["ISO3166-1"="CH"][admin_level=2];
+        node ["amenity"="fuel"](area);
+        out;"""
+	
+3.) Sie speichern die Daten im .json- und .csv-Format auf Ihrem lokalen Computer.
+
+4.) Sie zählen die Anzahl der Tankstellen pro Betreiber mithilfe der Methode .pivot_table() 
+    aus der pandas library. Sie sortieren die Pivot-Tabelle, um die 5 größten Betreiber 
+	zu identifizieren.
+
+5.) Schließlich erstellen Sie eine Karte, um alle Tankstellen in der Schweiz zu visualisieren.
