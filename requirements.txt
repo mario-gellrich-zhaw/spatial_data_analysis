@@ -7,4 +7,5 @@ seaborn
 numpy
 matplotlib
 openrouteservice
+scikit-learn
 geopandas
