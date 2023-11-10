@@ -1,0 +1,12 @@
+{
+	"name": "Python 3.10 with Jupyter and PDF Preview",
+	"image": "mcr.microsoft.com/devcontainers/python:3.10",
+
+	"extensions": [
+		"ms-python.python",
+		"ms-toolsai.jupyter",
+		"analytic-signal.preview-pdf"
+	],
+
+	"postCreateCommand": "pip install -r requirements.txt"
+}
