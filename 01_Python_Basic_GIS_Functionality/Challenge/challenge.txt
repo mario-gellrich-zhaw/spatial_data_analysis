@@ -2,18 +2,17 @@
 # CAS DAENG Challenge
 #-------------------------------------------------------------------
 
-Hintergrund:
-Stellen Sie sich vor, Sie haben als Kunden ein grösseres Unternehmen 
-mit Tankstellen, die über ganz Europa verteilt sind. Für eine Wettbewerbsanalyse 
-möchte der Kunde wissen, wie viele Tankstellen es pro Betreiber in der Schweiz 
-gibt und welche die 5 grössten Betreiber in Bezug auf die gesamte Anzahl der 
-Tankstellen sind. Um die Aufgabe zu lösen, entscheiden Sie sich für den folgenden Ablauf:
+Background:
+Imagine you have a large company as a customer with with petrol stations spread 
+all over Europe. For a competitive analysis the customer wants to know how many 
+petrol stations there are per operator in Switzerland and which are the 5 largest 
+operators in relation to the total number of petrol stations. petrol stations. To 
+solve the task, you decide on the following procedure:
 
-1.) Zuerst schauen Sie sich die folgende Website https://wiki.openstreetmap.org/wiki/Key:amenity an, 
-    um das Schlüssel-Wert-Paar zu finden, mit dem Sie Daten von OpenStreetMap erhalten können.
+1.) First, look at the following website https://wiki.openstreetmap.org/wiki/Key:amenity, 
+    to find the key-value pair that you can use to obtain data from OpenStreetMap.
 
-2.) Dann bereiten Sie ein Jupyter-Notebook vor, in dem die Overpass Web API verwendet wird, 
-    um die Daten abzurufen. 
+2) Then prepare a Jupyter notebook using the Overpass Web API, to retrieve the data. 
 	
 	# Overpass turbo query
 	query = f"""
@@ -22,10 +21,10 @@ Tankstellen sind. Um die Aufgabe zu lösen, entscheiden Sie sich für den folgen
         node ["amenity"="fuel"](area);
         out;"""
 	
-3.) Sie speichern die Daten im .json- und .csv-Format auf Ihrem lokalen Computer.
+3) You save the data in .json and .csv format on your local computer.
 
-4.) Sie zählen die Anzahl der Tankstellen pro Betreiber mithilfe der Methode .pivot_table() 
-    aus der pandas library. Sie sortieren die Pivot-Tabelle, um die 5 größten Betreiber 
-	zu identifizieren.
+4) You count the number of petrol stations per operator using the method .pivot_table() 
+    method from the pandas library. You sort the pivot table to identify the 5 largest operators. 
+	operators.
 
-5.) Schließlich erstellen Sie eine Karte, um alle Tankstellen in der Schweiz zu visualisieren.
+5) Finally, you create a map to visualize all gas stations in Switzerland.
