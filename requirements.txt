@@ -10,4 +10,6 @@ openrouteservice
 scikit-learn
 rasterio
 pyproj
+sqlalchemy
+psycopg2
 geopandas
