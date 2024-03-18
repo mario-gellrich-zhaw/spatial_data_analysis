@@ -1,4 +1,4 @@
-# Spatial data analysis course at ZHAW Winterthur (Institute of Business Informatics)
+# Spatial data analysis
 
 ## Table of Contents
 - [Python Basis GIS Functionality](#python-basic-gis-functionality)
