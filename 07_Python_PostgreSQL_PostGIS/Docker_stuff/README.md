@@ -4,6 +4,7 @@
 - [Table of Contents](#table-of-contents)
 - [pgadmin settings](#pgadmin-settings)
 - [Import OSM data](#import-osm-data)
+- [Copy example SQL files to pgAdmin](#copy-example-sql-files-to-pgadmin)
 
 ## pgAdmin settings
 
@@ -31,7 +32,7 @@ http://127.0.0.1:5050
     --> All other settings: use default or leave empty
 ```
 
-## Docker commands
+## Import OSM Data
 
 In VS Code -> Terminal, use the following Docker commands to insert tables with OpenStreetMap data.
 
@@ -59,7 +60,7 @@ docker exec -it postgis_container psql -U postgres -d osm_switzerland -c "\dt;"
 q
 ```
 
-Copy example SQL files to pgAdmin
+## Copy example SQL files to pgAdmin
 
 ```bash
 # Copy folder with SQL exanples to running pgadmin_container (replace YOUR-FOLDERNAME with your folder name)
