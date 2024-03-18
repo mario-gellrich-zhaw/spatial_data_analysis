@@ -16,7 +16,7 @@ This section covers the basic Geographic Information System (GIS) functionalitie
 
 ## Python Geocoding Addresses
 
-Geocoding is the process of converting addresses into geographic coordinates. This section explains how to use Python libraries to geocode addresses, which can then be used for spatial analysis or mapping.
+Geocoding is the process of converting addresses into geographic coordinates. This section explains how to use the GeoAdmin API and Python libraries to geocode addresses, which can then be used for spatial analysis or mapping.
 
 ## Python Nearest Neighbor Analysis
 
