@@ -1,4 +1,4 @@
-# Spatial data analysis
+# Spatial data analysis with Python
 
 ## Table of Contents
 - [Python Basis GIS Functionality](#python-basic-gis-functionality)
