@@ -28,7 +28,7 @@ Catchment area analysis involves determining the area from which a particular lo
 
 ## Python GWR Data
 
-GWR (germ.: Gebäude- und Wohnungsregister) data is the most comprehensive dataset about buildings in Switzerland. It contains detailed information about the characteristics of buildings and their use. This section covers how to work with GWR data in Python, including how to read, clean, and analyze the data to extract meaningful insights.
+GWR (germ.: Gebäude- und Wohnungsregister) data is the most comprehensive dataset about buildings in Switzerland. It contains detailed information about the characteristics of buildings and their use. This section covers how to work with GWR data in Python, including how to read, manipulate, and vizualise the data to extract meaningful insights.
 
 ## Python Raster Data
 
