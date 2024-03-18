@@ -63,9 +63,14 @@ q
 ## Copy example SQL files to pgAdmin
 
 ```bash
-# Copy folder with SQL exanples to running pgadmin_container (replace YOUR-FOLDERNAME with your folder name)
-docker cp SQL/ pgadmin_container:/var/lib/pgadmin/storage/YOUR-FOLDERNAME/
+# cd into Docker_stuff folder
 
-# Provide permission to copied folder / files (replace YOUR-FOLDERNAME with folder name)
-docker exec -u root pgadmin_container chmod -R 777 /var/lib/pgadmin/storage/YOUR-FOLDERNAME/
+# Get your storage location
+docker exec -it pgadmin_container ls /var/lib/pgadmin/storage
+
+# Copy folder with SQL exanples to running pgadmin_container (replace LOCATION with your storage location)
+docker cp SQL/ pgadmin_container:/var/lib/pgadmin/storage/LOCATION/
+
+# Provide permission to copied folder / files (replace LOCATION with your storage location)
+docker exec -u root pgadmin_container chmod -R 777 /var/lib/pgadmin/storage/LOCATION/
 ```
