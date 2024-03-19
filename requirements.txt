@@ -12,4 +12,5 @@ rasterio
 pyproj
 sqlalchemy
 psycopg2
+geoalchemy2
 geopandas
