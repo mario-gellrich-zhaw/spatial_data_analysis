@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_DB: osm_switzerland
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: geheim
+      POSTGRES_PASSWORD: your_password
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
@@ -21,8 +21,8 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin_container
     environment:
-      PGADMIN_DEFAULT_EMAIL: mario.gellrich@zhaw.ch
-      PGADMIN_DEFAULT_PASSWORD: geheim
+      PGADMIN_DEFAULT_EMAIL: your.email@mail.com
+      PGADMIN_DEFAULT_PASSWORD: your_password
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     ports:
