@@ -2,22 +2,30 @@
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
+- [Run the Docker container](#run-docker-containers)
 - [pgadmin settings](#pgadmin-settings)
 - [Import OSM data](#import-osm-data)
 - [Copy example SQL files to pgAdmin](#copy-example-sql-files-to-pgadmin)
+
+
+## Run Docker containers
+
+```bash
+# Create Docker image and run Docker container
+VS Code -> cd into the folder Docker_stuff
+
+Search the file 'docker-compose.yml' -> right click -> Compose Up
+
+# If the container is running, access pgAdmin in browser
+http://127.0.0.1:5050
+```
 
 ## pgAdmin settings
 
 pgAdmin does not provide a way to automatically register a server. Server registration in pgAdmin is a manual process that needs to be done through the pgAdmin UI. The following description shows how.
 
 ```bash
-# Create Docker image and run Docker container
-VS Code -> search for 'docker-compose.yml' right click the file -> Compose Up
-
-# If the container is running, access pgAdmin in browser
-http://127.0.0.1:5050
-
-# Server registration in pgAdmin:
+# Server registration in pgAdmin (change user name and password if required):
     Servers -> right click -> register Server
 
     Use the 'General' tab
@@ -47,7 +55,7 @@ docker exec -it postgis_container psql -U postgres -c "\l"
 # Open bash
 docker exec -it postgis_container bash
 
-# Run the following code in bash
+# Run the following code in bash (change user name and password if required)
 PGPASSWORD=geheim osm2pgsql -c -d osm_switzerland -U postgres -H db -P 5432 -S /usr/bin/default.style /tmp/switzerland-latest.osm.pbf
 
 # Exit bash
@@ -62,7 +70,7 @@ q
 
 ## Copy example SQL files to pgAdmin
 
-```bash
+```bashs
 # cd into Docker_stuff folder
 
 # Get your storage location
