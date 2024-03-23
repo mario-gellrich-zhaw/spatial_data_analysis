@@ -1,0 +1,24 @@
+# The following is an example osm2pgsql command to import OSM data from Geofrabrik into a PostgreSQL database 'osm_germany'.
+
+# Prerequisites
+PostgreSQL / PostGIS installed and running (local computer or Docker container)
+
+# OSM data from Geofabrik available
+In this example, OSM data from Geofabrik (file 'germany-latest.osm.pbf') has been downloaded to a local working directory.
+
+# Server registered in pgAdmin:
+    Open pgAdmin and navigate to Servers -> right click -> register Server
+
+    Use the 'General' tab
+    --> Name: PostgreSQL 16
+
+    Use the 'Connection' tab  (change user name and password if required)
+        --> Host name/address: db
+        --> Post: 5432
+        --> Username: postgres
+        --> Password: geheim
+
+    --> All other settings: use default or leave empty
+
+# osm2pgsql command
+"C:\Tools\osm2pgsql-latest-x64\osm2pgsql-bin\osm2pgsql.exe" -c -d osm_germany -U postgres -W -H localhost -S "C:\Tools\osm2pgsql-latest-x64\default.style" "U:\GeoDaten\OSM\germany-latest.osm.pbf"
