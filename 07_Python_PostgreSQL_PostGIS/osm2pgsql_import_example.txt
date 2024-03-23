@@ -1,13 +1,16 @@
-# The following is an example osm2pgsql command to import OSM data from Geofrabrik into a PostgreSQL database 'osm_germany'.
+# The following is an example showing how to import OSM data using osm2pgsql
 
-# Prerequisites
-PostgreSQL / PostGIS installed and running (local computer or Docker container)
+## Prerequisites
+PostgreSQL / PostGIS installed and running
 
-# OSM data from Geofabrik available
-In this example, OSM data from Geofabrik (file 'germany-latest.osm.pbf') has been downloaded to a local working directory.
+    ### Style file available
+    The file 'default.style' in this folder defines how OSM data are imported into the PostgreSQL data base.
 
-# Server registered in pgAdmin:
-    Open pgAdmin and navigate to Servers -> right click -> register Server
+    ### OSM data from Geofabrik available
+    In this example, OSM data from Geofabrik (file 'germany-latest.osm.pbf') has been downloaded to a local working directory.
+
+## Register server in pgAdmin:
+    Open pgAdmin (comes with PostgreSQL/PostGIS) and navigate to Servers -> right click -> register Server
 
     Use the 'General' tab
     --> Name: PostgreSQL 16
@@ -20,5 +23,7 @@ In this example, OSM data from Geofabrik (file 'germany-latest.osm.pbf') has bee
 
     --> All other settings: use default or leave empty
 
-# osm2pgsql command
-"C:\Tools\osm2pgsql-latest-x64\osm2pgsql-bin\osm2pgsql.exe" -c -d osm_germany -U postgres -W -H localhost -S "C:\Tools\osm2pgsql-latest-x64\default.style" "U:\GeoDaten\OSM\germany-latest.osm.pbf"
+## osm2pgsql command to import OSM data
+  
+   ### In VS Code -> Terminal run the following command (change path to 'osm2pgsql.exe' and data base settings, if required):
+  "C:\Tools\osm2pgsql-latest-x64\osm2pgsql-bin\osm2pgsql.exe" -c -d osm_germany -U postgres -W -H localhost -S "C:\Tools\osm2pgsql-latest-x64\default.style" "U:\GeoDaten\OSM\germany-latest.osm.pbf"
