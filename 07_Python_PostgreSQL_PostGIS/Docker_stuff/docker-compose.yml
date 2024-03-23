@@ -21,7 +21,7 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin_container
     environment:
-      PGADMIN_DEFAULT_EMAIL: youremail@mail.com
+      PGADMIN_DEFAULT_EMAIL: your.email@mail.com
       PGADMIN_DEFAULT_PASSWORD: your_pgadmin_password
     volumes:
       - pgadmin_data:/var/lib/pgadmin
