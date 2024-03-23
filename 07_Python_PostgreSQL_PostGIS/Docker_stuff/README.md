@@ -71,7 +71,7 @@ q
 ## Copy example SQL files to pgAdmin
 
 ```bashs
-# cd into Docker_stuff folder
+# cd into Docker_stuff folder (look for the folder 'SQL')
 
 # Get your storage location
 docker exec -it pgadmin_container ls /var/lib/pgadmin/storage
