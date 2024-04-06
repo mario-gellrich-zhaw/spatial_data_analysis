@@ -1,10 +1,12 @@
 -- The following SQL script is used to create a road network topology and calculate the shortest path between two nodes using pgRouting.
 
 -- Prerequisites: 
-    -- PostgreSQL with extensions PostGIS, pgRouting
+    -- PostgreSQL with extensions PostGIS and pgRouting
     -- OSM data loaded into the database
     -- OSM road network data is loaded into the table public.planet_osm_roads
     -- The table public.planet_osm_roads contains at least: osm_id, highway, way
+
+-- Dijkstra's Shortest Path Algorithm explained: https://www.youtube.com/watch?v=bZkzH5x0SKU
 
 -- Adding source and target columns to public.planet_osm_roads
 ALTER TABLE public.planet_osm_roads ADD COLUMN source INTEGER;
