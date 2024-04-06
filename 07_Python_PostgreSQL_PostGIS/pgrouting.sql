@@ -84,3 +84,53 @@ ON dd.node = pt.id;
 
 -- Query table driving_distance
 SELECT * FROM public.driving_distance
+
+-- Calculate k-shortest path (multiple alternative paths)
+SELECT
+    ksp.seq,
+    ksp.path_id,
+    ksp.path_seq,
+    ksp.start_vid AS start_node,
+    ksp.end_vid AS end_node,
+    ksp.node,
+    ksp.edge,
+    ksp.cost,
+    ksp.agg_cost,
+    ST_Transform(roads.way, 4326) AS geom
+FROM pgr_ksp(
+    'SELECT osm_id AS id, source, target, length AS cost FROM public.planet_osm_roads',
+    264, -- source node ID 
+    33902, -- target node ID
+    4,  -- k (number of shortest paths to find)
+    false -- directed graph (true for directed, false for undirected)
+) AS ksp
+JOIN public.planet_osm_roads AS roads ON ksp.edge = roads.osm_id;
+
+-- Show different agg_costs of k-shortest path (multiple alternative paths)
+WITH KShortestPaths AS (
+    SELECT
+        ksp.seq,
+        ksp.path_id,
+        ksp.path_seq,
+        ksp.start_vid AS start_node,
+        ksp.end_vid AS end_node,
+        ksp.node,
+        ksp.edge,
+        ksp.cost,
+        ksp.agg_cost,
+        ST_Transform(roads.way, 4326) AS geom
+    FROM pgr_ksp(
+        'SELECT osm_id AS id, source, target, length AS cost FROM public.planet_osm_roads',
+        264, -- source node ID 
+        33902, -- target node ID
+        4,  -- k (number of shortest paths to find)
+        false -- directed graph (true for directed, false for undirected)
+    ) AS ksp
+    JOIN public.planet_osm_roads AS roads ON ksp.edge = roads.osm_id
+)
+SELECT
+    path_id,
+    ROUND(MAX(agg_cost)::numeric, 2) AS max_agg_cost 
+FROM KShortestPaths
+GROUP BY path_id
+ORDER BY path_id;
