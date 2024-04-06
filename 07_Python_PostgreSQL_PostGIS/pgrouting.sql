@@ -3,8 +3,8 @@
 -- Prerequisites: 
     -- PostgreSQL with extensions PostGIS, pgRouting
     -- OSM data loaded into the database
-    -- OSM data is loaded into the table public.planet_osm_roads
-    -- The table public.planet_osm_roads contains at least the following columns: osm_id, highway, way
+    -- OSM road network data is loaded into the table public.planet_osm_roads
+    -- The table public.planet_osm_roads contains at least: osm_id, highway, way
 
 -- Adding source and target columns to public.planet_osm_roads
 ALTER TABLE public.planet_osm_roads ADD COLUMN source INTEGER;
