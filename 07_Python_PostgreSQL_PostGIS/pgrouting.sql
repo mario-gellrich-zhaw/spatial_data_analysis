@@ -22,10 +22,10 @@ SELECT pgr_createTopology(
     clean:='true'              -- Optional: cleans the topology by removing isolated nodes and edges
 );
 
--- Check new topology table which includes of the road network
+-- Check topology table which includes of the road network
 SELECT * FROM public.planet_osm_roads_vertices_pgr;
 
--- Adding and calculating the length of each road segment
+-- Adding the length of road segments
 ALTER TABLE public.planet_osm_roads ADD COLUMN length FLOAT8;
 UPDATE public.planet_osm_roads
 SET length = ST_Length(ST_Transform(way, 4326)::geography);
@@ -64,7 +64,7 @@ JOIN public.planet_osm_roads ON route.edge = public.planet_osm_roads.osm_id;
 -- Query table route
 SELECT * FROM route;
 
--- Extract all the nodes that have length less than or equal to the <<value distance>>
+-- Extract all the nodes that have length less than or equal to the value distance
 DROP TABLE IF EXISTS driving_distance;
 CREATE TABLE driving_distance AS
 SELECT dd.*,
