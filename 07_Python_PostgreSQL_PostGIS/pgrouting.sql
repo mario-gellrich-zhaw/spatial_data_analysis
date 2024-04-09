@@ -43,7 +43,7 @@ SELECT pgr_createTopology(
     clean:='true'              -- Optional: cleans the topology by removing isolated nodes and edges
 );
 
--- Check topology table which includes of the road network
+-- Check topology table which includes the road network
 SELECT * FROM public.public.roads_zuerich_vertices_pgr;
 
 
@@ -53,7 +53,7 @@ UPDATE public.roads_zuerich
 SET length = ST_Length(ST_Transform(way, 4326)::geography);
 
 
--- Conduct connectivity analysis
+-- Make connectivity analysis
 CREATE TEMP TABLE temp_components AS
 SELECT * FROM pgr_connectedComponents(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich'
