@@ -209,7 +209,6 @@ WITH nearest_vertices AS (
      ORDER BY ST_Transform(p.way, 4326) <-> ST_Transform(v.the_geom, 4326) LIMIT 1) AS nearest_vertex_id
   FROM
     public.planet_osm_polygon AS p
-  WHERE p."addr:city" = 'Zürich'
 )
 
 -- Step 2: Use pgRouting to find the shortest path between two buildings
