@@ -1,20 +1,39 @@
--- The following SQL script is used to create a road network topology and calculate the shortest path between two nodes using pgRouting.
+-- The following SQL script is used to create a road network topology and calculate the shortest paths between nodes using pgRouting.
 
 -- Prerequisites: 
     -- PostgreSQL with extensions PostGIS and pgRouting
     -- OSM data loaded into the database
-    -- OSM road network data is loaded into the table public.planet_osm_roads
-    -- The table public.planet_osm_roads contains at least: osm_id, highway, way
 
--- Dijkstra's Shortest Path Algorithm explained: https://www.youtube.com/watch?v=bZkzH5x0SKU
+-- Infos:
+    -- pgRouting: https://pgrouting.org
+    -- pgRouting Workshop: https://workshop.pgrouting.org
+    -- Dijkstra's Algorithm: https://www.youtube.com/watch?v=bZkzH5x0SKU
+
+-- Creating a subset of roads in the city of Zuerich
+DROP TABLE IF EXISTS roads_zuerich;
+CREATE TABLE roads_zuerich AS 
+SELECT *
+FROM 
+    public.planet_osm_line
+WHERE 
+    highway IN ('motorway', 'trunk', 'primary', 'secondary', 
+                'tertiary', 'unclassified', 'residential', 
+                'service')
+    AND ST_Within(
+        ST_TRANSFORM(way, 4326), 
+        (SELECT geom 
+         FROM public.municipalities_ch
+         WHERE bfs_nummer = 261)
+    );
+
 
 -- Adding source and target columns to public.planet_osm_roads
-ALTER TABLE public.planet_osm_roads ADD COLUMN source INTEGER;
-ALTER TABLE public.planet_osm_roads ADD COLUMN target INTEGER;
+ALTER TABLE public.roads_zuerich ADD COLUMN source INTEGER;
+ALTER TABLE public.roads_zuerich ADD COLUMN target INTEGER;
 
 -- Creating a topology for the road network
 SELECT pgr_createTopology(
-    'public.planet_osm_roads', -- Road network table
+    'public.roads_zuerich',    -- Road network table
      0.0001,                   -- Tolerance: determines how close two line endpoints must be to be considered the same node
     'way',                     -- The geometry column in your road network table
     'osm_id',                  -- The unique identifier column of your road network table
@@ -25,24 +44,45 @@ SELECT pgr_createTopology(
 );
 
 -- Check topology table which includes of the road network
-SELECT * FROM public.planet_osm_roads_vertices_pgr;
+SELECT * FROM public.public.roads_zuerich_vertices_pgr;
+
 
 -- Adding the length of road segments
-ALTER TABLE public.planet_osm_roads ADD COLUMN length FLOAT8;
-UPDATE public.planet_osm_roads
+ALTER TABLE public.roads_zuerich ADD COLUMN length FLOAT8;
+UPDATE public.roads_zuerich
 SET length = ST_Length(ST_Transform(way, 4326)::geography);
 
--- Take a look at the updated public.planet_osm_roads table
-SELECT 
-osm_id,
-highway,
-source,
-target,
-length
-FROM public.planet_osm_roads
-WHERE highway IN ('motorway');
 
--- Calculate shortest path between specified source_node and target_node
+-- Conduct connectivity analysis
+CREATE TEMP TABLE temp_components AS
+SELECT * FROM pgr_connectedComponents(
+    'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich'
+);
+
+ALTER TABLE roads_zuerich ADD COLUMN component INTEGER;
+
+UPDATE roads_zuerich r
+SET component = (
+    SELECT component
+    FROM temp_components
+    WHERE r.source = node
+    LIMIT 1
+);
+
+-- Query roads (consider connecting components)
+SELECT 
+    osm_id,
+    highway,
+    source,
+    target,
+    length,
+    component,
+    ST_TRANSFORM(way, 4326) AS way_transformed
+FROM 
+    public.roads_zuerich
+
+
+-- Calculate shortest path between single source_node and target_node
 DROP TABLE IF EXISTS route;
 CREATE TABLE route AS
 SELECT 
@@ -51,20 +91,36 @@ SELECT
     route.edge, 
     route.cost,
     route.agg_cost,
-    planet_osm_roads.osm_id,
-    planet_osm_roads.source,
-    planet_osm_roads.target,
-    ST_Transform(planet_osm_roads.way, 4326)::geometry AS geom
+    public.roads_zuerich.osm_id,
+    public.roads_zuerich.source,
+    public.roads_zuerich.target,
+    ST_Transform(roads_zuerich.way, 4326)::geometry AS geom
 FROM pgr_dijkstra(
-    'SELECT osm_id AS id, source, target, length AS cost FROM planet_osm_roads',
-    403, -- Source node ID 
-    141938, -- Target node ID
+    'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
+    46, -- Source node ID 
+    4838, -- Target node ID
     FALSE
 ) AS route
-JOIN public.planet_osm_roads ON route.edge = public.planet_osm_roads.osm_id;
+JOIN public.roads_zuerich ON route.edge = public.roads_zuerich.osm_id;
 
--- Query table route
 SELECT * FROM route;
+
+
+-- Calculate shortest path between single source_node and multiple target_nodes
+DROP TABLE IF EXISTS one_to_many;
+CREATE TABLE one_to_many AS
+SELECT dijkstra.*, 
+       ST_TRANSFORM(roads.way, 4326)
+FROM pgr_bdDijkstra(
+    'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
+    8740, 
+    ARRAY[14430, 15767], 
+    FALSE
+) AS dijkstra
+JOIN public.roads_zuerich AS roads ON dijkstra.edge = roads.osm_id;
+
+SELECT * FROM one_to_many;
+
 
 -- Extract all the nodes that have length less than or equal to the value distance
 DROP TABLE IF EXISTS driving_distance;
@@ -78,14 +134,14 @@ FROM pgr_drivingDistance(
          osm_id AS id, 
          source, target, 
          length AS cost 
-     FROM public.planet_osm_roads',
-    403, 25000, true -- source_node and value distance (in meters)
+     FROM  public.roads_zuerich',
+    8740, 25000, true -- source_node and value distance (in meters)
 ) AS dd
-JOIN public.planet_osm_roads_vertices_pgr AS pt
+JOIN  public.roads_zuerich_vertices_pgr AS pt
 ON dd.node = pt.id;
 
--- Query table driving_distance
 SELECT * FROM public.driving_distance
+
 
 -- Calculate k-shortest path (multiple alternative paths)
 SELECT
@@ -100,13 +156,14 @@ SELECT
     ksp.agg_cost,
     ST_Transform(roads.way, 4326) AS geom
 FROM pgr_ksp(
-    'SELECT osm_id AS id, source, target, length AS cost FROM public.planet_osm_roads',
-    264, -- source node ID 
-    33902, -- target node ID
+    'SELECT osm_id AS id, source, target, length AS cost FROM public.roads_zuerich',
+    8740, -- source node ID 
+    14430, -- target node ID
     4,  -- k (number of shortest paths to find)
     false -- directed graph (true for directed, false for undirected)
 ) AS ksp
 JOIN public.planet_osm_roads AS roads ON ksp.edge = roads.osm_id;
+
 
 -- Show different agg_costs of k-shortest path (multiple alternative paths)
 WITH KShortestPaths AS (
@@ -122,13 +179,13 @@ WITH KShortestPaths AS (
         ksp.agg_cost,
         ST_Transform(roads.way, 4326) AS geom
     FROM pgr_ksp(
-        'SELECT osm_id AS id, source, target, length AS cost FROM public.planet_osm_roads',
-        264, -- source node ID 
-        33902, -- target node ID
+        'SELECT osm_id AS id, source, target, length AS cost FROM public.roads_zuerich',
+        8740, -- source node ID 
+        14430, -- target node ID
         4,  -- k (number of shortest paths to find)
         false -- directed graph (true for directed, false for undirected)
     ) AS ksp
-    JOIN public.planet_osm_roads AS roads ON ksp.edge = roads.osm_id
+    JOIN public.roads_zuerich AS roads ON ksp.edge = roads.osm_id
 )
 SELECT
     path_id,
@@ -136,3 +193,29 @@ SELECT
 FROM KShortestPaths
 GROUP BY path_id
 ORDER BY path_id;
+
+
+-- Find the shortest path between two buildings
+-- Step 1: Find nearest road vertices for each building
+WITH nearest_vertices AS (
+  SELECT
+    p.osm_id AS building_id,
+    p."addr:street",
+    p."addr:housenumber",
+    p."addr:city",
+    p."addr:postcode",
+    p.building,
+    (SELECT osm_id FROM public.roads_zuerich_vertices_pgr AS v
+     ORDER BY ST_Transform(p.way, 4326) <-> ST_Transform(v.the_geom, 4326) LIMIT 1) AS nearest_vertex_id
+  FROM
+    public.planet_osm_polygon AS p
+  WHERE p."addr:city" = 'Zürich'
+)
+
+-- Step 2: Use pgRouting to find the shortest path between two buildings
+SELECT * FROM pgr_dijkstra(
+  'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
+  (SELECT nearest_vertex_id FROM nearest_vertices WHERE building_id = 442559937 LIMIT 1),
+  (SELECT nearest_vertex_id FROM nearest_vertices WHERE building_id = 138710666 LIMIT 1),
+  directed := false
+);
