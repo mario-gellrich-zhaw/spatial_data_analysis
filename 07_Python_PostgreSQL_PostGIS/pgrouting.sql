@@ -192,4 +192,3 @@ SELECT
 FROM KShortestPaths
 GROUP BY path_id
 ORDER BY path_id;
-
