@@ -3,6 +3,7 @@
 -- Prerequisites: 
     -- PostgreSQL with extensions PostGIS and pgRouting
     -- OSM data loaded into the database
+    -- table planet_osm_line with the road network is available
 
 -- Infos:
     -- pgRouting: https://pgrouting.org
@@ -43,17 +44,15 @@ SELECT pgr_createTopology(
     clean:='true'              -- Optional: cleans the topology by removing isolated nodes and edges
 );
 
--- Check topology table which includes the road network
+-- Checking topology table which includes the road network
 SELECT * FROM public.public.roads_zuerich_vertices_pgr;
-
 
 -- Adding the length of road segments
 ALTER TABLE public.roads_zuerich ADD COLUMN length FLOAT8;
 UPDATE public.roads_zuerich
 SET length = ST_Length(ST_Transform(way, 4326)::geography);
 
-
--- Make connectivity analysis
+-- Conducting connectivity analysis
 CREATE TEMP TABLE temp_components AS
 SELECT * FROM pgr_connectedComponents(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich'
@@ -69,7 +68,7 @@ SET component = (
     LIMIT 1
 );
 
--- Query roads (consider connecting components)
+-- Querying roads (consider connecting components)
 SELECT 
     osm_id,
     highway,
@@ -82,7 +81,7 @@ FROM
     public.roads_zuerich
 
 
--- Calculate shortest path between single source_node and target_node
+-- Calculating the shortest path between single source_node and target_node
 DROP TABLE IF EXISTS route;
 CREATE TABLE route AS
 SELECT 
@@ -106,15 +105,15 @@ JOIN public.roads_zuerich ON route.edge = public.roads_zuerich.osm_id;
 SELECT * FROM route;
 
 
--- Calculate shortest path between single source_node and multiple target_nodes
+-- Calculating the shortest path between single source_node and multiple target_nodes
 DROP TABLE IF EXISTS one_to_many;
 CREATE TABLE one_to_many AS
 SELECT dijkstra.*, 
        ST_TRANSFORM(roads.way, 4326)
 FROM pgr_bdDijkstra(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
-    8740, 
-    ARRAY[14430, 15767], 
+    8740, -- Source node ID 
+    ARRAY[14430, 15767], -- Array of target node IDs
     FALSE
 ) AS dijkstra
 JOIN public.roads_zuerich AS roads ON dijkstra.edge = roads.osm_id;
@@ -122,7 +121,7 @@ JOIN public.roads_zuerich AS roads ON dijkstra.edge = roads.osm_id;
 SELECT * FROM one_to_many;
 
 
--- Extract all the nodes that have length less than or equal to the value distance
+-- Extract all the nodes that have length less than or equal to distance
 DROP TABLE IF EXISTS driving_distance;
 CREATE TABLE driving_distance AS
 SELECT dd.*,
@@ -135,7 +134,7 @@ FROM pgr_drivingDistance(
          source, target, 
          length AS cost 
      FROM  public.roads_zuerich',
-    8740, 25000, true -- source_node and value distance (in meters)
+    8740, 25000, true -- source_node and distance (in meters)
 ) AS dd
 JOIN  public.roads_zuerich_vertices_pgr AS pt
 ON dd.node = pt.id;
@@ -165,7 +164,7 @@ FROM pgr_ksp(
 JOIN public.planet_osm_roads AS roads ON ksp.edge = roads.osm_id;
 
 
--- Show different agg_costs of k-shortest path (multiple alternative paths)
+-- Aggregate agg_costs of k-shortest path (multiple alternative paths)
 WITH KShortestPaths AS (
     SELECT
         ksp.seq,
@@ -194,27 +193,3 @@ FROM KShortestPaths
 GROUP BY path_id
 ORDER BY path_id;
 
-
--- Find the shortest path between two buildings
--- Step 1: Find nearest road vertices for each building
-WITH nearest_vertices AS (
-  SELECT
-    p.osm_id AS building_id,
-    p."addr:street",
-    p."addr:housenumber",
-    p."addr:city",
-    p."addr:postcode",
-    p.building,
-    (SELECT osm_id FROM public.roads_zuerich_vertices_pgr AS v
-     ORDER BY ST_Transform(p.way, 4326) <-> ST_Transform(v.the_geom, 4326) LIMIT 1) AS nearest_vertex_id
-  FROM
-    public.planet_osm_polygon AS p
-)
-
--- Step 2: Use pgRouting to find the shortest path between two buildings
-SELECT * FROM pgr_dijkstra(
-  'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
-  (SELECT nearest_vertex_id FROM nearest_vertices WHERE building_id = 442559937 LIMIT 1),
-  (SELECT nearest_vertex_id FROM nearest_vertices WHERE building_id = 138710666 LIMIT 1),
-  directed := false
-);
