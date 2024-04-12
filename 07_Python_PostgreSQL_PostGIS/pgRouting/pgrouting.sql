@@ -18,7 +18,7 @@ FROM
     public.planet_osm_line
 WHERE 
     highway IN ('motorway', 'trunk', 'primary', 'secondary', 
-                'tertiary', 'unclassified', 'residential', 
+                'tertiary', 'unclassified', 'residential',
                 'service')
     AND ST_Within(
         ST_TRANSFORM(way, 4326), 
@@ -27,6 +27,24 @@ WHERE
          WHERE bfs_nummer = 261)
     );
 
+-- Querying roads
+SELECT 
+    osm_id,
+    highway,
+    ST_TRANSFORM(way, 4326) AS way_transformed
+FROM 
+    public.roads_zuerich;
+
+-- Counting distinct road types
+SELECT 
+    highway,
+    COUNT(*) AS highway_num
+FROM 
+    public.roads_zuerich
+GROUP BY 
+    highway
+ORDER BY 
+    highway_num DESC;
 
 -- Adding source and target columns to public.planet_osm_roads
 ALTER TABLE public.roads_zuerich ADD COLUMN source INTEGER;
@@ -45,12 +63,27 @@ SELECT pgr_createTopology(
 );
 
 -- Checking topology table which includes the road network
-SELECT * FROM public.public.roads_zuerich_vertices_pgr;
+SELECT
+id,
+ST_TRANSFORM(the_geom, 4326) as geom
+FROM public.roads_zuerich_vertices_pgr;
 
 -- Adding the length of road segments
 ALTER TABLE public.roads_zuerich ADD COLUMN length FLOAT8;
 UPDATE public.roads_zuerich
 SET length = ST_Length(ST_Transform(way, 4326)::geography);
+
+-- Calculating length per road category
+SELECT 
+    highway,
+    SUM(length) AS total_length
+FROM 
+    public.roads_zuerich
+GROUP BY 
+    highway
+ORDER BY 
+    total_length DESC;
+
 
 -- Conducting connectivity analysis
 CREATE TEMP TABLE temp_components AS
@@ -78,7 +111,32 @@ SELECT
     component,
     ST_TRANSFORM(way, 4326) AS way_transformed
 FROM 
+    public.roads_zuerich;
+
+
+-- Counting distinct connected elements
+SELECT 
+    component,
+    COUNT(*) AS num_roads
+FROM 
     public.roads_zuerich
+GROUP BY 
+    component
+ORDER BY 
+    num_roads DESC;
+
+-- Selecting connected roads
+SELECT
+osm_id,
+highway,
+source,
+target,
+length,
+component,
+ST_TRANSFORM(way, 4326)
+FROM public.roads_zuerich
+WHERE component = 3
+ORDER BY length DESC;
 
 
 -- Calculating the shortest path between single source_node and target_node
@@ -96,14 +154,13 @@ SELECT
     ST_Transform(roads_zuerich.way, 4326)::geometry AS geom
 FROM pgr_dijkstra(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
-    46, -- Source node ID 
-    4838, -- Target node ID
+    3170, -- Source node ID 
+    14040, -- Target node ID
     FALSE
 ) AS route
 JOIN public.roads_zuerich ON route.edge = public.roads_zuerich.osm_id;
 
 SELECT * FROM route;
-
 
 -- Calculating the shortest path between single source_node and multiple target_nodes
 DROP TABLE IF EXISTS one_to_many;
@@ -112,8 +169,8 @@ SELECT dijkstra.*,
        ST_TRANSFORM(roads.way, 4326)
 FROM pgr_bdDijkstra(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
-    8740, -- Source node ID 
-    ARRAY[14430, 15767], -- Array of target node IDs
+    386, -- Source node ID 
+    ARRAY[14426, 16746], -- Array of target node IDs
     FALSE
 ) AS dijkstra
 JOIN public.roads_zuerich AS roads ON dijkstra.edge = roads.osm_id;
@@ -121,7 +178,7 @@ JOIN public.roads_zuerich AS roads ON dijkstra.edge = roads.osm_id;
 SELECT * FROM one_to_many;
 
 
--- Extract all the nodes that have length less than or equal to distance
+-- Extracting all the nodes that have length less than or equal to distance
 DROP TABLE IF EXISTS driving_distance;
 CREATE TABLE driving_distance AS
 SELECT dd.*,
@@ -131,15 +188,16 @@ SELECT dd.*,
 FROM pgr_drivingDistance(
     'SELECT 
          osm_id AS id, 
-         source, target, 
+         source, 
+         target, 
          length AS cost 
      FROM  public.roads_zuerich',
-    8740, 25000, true -- source_node and distance (in meters)
+    6359, 5000, true -- source_node and distance in meters
 ) AS dd
 JOIN  public.roads_zuerich_vertices_pgr AS pt
 ON dd.node = pt.id;
 
-SELECT * FROM public.driving_distance
+SELECT * FROM public.driving_distance;
 
 
 -- Calculate k-shortest path (multiple alternative paths)
@@ -156,8 +214,8 @@ SELECT
     ST_Transform(roads.way, 4326) AS geom
 FROM pgr_ksp(
     'SELECT osm_id AS id, source, target, length AS cost FROM public.roads_zuerich',
-    8740, -- source node ID 
-    14430, -- target node ID
+    18388, -- source node ID 
+    8649, -- target node ID
     4,  -- k (number of shortest paths to find)
     false -- directed graph (true for directed, false for undirected)
 ) AS ksp
@@ -179,8 +237,8 @@ WITH KShortestPaths AS (
         ST_Transform(roads.way, 4326) AS geom
     FROM pgr_ksp(
         'SELECT osm_id AS id, source, target, length AS cost FROM public.roads_zuerich',
-        8740, -- source node ID 
-        14430, -- target node ID
+        16022, -- source node ID 
+        2481, -- target node ID
         4,  -- k (number of shortest paths to find)
         false -- directed graph (true for directed, false for undirected)
     ) AS ksp
@@ -192,3 +250,6 @@ SELECT
 FROM KShortestPaths
 GROUP BY path_id
 ORDER BY path_id;
+
+
+
