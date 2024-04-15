@@ -1,4 +1,4 @@
--- The following SQL script is used to create a road network topology and calculate the shortest paths between nodes using pgRouting.
+-- The following SQL script is used to create a road network topology and calculate the shortest paths using pgRouting.
 
 -- Prerequisites: 
     -- PostgreSQL with extensions PostGIS and pgRouting
@@ -10,7 +10,7 @@
     -- pgRouting Workshop: https://workshop.pgrouting.org
     -- Dijkstra's Algorithm: https://www.youtube.com/watch?v=bZkzH5x0SKU
 
--- Creating a subset of roads in the city of Zuerich
+-- Create a subset of roads in the city of Zuerich
 DROP TABLE IF EXISTS roads_zuerich;
 CREATE TABLE roads_zuerich AS 
 SELECT *
@@ -27,7 +27,7 @@ WHERE
          WHERE bfs_nummer = 261)
     );
 
--- Querying roads
+-- Query roads
 SELECT 
     osm_id,
     highway,
@@ -35,7 +35,7 @@ SELECT
 FROM 
     public.roads_zuerich;
 
--- Counting distinct road types
+-- Count distinct road types
 SELECT 
     highway,
     COUNT(*) AS highway_num
@@ -46,11 +46,11 @@ GROUP BY
 ORDER BY 
     highway_num DESC;
 
--- Adding source and target columns to public.planet_osm_roads
+-- Add source and target columns to public.planet_osm_roads
 ALTER TABLE public.roads_zuerich ADD COLUMN source INTEGER;
 ALTER TABLE public.roads_zuerich ADD COLUMN target INTEGER;
 
--- Creating a topology for the road network
+-- Create a topology for the road network
 SELECT pgr_createTopology(
     'public.roads_zuerich',    -- Road network table
      0.0001,                   -- Tolerance: determines how close two line endpoints must be to be considered the same node
@@ -62,18 +62,18 @@ SELECT pgr_createTopology(
     clean:='true'              -- Optional: cleans the topology by removing isolated nodes and edges
 );
 
--- Checking topology table which includes the road network
+-- Check the topology table
 SELECT
 id,
 ST_TRANSFORM(the_geom, 4326) as geom
 FROM public.roads_zuerich_vertices_pgr;
 
--- Adding the length of road segments
+-- Add the length of road segments
 ALTER TABLE public.roads_zuerich ADD COLUMN length FLOAT8;
 UPDATE public.roads_zuerich
 SET length = ST_Length(ST_Transform(way, 4326)::geography);
 
--- Calculating length per road category
+-- Calculate length per road category (e.g. highway="primary" in OSM data)
 SELECT 
     highway,
     SUM(length) AS total_length
@@ -85,7 +85,7 @@ ORDER BY
     total_length DESC;
 
 
--- Conducting connectivity analysis
+-- Conduct connectivity analysis
 CREATE TEMP TABLE temp_components AS
 SELECT * FROM pgr_connectedComponents(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich'
@@ -101,7 +101,7 @@ SET component = (
     LIMIT 1
 );
 
--- Querying roads (consider connecting components)
+-- Query roads (consider connecting components)
 SELECT 
     osm_id,
     highway,
@@ -114,7 +114,7 @@ FROM
     public.roads_zuerich;
 
 
--- Counting distinct connected elements
+-- Count distinct connected elements
 SELECT 
     component,
     COUNT(*) AS num_roads
@@ -125,7 +125,7 @@ GROUP BY
 ORDER BY 
     num_roads DESC;
 
--- Selecting connected roads
+-- Select connected roads
 SELECT
 osm_id,
 highway,
@@ -135,11 +135,11 @@ length,
 component,
 ST_TRANSFORM(way, 4326)
 FROM public.roads_zuerich
-WHERE component = 3
+WHERE component = 1 -- change according to most connected roads
 ORDER BY length DESC;
 
 
--- Calculating the shortest path between single source_node and target_node
+-- Calculate the shortest path between single source- and target node
 DROP TABLE IF EXISTS route;
 CREATE TABLE route AS
 SELECT 
@@ -154,22 +154,22 @@ SELECT
     ST_Transform(roads_zuerich.way, 4326)::geometry AS geom
 FROM pgr_dijkstra(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
-    3170, -- Source node ID 
-    14040, -- Target node ID
+    3170, -- source node ID 
+    14040, -- target node ID
     FALSE
 ) AS route
 JOIN public.roads_zuerich ON route.edge = public.roads_zuerich.osm_id;
 
 SELECT * FROM route;
 
--- Calculating the shortest path between single source_node and multiple target_nodes
+-- Calculate the shortest path between single source node and multiple target nodes
 DROP TABLE IF EXISTS one_to_many;
 CREATE TABLE one_to_many AS
 SELECT dijkstra.*, 
        ST_TRANSFORM(roads.way, 4326)
 FROM pgr_bdDijkstra(
     'SELECT osm_id AS id, source, target, length AS cost FROM roads_zuerich',
-    386, -- Source node ID 
+    386, -- source node ID 
     ARRAY[14426, 16746], -- Array of target node IDs
     FALSE
 ) AS dijkstra
@@ -178,7 +178,7 @@ JOIN public.roads_zuerich AS roads ON dijkstra.edge = roads.osm_id;
 SELECT * FROM one_to_many;
 
 
--- Extracting all the nodes that have length less than or equal to distance
+-- Extract all the nodes that have length less than or equal to the defined distance
 DROP TABLE IF EXISTS driving_distance;
 CREATE TABLE driving_distance AS
 SELECT dd.*,
@@ -192,7 +192,7 @@ FROM pgr_drivingDistance(
          target, 
          length AS cost 
      FROM  public.roads_zuerich',
-    6359, 5000, true -- source_node and distance in meters
+    6359, 5000, true -- Source node ID and distance in meters
 ) AS dd
 JOIN  public.roads_zuerich_vertices_pgr AS pt
 ON dd.node = pt.id;
@@ -250,6 +250,3 @@ SELECT
 FROM KShortestPaths
 GROUP BY path_id
 ORDER BY path_id;
-
-
-
