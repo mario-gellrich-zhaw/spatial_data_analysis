@@ -18,6 +18,7 @@ SELECT
 ST_SRID(rast) 
 FROM public.strassenlaerm_tag LIMIT 1;
 
+
 -- Query hotels in the city of Zurich
 SELECT
     h.name AS hotel_name,
