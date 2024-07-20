@@ -33,7 +33,7 @@ pgAdmin does not provide a way to automatically register a server. Server regist
 
     Use the 'Connection' tab
         --> Host name/address: db
-        --> Post: 5432
+        --> Port: 5432
         --> Username: postgres
         --> Password: geheim
 
