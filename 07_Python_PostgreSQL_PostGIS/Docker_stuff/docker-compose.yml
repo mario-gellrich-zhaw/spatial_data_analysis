@@ -9,8 +9,8 @@ services:
     container_name: postgis_container
     environment:
       POSTGRES_DB: osm_switzerland
-      POSTGRES_USER: your_db_user
-      POSTGRES_PASSWORD: your_db_password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: geheim
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
