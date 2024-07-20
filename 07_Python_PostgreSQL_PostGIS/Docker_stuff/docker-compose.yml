@@ -22,7 +22,7 @@ services:
     container_name: pgadmin_container
     environment:
       PGADMIN_DEFAULT_EMAIL: your.email@mail.com
-      PGADMIN_DEFAULT_PASSWORD: your_pgadmin_password
+      PGADMIN_DEFAULT_PASSWORD: geheim
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     ports:
