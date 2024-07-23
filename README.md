@@ -8,6 +8,7 @@
 - [Python GWR Data](#python-gwr-data)
 - [Python Raster Data](#python-raster-data)
 - [Python PostgreSQL & PostGIS](#python-postgresql-&-postgis)
+- [Python Tripadvisor](#python-tripadvisor)
 
 
 ## Python Basic GIS Functionality
@@ -37,3 +38,7 @@ Raster data is a type of spatial data that represents a matrix of cells or pixel
 ## Python PostgreSQL & PostGIS
 
 PostgreSQL is a powerful, open-source relational database system. PostGIS is a PostgreSQL extension that adds support for geographic objects, allowing location queries to be run in SQL. This section covers how to use Python to interact with PostgreSQL and PostGIS, including how to run spatial queries and how to read and write spatial data. The folder 'Docker_stuff' contains a docker-compose.yml and related files that can be used to run a Docker container locally (linux/amd64 only).
+
+## Python Tripadvisor
+
+Extracting, analyzing, and visualizing spatial entities from Tripadvisor text data involves collecting user reviews and using Named Entity Recognition (NER) to extract locations. Geographic Information System (GIS) tools and mapping software are used to create visualizations like interactive maps and heatmaps, showcasing these locations. This process helps derive insights and make data-driven decisions based on spatial analysis.
