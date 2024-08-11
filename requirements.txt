@@ -16,3 +16,4 @@ geoalchemy2
 geopandas
 spacy
 wordcloud
+fiona
