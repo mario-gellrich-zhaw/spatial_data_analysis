@@ -1,7 +1,7 @@
 # Spatial data analysis with Python
 
 ## Table of Contents
-- [Python Basis GIS Functionality](#python-basic-gis-functionality)
+- [Python Basis GIS Functionalities](#python-basic-gis-functionalities)
 - [Python Geocoding Addresses](#python-geocoding-addresses)
 - [Python Nearest Neighbor Analysis](#python-nearest-neighbor-analysis)
 - [Python Catchment Area Analysis](#python-catchment-area-analysis)
@@ -11,7 +11,7 @@
 - [Python Tripadvisor](#python-tripadvisor)
 
 
-## Python Basic GIS Functionality
+## Python Basic GIS Functionalities
 
 This section covers the basic Geographic Information System (GIS) functionalities in Python. It includes topics such as reading and writing spatial data, spatial data manipulation, and spatial data visualization.
 
