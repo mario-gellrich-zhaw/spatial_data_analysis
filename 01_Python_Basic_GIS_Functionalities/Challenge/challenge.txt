@@ -1,0 +1,30 @@
+#-------------------------------------------------------------------
+# CAS DAENG Challenge
+#-------------------------------------------------------------------
+
+Background:
+Imagine you have a large company as a customer with with petrol stations spread 
+all over Europe. For a competitive analysis the customer wants to know how many 
+petrol stations there are per operator in Switzerland and which are the 5 largest 
+operators in relation to the total number of petrol stations. petrol stations. To 
+solve the task, you decide on the following procedure:
+
+1.) First, look at the following website https://wiki.openstreetmap.org/wiki/Key:amenity, 
+    to find the key-value pair that you can use to obtain data from OpenStreetMap.
+
+2) Then prepare a Jupyter notebook using the Overpass Web API, to retrieve the data. 
+	
+	# Overpass turbo query
+	query = f"""
+        [out:json];
+        area["ISO3166-1"="CH"][admin_level=2];
+        node ["amenity"="fuel"](area);
+        out;"""
+	
+3) You save the data in .json and .csv format on your local computer.
+
+4) You count the number of petrol stations per operator using the method .pivot_table() 
+    method from the pandas library. You sort the pivot table to identify the 5 largest operators. 
+	operators.
+
+5) Finally, you create a map to visualize all gas stations in Switzerland.
