@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>cube2.kml</name>
+	<StyleMap id="green">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#green1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#green0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="green0">
+		<LineStyle>
+			<color>7f00ffaa</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>7f00ffaa</color>
+		</PolyStyle>
+	</Style>
+	<Style id="green1">
+		<LineStyle>
+			<color>7f00ffaa</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>7f00ffaa</color>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>cube.kml</name>
+		<LookAt>
+			<longitude>8.543151875920312</longitude>
+			<latitude>47.36561202482072</latitude>
+			<altitude>0</altitude>
+			<heading>45</heading>
+			<tilt>64</tilt>
+			<range>843</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#green</styleUrl>
+		<Polygon>
+			<extrude>1</extrude>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						8.542634850324216,47.36654315613557,100 8.54263475978412,47.36550030198994,100 8.544161875287033,47.36550183316037,100 8.54416186368919,47.3665414044643,100 8.542634850324216,47.36654315613557,100 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>
