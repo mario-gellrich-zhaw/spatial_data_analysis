@@ -3,3 +3,5 @@ __pycache__/
 
 # Files
 getting_swiss_petrol_stations.ipynb
+petrol_stations.json
+petrol_stations.csv
