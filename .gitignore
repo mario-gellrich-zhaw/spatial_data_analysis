@@ -5,3 +5,6 @@ __pycache__/
 getting_swiss_petrol_stations.ipynb
 petrol_stations.json
 petrol_stations.csv
+
+# Directories
+08_Python_PostgreSQL_PostGIS/
