@@ -1,6 +1,6 @@
 {
-	"name": "Python 3.12 with Jupyter and PDF Preview",
-	"image": "mcr.microsoft.com/devcontainers/python:3.12",
+	"name": "Python 3.11 with Jupyter and PDF Preview",
+	"image": "mcr.microsoft.com/devcontainers/python:3.11",
 
 	"extensions": [
 		"ms-python.python",
