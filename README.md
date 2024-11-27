@@ -7,7 +7,6 @@
 - [Python Catchment Area Analysis](#python-catchment-area-analysis)
 - [Python GWR Data](#python-gwr-data)
 - [Python Raster Data](#python-raster-data)
-- [Python PostgreSQL & PostGIS](#python-postgresql-&-postgis)
 - [Python Tripadvisor](#python-tripadvisor)
 
 
@@ -34,10 +33,6 @@ GWR (germ.: Gebäude- und Wohnungsregister) data is the most comprehensive datas
 ## Python Raster Data
 
 Raster data is a type of spatial data that represents a matrix of cells or pixels. This section discusses how to work with raster data in Python, including how to read, write, and manipulate raster data.
-
-## Python PostgreSQL & PostGIS
-
-PostgreSQL is a powerful, open-source relational database system. PostGIS is a PostgreSQL extension that adds support for geographic objects, allowing location queries to be run in SQL. This section covers how to use Python to interact with PostgreSQL and PostGIS, including how to run spatial queries and how to read and write spatial data. The folder 'Docker_stuff' contains a docker-compose.yml and related files that can be used to run a Docker container locally (linux/amd64 only).
 
 ## Python Tripadvisor
 
