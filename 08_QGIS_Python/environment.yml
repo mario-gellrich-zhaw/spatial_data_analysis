@@ -6,7 +6,7 @@ channels:
 
 dependencies:
   - python=3.12
-  - qgis                # QGIS + PyQGIS (pulls Qt, GDAL, PyQt5 automatically)
+  - qgis=3.40.*         # pin to 3.40.x LTS – must match your QGIS Desktop version
   - requests            # HTTP download of canton boundaries
 
 # ─── Setup ──────────────────────────────────────────────────────────────────

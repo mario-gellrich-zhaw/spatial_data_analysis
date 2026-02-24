@@ -47,6 +47,8 @@ try:
         QgsApplication,
         QgsVectorLayer,
         QgsProject,
+        QgsCoordinateReferenceSystem,
+        QgsReferencedRectangle,
         QgsCategorizedSymbolRenderer,
         QgsRendererCategory,
         QgsFillSymbol,
@@ -174,7 +176,10 @@ def build_project() -> None:
     project = QgsProject.instance()
     project.addMapLayer(layer)
     project.setTitle("Swiss Cantons – Language Regions")
-    project.setCrs(layer.crs())
+    project.setCrs(QgsCoordinateReferenceSystem("EPSG:3857"))
+    project.viewSettings().setDefaultViewExtent(
+        QgsReferencedRectangle(layer.extent(), layer.crs())
+    )
 
     if project.write(str(PROJECT_FILE)):
         print(f"\nProject saved: {PROJECT_FILE}")
