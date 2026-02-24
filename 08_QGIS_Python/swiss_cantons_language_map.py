@@ -1,5 +1,5 @@
 """
-Swiss Cantons – Language Region Map
+Swiss Cantons - Language Region Map
 =====================================
 PyQGIS script that builds a styled QGIS project file.
 
