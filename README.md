@@ -8,6 +8,7 @@
 - [Python GWR Data](#python-gwr-data)
 - [Python Raster Data](#python-raster-data)
 - [Python Tripadvisor](#python-tripadvisor)
+- [Python QGIS](#python-qgis)
 
 
 ## Python Basic GIS Functionalities
@@ -37,3 +38,7 @@ Raster data is a type of spatial data that represents a matrix of cells or pixel
 ## Python Tripadvisor
 
 Extracting, analyzing, and visualizing spatial entities from Tripadvisor text data involves collecting user reviews and using Named Entity Recognition (NER) to extract locations. Geographic Information System (GIS) tools and mapping software are used to create visualizations like interactive maps and heatmaps, showcasing these locations. This process helps derive insights and make data-driven decisions based on spatial analysis.
+
+## Python QGIS
+
+QGIS is a leading open-source Geographic Information System. Beyond its desktop interface, QGIS exposes a full Python API (PyQGIS) that allows scripts to load vector and raster data, apply symbology, run geoprocessing algorithms, and save project files — all without opening the GUI. This section demonstrates how to use PyQGIS in standalone headless mode to build a choropleth map of Swiss cantonal language regions. Canton boundaries are downloaded from GADM, a `language_region` attribute is added to every feature, a categorised fill renderer is applied (one colour per language region: German, French, Italian, and two mixed-language cantons), and the result is saved as a `.qgz` QGIS project file that can be opened directly in QGIS Desktop.
