@@ -1,0 +1,15 @@
+name: qgisenv
+
+channels:
+  - conda-forge        # primary channel – has current QGIS builds
+  - defaults
+
+dependencies:
+  - python=3.12
+  - qgis                # QGIS + PyQGIS (pulls Qt, GDAL, PyQt5 automatically)
+  - requests            # HTTP download of canton boundaries
+
+# ─── Setup ──────────────────────────────────────────────────────────────────
+# Create:   conda env create -f environment.yml
+# Activate: conda activate qgisenv
+# Run:      python swiss_cantons_language_map.py
