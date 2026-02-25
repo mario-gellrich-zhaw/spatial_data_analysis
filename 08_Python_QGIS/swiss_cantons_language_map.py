@@ -35,6 +35,7 @@ if sys.platform == "win32":
     if dll_dir.is_dir() and hasattr(os, "add_dll_directory"):
         os.add_dll_directory(str(dll_dir))
     QGIS_PREFIX = str(CONDA_PREFIX / "Library")
+# On other platforms, the standard CONDA_PREFIX should work for QGIS imports
 else:
     QGIS_PREFIX = str(CONDA_PREFIX)
 
@@ -64,7 +65,6 @@ except ImportError as exc:
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 1.  Language-region reference data
-#     Source: Swiss Federal Chancellery  https://www.bk.admin.ch
 # ─────────────────────────────────────────────────────────────────────────────
 
 LANGUAGE_REGIONS: dict[str, str] = {
@@ -102,7 +102,7 @@ REGION_LABELS: dict[str, str] = {
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 2.  Data preparation  (pure Python, no QGIS required)
+# 2.  Data preparation
 # ─────────────────────────────────────────────────────────────────────────────
 
 GADM_URL          = "https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_CHE_1.json"
