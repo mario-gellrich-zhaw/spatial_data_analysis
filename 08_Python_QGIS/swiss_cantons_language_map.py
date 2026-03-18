@@ -13,6 +13,8 @@ Steps
   6. Save a QGIS project file  →  swiss_cantons_language_regions.qgz
 
 Open swiss_cantons_language_regions.qgz in QGIS Desktop to view the map.
+Copy both swiss_cantons_language_regions.qgz and swiss_cantons_processed.geojson
+to the same folder on your local machine before opening.
 
 Usage
 -----
@@ -45,6 +47,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 # ── QGIS imports (must follow DLL / env setup above) ─────────────────────────
 try:
     from qgis.core import (  # type: ignore[import-untyped]
+        Qgis,
         QgsApplication,
         QgsVectorLayer,
         QgsProject,
@@ -99,6 +102,9 @@ REGION_LABELS: dict[str, str] = {
     "Mixed DE/FR":     "Bilingual DE/FR  (BE, FR, VS)",
     "Mixed DE/RM/IT":  "Trilingual DE/RM/IT  (GR)",
 }
+
+# ── Map appearance ────────────────────────────────────────────────────────────
+LAYER_OPACITY = 0.8    # 0.0 (transparent) → 1.0 (fully opaque)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -171,11 +177,13 @@ def build_project() -> None:
     print(f"Layer loaded: {layer.featureCount()} features, CRS {layer.crs().authid()}")
 
     apply_symbology(layer)
+    layer.setOpacity(LAYER_OPACITY)
     print("Symbology applied.")
 
     project = QgsProject.instance()
     project.addMapLayer(layer)
     project.setTitle("Swiss Cantons – Language Regions")
+    project.setFilePathStorage(Qgis.FilePathType.Relative)  # portable relative paths
     project.setCrs(QgsCoordinateReferenceSystem("EPSG:3857"))
     project.viewSettings().setDefaultViewExtent(
         QgsReferencedRectangle(layer.extent(), layer.crs())
@@ -183,7 +191,8 @@ def build_project() -> None:
 
     if project.write(str(PROJECT_FILE)):
         print(f"\nProject saved: {PROJECT_FILE}")
-        print("→ Open this file in QGIS Desktop to explore the styled map.")
+        print("→ Copy both .qgz and swiss_cantons_processed.geojson to the same")
+        print("  folder on your local machine, then open the .qgz in QGIS Desktop.")
     else:
         print("ERROR: project could not be saved.")
 

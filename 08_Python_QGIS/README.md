@@ -51,23 +51,6 @@ python swiss_cantons_language_map.py
 > `"python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"` set,
 > so "Run Python File in Terminal" will use the correct interpreter automatically.
 
-### macOS / Windows
-
-Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or Anaconda.
-
-```bash
-# 1. Create and activate the conda environment (installs QGIS + Python)
-conda env create -f 08_Python_QGIS/environment.yml
-conda activate qgisenv
-
-# 2. Run the script
-cd 08_Python_QGIS
-python swiss_cantons_language_map.py
-```
-
-> **Note:** on first run the script downloads ~3 MB of canton boundary data
-> from GADM. The file is cached locally and reused on subsequent runs.
-
 ---
 
 ## What the Script Does
