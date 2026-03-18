@@ -204,12 +204,12 @@ Applies **Named Entity Recognition (NER)** to Tripadvisor review text to extract
 
 ### 08 · QGIS / PyQGIS
 
-> ⚠️ **Requires a local QGIS installation — does not run in Codespaces.**
+> ⚠️ **Requires a local QGIS installation to open the generated `.qgz` output file.**
 
-Shows how to drive a **local QGIS installation directly from Python**, without opening the GUI. A single script downloads Swiss canton boundaries, enriches the features, applies a categorised colour renderer by language region, and saves a ready-to-open `.qgz` project file.
+Runs **headless** (no QGIS GUI needed) via the PyQGIS API. A single script downloads Swiss canton boundaries, enriches the features, applies a categorised colour renderer by language region, and saves a ready-to-open `.qgz` project file.
 
 **You'll learn:**
-- Accessing your local QGIS installation from a Python script
+- Running PyQGIS headless (no QGIS Desktop required to execute)
 - Loading and enriching vector layers programmatically
 - Applying a categorised renderer and saving a `.qgz` project
 
