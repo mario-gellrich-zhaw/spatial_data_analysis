@@ -1,7 +1,7 @@
 name: qgisenv
 
 channels:
-  - conda-forge        # primary channel – has current QGIS builds
+  - conda-forge         # primary channel – has current QGIS builds
   - defaults
 
 dependencies:
