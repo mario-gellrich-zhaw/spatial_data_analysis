@@ -3,9 +3,8 @@
 Uses **PyQGIS** (Python API of QGIS) to build a styled QGIS project file
 showing all 26 Swiss cantons coloured by official language region.
 
-The script runs headless (no QGIS Desktop needed to execute it).
-The resulting `.qgz` project file is opened in **QGIS Desktop** to view and
-interact with the map.
+The script runs **headless** (no QGIS Desktop needed to execute it).
+Open the resulting `.qgz` file in QGIS Desktop to view and interact with the map.
 
 ---
 
@@ -23,27 +22,51 @@ interact with the map.
 
 ---
 
-## Prerequisites
-
-- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or Anaconda
-- [QGIS Desktop](https://qgis.org) (to open the generated project file)
-- Internet access on first run (~3 MB canton boundary download)
-
----
-
 ## Setup
 
+QGIS Python bindings cannot be installed via `pip`. The setup differs by platform.
+
+### Linux / GitHub Codespace (Debian/Ubuntu)
+
+Install the QGIS bindings from `apt`, then create a virtual environment that
+inherits them via `--system-site-packages`:
+
 ```bash
-# 1. Create and activate the conda environment
-conda env create -f environment.yml
+# 1. Install QGIS Python bindings and venv support
+sudo apt-get install -y python3-qgis python3-venv
+
+# 2. Create a virtual environment (from the repo root)
+python3 -m venv .venv --system-site-packages
+
+# 3. Activate it
+source .venv/bin/activate
+
+# 4. Run the script
+cd 08_Python_QGIS
+python swiss_cantons_language_map.py
+```
+
+> **VSCode users:** after creating the venv, open the Command Palette →
+> **Python: Select Interpreter** and choose `.venv`. The workspace already has
+> `"python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"` set,
+> so "Run Python File in Terminal" will use the correct interpreter automatically.
+
+### macOS / Windows
+
+Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or Anaconda.
+
+```bash
+# 1. Create and activate the conda environment (installs QGIS + Python)
+conda env create -f 08_Python_QGIS/environment.yml
 conda activate qgisenv
 
 # 2. Run the script
+cd 08_Python_QGIS
 python swiss_cantons_language_map.py
-
-# 3. Open the generated project in QGIS Desktop
-#    File → Open Project → swiss_cantons_language_regions.qgz
 ```
+
+> **Note:** on first run the script downloads ~3 MB of canton boundary data
+> from GADM. The file is cached locally and reused on subsequent runs.
 
 ---
 
@@ -63,8 +86,8 @@ python swiss_cantons_language_map.py
 ## Generated Files
 
 ```
-08_QGIS_Python/
-├── environment.yml                    # conda environment  (qgisenv)
+08_Python_QGIS/
+├── environment.yml                    # conda environment  (macOS / Windows)
 ├── swiss_cantons_language_map.py      # PyQGIS script
 ├── swiss_cantons_gadm.geojson         # raw download      (created on first run)
 ├── swiss_cantons_processed.geojson    # with language_region field
@@ -86,7 +109,7 @@ python swiss_cantons_language_map.py
 
 ---
 
-## Data Source
+## Data Sources
 
 | Dataset | Provider | Licence |
 |---------|----------|---------|
