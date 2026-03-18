@@ -1,0 +1,6016 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-03-18T17:45:13Z",
+    "timestamp_areas_base": "2026-03-18T10:39:15Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 27069561,
+      "lat": 47.3963906,
+      "lon": 8.6233174,
+      "tags": {
+        "addr:city": "Dübendorf",
+        "addr:housenumber": "44",
+        "addr:postcode": "8600",
+        "addr:street": "Usterstrasse",
+        "amenity": "fuel",
+        "branch": "Dübendorf Zur Schmiede",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "check_date": "2024-09-22",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "SOCAR Zur Schmiede",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "self_service": "yes",
+        "website": "https://www.socarenergy.ch/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 27125026,
+      "lat": 47.4010933,
+      "lon": 8.6199554,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Dübendorf",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "brand:wikipedia": "en:BP",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BP Garage Tresch",
+        "operator": "Tresch Automobile",
+        "payment:cards": "yes",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 34078845,
+      "lat": 47.4956958,
+      "lon": 8.7129812,
+      "tags": {
+        "addr:city": "Winterthur",
+        "addr:housenumber": "48",
+        "addr:postcode": "8406",
+        "addr:street": "Zürcherstrasse",
+        "alt_name": "Migrol Zürcherstrasse",
+        "amenity": "fuel",
+        "branch": "Winterthur Zürcherstrasse",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "yes",
+        "fuel:biogas": "yes",
+        "fuel:cng": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Service Zürcherstrasse",
+        "operator": "Migrol",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 47744371,
+      "lat": 47.3995257,
+      "lon": 8.4973287,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "146",
+        "addr:postcode": "8049",
+        "addr:street": "Am Wasser",
+        "amenity": "fuel",
+        "branch": "Zürich Höngg",
+        "brand": "Coop",
+        "check_date": "2024-09-02",
+        "name": "Coop Tankstelle Höngg",
+        "opening_hours": "Mo-Su 06:00-23:00",
+        "operator": "Coop Mineraloel",
+        "shop": "convenience"
+      }
+    },
+    {
+      "type": "node",
+      "id": 52741787,
+      "lat": 47.3815928,
+      "lon": 8.5095448,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "73",
+        "addr:postcode": "8004",
+        "addr:street": "Bullingerstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Hardau",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Hardau",
+        "operator": "Shell (Switzerland)",
+        "website": "https://find.shell.com/ch/fuel/10023346-shell-hardau/de_CH",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 59185470,
+      "lat": 47.2376219,
+      "lon": 8.7276971,
+      "tags": {
+        "addr:city": "Stäfa",
+        "addr:country": "CH",
+        "addr:housenumber": "109",
+        "addr:postcode": "8712",
+        "addr:street": "Seestrasse",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "name": "AVIA",
+        "operator": "AVIA",
+        "shop": "convenience",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 73124669,
+      "lat": 47.3811098,
+      "lon": 8.4921479,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "32",
+        "addr:postcode": "8047",
+        "addr:street": "Rautistrasse",
+        "alt_name": "Migrol Flurstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Flurstrasse",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "check_date": "2026-01-22",
+        "check_date:opening_hours": "2026-01-22",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Service Flurstrasse",
+        "opening_hours": "Mo-Su,PH 06:00-23:00",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 83423432,
+      "lat": 47.3374315,
+      "lon": 8.5302419,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "115",
+        "addr:postcode": "8038",
+        "addr:street": "Albisstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Wollishofen",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Wollishofen",
+        "opening_hours": "Mo-Fr 06:30-22:00; Sa-Su 08:00-22:00"
+      }
+    },
+    {
+      "type": "node",
+      "id": 83424882,
+      "lat": 47.3398175,
+      "lon": 8.5298146,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Wollishofen",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "check_date": "2024-07-19",
+        "compressed_air": "yes",
+        "name": "Avia Service Wollishofen",
+        "opening_hours": "24/7",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 84513888,
+      "lat": 47.3236425,
+      "lon": 8.5187472,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Adliswil Sihltalstrasse",
+        "brand": "Eni",
+        "brand:wikidata": "Q565594",
+        "check_date": "2023-09-23",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Eni Sihltalstrasse",
+        "opening_hours": "Mo-Fr 06:00-22:00; Sa 06:30-22:00; Su,PH 07:00-22:00",
+        "shop": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 101392168,
+      "lat": 47.3890134,
+      "lon": 8.695437,
+      "tags": {
+        "addr:city": "Volketswil",
+        "addr:country": "CH",
+        "addr:housenumber": "4",
+        "addr:postcode": "8604",
+        "addr:street": "Pfäffikerstrasse",
+        "amenity": "fuel",
+        "name": "AVIA"
+      }
+    },
+    {
+      "type": "node",
+      "id": 103096904,
+      "lat": 47.3459074,
+      "lon": 8.534658,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Wollishofen Franzareal",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Wollishofen Franz",
+        "operator": "A.H. Meyer & Cie",
+        "shop": "convenience"
+      }
+    },
+    {
+      "type": "node",
+      "id": 103102957,
+      "lat": 47.3485725,
+      "lon": 8.5340966,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "320",
+        "addr:postcode": "8038",
+        "addr:street": "Mythenquai",
+        "amenity": "fuel",
+        "branch": "Zürich Wollishofen",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "BP Service Wollishofen",
+        "opening_hours": "Mo-Su,PH 00:00-24:00"
+      }
+    },
+    {
+      "type": "node",
+      "id": 111247327,
+      "lat": 47.5080581,
+      "lon": 8.5437196,
+      "tags": {
+        "addr:city": "Bachenbülach",
+        "addr:housenumber": "29",
+        "addr:postcode": "8184",
+        "addr:street": "Bächliwis",
+        "alt_name": "Migrol AMAG Bachenbülach",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Bachenbülach AMAG",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle AMAG Bachenbülach",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "tenant": "AMAG Bachenbülach",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 135633811,
+      "lat": 47.3980896,
+      "lon": 8.5399105,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "18",
+        "addr:postcode": "8057",
+        "addr:street": "Wehntalerstrasse",
+        "alt_name": "Migrol Milchbuck",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Milchbuck",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "check_date": "2025-03-25",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle Milchbuck",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 179047160,
+      "lat": 47.2327033,
+      "lon": 8.6143556,
+      "tags": {
+        "addr:city": "Horgen",
+        "addr:housenumber": "251",
+        "addr:postcode": "8810",
+        "addr:street": "Zugerstrasse",
+        "alt_name": "Tankstelle Svabic Horgen",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Horgen",
+        "brand": "Independent",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Tankstelle Svabic",
+        "opening_hours": "24/7",
+        "operator": "Tankstelle Svabic",
+        "self_service": "yes",
+        "website": "https://www.svabic.ch/",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 249500787,
+      "lat": 47.374827,
+      "lon": 8.6428183,
+      "tags": {
+        "addr:city": "Fällanden",
+        "addr:housenumber": "41",
+        "addr:postcode": "8117",
+        "addr:street": "Schwerzenbachstrasse",
+        "amenity": "fuel",
+        "branch": "Fällanden",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "brand:wikipedia": "en:SOCAR",
+        "name": "SOCAR Fällanden",
+        "operator": "SOCAR Energy Switzerland",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 251540984,
+      "lat": 47.5101487,
+      "lon": 8.3679597,
+      "tags": {
+        "access": "private",
+        "amenity": "fuel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 255007349,
+      "lat": 47.4436565,
+      "lon": 8.465643,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Regensdorf",
+        "brand": "Coop",
+        "check_date": "2024-06-23",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Coop Tankstelle Regensdorf",
+        "operator": "Coop Mineraloel",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 264065504,
+      "lat": 47.4155139,
+      "lon": 8.5903409,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Wallisellen Garage Odermatt",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "yes",
+        "name": "Shell Wallisellen Zentrum",
+        "operator": "Garage Hans Odermatt AG",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 264794355,
+      "lat": 47.4128994,
+      "lon": 8.6168482,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Dietlikon",
+        "brand": "Coop",
+        "name": "Coop Tankstelle Dietlikon",
+        "operator": "Coop Mineraloel",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 264889459,
+      "lat": 47.3042342,
+      "lon": 8.6906319,
+      "tags": {
+        "addr:city": "Egg b. Zürich",
+        "addr:housenumber": "2",
+        "addr:postcode": "8132",
+        "addr:street": "Im Hanselmaa",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 265569040,
+      "lat": 47.2742006,
+      "lon": 8.7248486,
+      "tags": {
+        "amenity": "fuel",
+        "created_by": "JOSM",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 266953468,
+      "lat": 47.2531303,
+      "lon": 8.6194521,
+      "tags": {
+        "addr:city": "Horgen",
+        "addr:housenumber": "340",
+        "addr:postcode": "8810",
+        "addr:street": "Seestrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia",
+        "opening_hours": "24/7",
+        "operator": "A.H. Meyer & Cie",
+        "self_service": "yes",
+        "tenant": "Seegarage Müller"
+      }
+    },
+    {
+      "type": "node",
+      "id": 268469414,
+      "lat": 47.3695212,
+      "lon": 8.5107127,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "178",
+        "addr:postcode": "8055",
+        "addr:street": "Talwiesenstrasse",
+        "amenity": "fuel",
+        "brand": "Independent",
+        "check_date": "2024-01-20",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Tankstelle Wyss",
+        "wheelchair": "yes",
+        "wheelchair:description": "bediente Tankstelle"
+      }
+    },
+    {
+      "type": "node",
+      "id": 269050377,
+      "lat": 47.3566826,
+      "lon": 8.7118888,
+      "tags": {
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "name": "Oberland Garage Uster",
+        "opening_hours": "Mo-Th 07:30-12:00,13:30-17:45; Fr 07:30-12:00,13:30-17:15",
+        "operator": "private"
+      }
+    },
+    {
+      "type": "node",
+      "id": 269120240,
+      "lat": 47.3521481,
+      "lon": 8.722673,
+      "tags": {
+        "addr:city": "Uster",
+        "addr:housenumber": "2",
+        "addr:postcode": "8610",
+        "addr:street": "Feldhofstrasse",
+        "amenity": "fuel",
+        "branch": "Uster Im Brunnen",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "compressed_air": "no",
+        "name": "Shell Im Brunnen",
+        "opening_hours": "24/7",
+        "operator": "Shell (Switzerland)",
+        "website": "https://find.shell.com/ch/fuel/10023340-shell-im-brunnen/de_CH"
+      }
+    },
+    {
+      "type": "node",
+      "id": 271223009,
+      "lat": 47.3534438,
+      "lon": 8.5768921,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "351",
+        "addr:postcode": "8008",
+        "addr:street": "Forchstrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Balgrist",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BP Balgrist",
+        "opening_hours": "24/7",
+        "self_service": "yes",
+        "shop": "no",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 274815548,
+      "lat": 47.2466719,
+      "lon": 8.4610784,
+      "tags": {
+        "addr:city": "Mettmenstetten",
+        "addr:housenumber": "30",
+        "addr:postcode": "8932",
+        "addr:street": "Zürichstrasse",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "name": "Avia Zürichstrasse",
+        "operator": "Karl Graf Automobile AG",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 278205018,
+      "lat": 47.2969244,
+      "lon": 8.8399034,
+      "tags": {
+        "addr:city": "Hinwil",
+        "addr:housenumber": "40",
+        "addr:postcode": "8340",
+        "addr:street": "Dürntnerstrasse",
+        "amenity": "fuel",
+        "branch": "Hinwil Dürntnerstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia",
+        "operator": "Avia Osterwalder Zürich",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 283181019,
+      "lat": 47.3860523,
+      "lon": 8.5319464,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "155",
+        "addr:postcode": "8005",
+        "addr:street": "Sihlquai",
+        "alt_name": "Migrol Sihlquai",
+        "amenity": "fuel",
+        "branch": "Zürich Sihlquai",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "check_date": "2024-10-19",
+        "compressed_air": "yes",
+        "fuel:adblue": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Service Sihlquai",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 293011493,
+      "lat": 47.5601728,
+      "lon": 8.4925388,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Shell",
+        "name": "Shell",
+        "name:de": "Shell",
+        "operator": "Shell"
+      }
+    },
+    {
+      "type": "node",
+      "id": 293609533,
+      "lat": 47.5285053,
+      "lon": 8.466666,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola"
+      }
+    },
+    {
+      "type": "node",
+      "id": 296941470,
+      "lat": 47.2140841,
+      "lon": 8.7004828,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia",
+        "operator": "Avia Vereinigung"
+      }
+    },
+    {
+      "type": "node",
+      "id": 297302039,
+      "lat": 47.4070106,
+      "lon": 8.7269393,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_91": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Illnau"
+      }
+    },
+    {
+      "type": "node",
+      "id": 297993545,
+      "lat": 47.2299301,
+      "lon": 8.6671966,
+      "tags": {
+        "addr:city": "Wädenswil",
+        "addr:housenumber": "41",
+        "addr:postcode": "8820",
+        "addr:street": "Zugerstrasse",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "AVIA Wädenswil",
+        "opening_hours": "Mo-Fr 06:00-22:00; Sa,Su 07:00-22:00",
+        "operator": "AVIA",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 298856019,
+      "lat": 47.3297078,
+      "lon": 8.9190317,
+      "tags": {
+        "addr:housenumber": "438",
+        "addr:street": "Tösstalstrasse",
+        "amenity": "fuel",
+        "fuel:GTL_diesel": "no",
+        "fuel:HGV_diesel": "no",
+        "fuel:biodiesel": "no",
+        "fuel:biogas": "no",
+        "fuel:cng": "no",
+        "fuel:diesel": "yes",
+        "fuel:e10": "no",
+        "fuel:e85": "no",
+        "fuel:electricity": "no",
+        "fuel:lpg": "no",
+        "fuel:octane_100": "no",
+        "fuel:octane_91": "no",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "operator": "sikkens"
+      }
+    },
+    {
+      "type": "node",
+      "id": 299752761,
+      "lat": 47.3803229,
+      "lon": 8.5463543,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Independent",
+        "check_date": "2025-07-29",
+        "compressed_air": "yes",
+        "name": "Scall",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 299813447,
+      "lat": 47.2867307,
+      "lon": 8.5433519,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Langnau am Albis",
+        "brand": "Independent",
+        "changing_table": "no",
+        "compressed_air": "yes",
+        "fuel:diesel": "no",
+        "name": "Voegtlin-Meyer",
+        "opening_hours": "24/7",
+        "operator": "Voegtlin-Meyer",
+        "shop": "no",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 300418712,
+      "lat": 47.393705,
+      "lon": 8.5059844,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Hardturmstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "check_date": "2025-06-09",
+        "check_date:compressed_air": "2025-04-12",
+        "check_date:opening_hours": "2025-04-12",
+        "compressed_air": "no",
+        "name": "Avia Hardturmstrasse",
+        "opening_hours": "24/7",
+        "operator": "A.H. Meyer & Cie"
+      }
+    },
+    {
+      "type": "node",
+      "id": 301208147,
+      "lat": 47.3728411,
+      "lon": 8.5211422,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "100",
+        "addr:postcode": "8003",
+        "addr:street": "Seebahnstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Wiedikon",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "check_date": "2024-11-17",
+        "compressed_air": "yes",
+        "fuel:1_50": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "BP Service Wiedikon",
+        "opening_hours": "24/7",
+        "shop": "convenience",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 303699177,
+      "lat": 47.4518342,
+      "lon": 8.7012565,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "check_date:opening_hours": "2026-03-12",
+        "compressed_air": "yes",
+        "name": "BP Kemptthal Nord",
+        "opening_hours": "Mo-Sa 05:00-22:00; Su 06:00-22:00",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 304917714,
+      "lat": 47.4541266,
+      "lon": 8.4383363,
+      "tags": {
+        "addr:city": "Buchs ZH",
+        "addr:housenumber": "2",
+        "addr:postcode": "8107",
+        "addr:street": "Eichstrasse",
+        "amenity": "fuel",
+        "branch": "Buchs ZH",
+        "brand": "Socar",
+        "brand:wikidata": "Q1622293",
+        "name": "SOCAR Buchs ZH",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "shop": "no",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 304992273,
+      "lat": 47.4585509,
+      "lon": 8.4068901,
+      "tags": {
+        "addr:housenumber": "1",
+        "addr:street": "Harbernstrasse",
+        "amenity": "fuel",
+        "branch": "Otelfingen Harbernstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia Harbernstrasse",
+        "operator": "Schätzle"
+      }
+    },
+    {
+      "type": "node",
+      "id": 304993060,
+      "lat": 47.4460704,
+      "lon": 8.4631797,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Regensdorf",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "name": "Agrola Regensdorf"
+      }
+    },
+    {
+      "type": "node",
+      "id": 305701426,
+      "lat": 47.4448843,
+      "lon": 8.6233539,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Bassersdorf",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "name": "Avia Bassersdorf",
+        "operator": "Avia Osterwalder Zürich",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 305707837,
+      "lat": 47.4445742,
+      "lon": 8.6251146,
+      "tags": {
+        "addr:city": "Bassersdorf",
+        "addr:housenumber": "46",
+        "addr:postcode": "8303",
+        "addr:street": "Klotenerstrasse",
+        "amenity": "fuel",
+        "branch": "Bassersdorf",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "brand:wikipedia": "en:SOCAR",
+        "name": "SOCAR Bassersdorf",
+        "operator": "SOCAR Energy Switzerland",
+        "website": "https://www.socarenergy.ch/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 307121153,
+      "lat": 47.4186697,
+      "lon": 8.6844858,
+      "tags": {
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "name": "AVIA"
+      }
+    },
+    {
+      "type": "node",
+      "id": 307121156,
+      "lat": 47.4220428,
+      "lon": 8.6848857,
+      "tags": {
+        "addr:city": "Effretikon",
+        "addr:housenumber": "1",
+        "addr:postcode": "8307",
+        "addr:street": "Vogelsangstrasse",
+        "alt_name": "Migrol Effretikon",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Effretikon",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Tankstelle Effretikon",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "tenant": "Garage Kempf",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 307661791,
+      "lat": 47.2370963,
+      "lon": 8.6374727,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "brand:wikidata": "Q111725154",
+        "name": "Ruedi Rüssel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 307662123,
+      "lat": 47.2375535,
+      "lon": 8.6452619,
+      "tags": {
+        "amenity": "fuel",
+        "fuel:cng": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Winterberg",
+        "self_service": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 307669315,
+      "lat": 47.2191945,
+      "lon": 8.669648,
+      "tags": {
+        "amenity": "fuel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 309112387,
+      "lat": 47.4344986,
+      "lon": 8.7635897,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "AVIA"
+      }
+    },
+    {
+      "type": "node",
+      "id": 309425295,
+      "lat": 47.327756,
+      "lon": 8.7824754,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "brand:wikipedia": "en:BP",
+        "fuel:biogas": "yes",
+        "fuel:cng": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BP Zürcherstrasse",
+        "opening_hours": "Mo-Sa 05:30-23:30; PH,Su 05:30-23:30",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 310205995,
+      "lat": 47.3968963,
+      "lon": 8.4404596,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "compressed_air": "no",
+        "name": "BP"
+      }
+    },
+    {
+      "type": "node",
+      "id": 310314796,
+      "lat": 47.4294761,
+      "lon": 8.6871544,
+      "tags": {
+        "addr:city": "Effretikon",
+        "addr:housenumber": "20",
+        "addr:postcode": "8307",
+        "addr:street": "Rikonerstrasse",
+        "amenity": "fuel",
+        "branch": "Effretikon",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "compressed_air": "yes",
+        "name": "SOCAR Effretikon",
+        "operator": "SOCAR Energy Switzerland",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 311319045,
+      "lat": 47.229728,
+      "lon": 8.4785611,
+      "tags": {
+        "addr:city": "Mettmenstetten",
+        "addr:housenumber": "2",
+        "addr:postcode": "8932",
+        "addr:street": "Baarerstrasse",
+        "alt_name": "Migrol Mettmenstetten",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Mettmenstetten",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle Mettmenstetten",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 311976893,
+      "lat": 47.4010238,
+      "lon": 8.4915916,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "38",
+        "addr:postcode": "8049",
+        "addr:street": "Winzerstrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Winzerstrasse",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "capacity": "4",
+        "check_date": "2025-03-28",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Winzerstrasse",
+        "opening_hours": "24/7",
+        "operator": "Moveri",
+        "self_service": "yes",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 312012092,
+      "lat": 47.4141963,
+      "lon": 8.518214,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "387",
+        "addr:postcode": "8046",
+        "addr:street": "Wehntalerstrasse",
+        "alt_name": "Migrol Glaubten",
+        "amenity": "fuel",
+        "branch": "Zürich Glaubten",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Service Glaubten",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "tenant": "Roger Lüthi",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 313268393,
+      "lat": 47.3802915,
+      "lon": 8.4940158,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "12",
+        "addr:postcode": "8047",
+        "addr:street": "Rautistrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Rautistrasse",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Rautistrasse",
+        "opening_hours": "PH,Mo-Su 00:00-24:00",
+        "operator": "Shell (Switzerland)",
+        "website": "https://find.shell.com/ch/fuel/10023335-shell-rautistrasse/de_CH"
+      }
+    },
+    {
+      "type": "node",
+      "id": 318410355,
+      "lat": 47.419653,
+      "lon": 8.556201,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "100",
+        "addr:postcode": "8052",
+        "addr:street": "Thurgauerstrasse",
+        "alt_name": "Migrol Thurgauerstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Thurgauerstrasse",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "brand:wikipedia": "de:Royal Dutch Shell",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Service Thurgauerstrasse",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 320182673,
+      "lat": 47.4938451,
+      "lon": 8.546728,
+      "tags": {
+        "addr:city": "Winkel",
+        "addr:housenumber": "7",
+        "addr:postcode": "8185",
+        "addr:street": "Zürichstrasse",
+        "alt_name": "Migrol Winkel",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Winkel",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle Winkel",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "tenant": "Garage Harlacher",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 321271634,
+      "lat": 47.49898,
+      "lon": 8.7927573,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "AVIA"
+      }
+    },
+    {
+      "type": "node",
+      "id": 321362564,
+      "lat": 47.3917824,
+      "lon": 8.5424928,
+      "tags": {
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Scheuchzerstrasse",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "capacity": "1",
+        "check_date": "2025-08-03",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Tamoil",
+        "opening_hours": "24/7",
+        "self_service": "yes",
+        "shop": "no",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 321853683,
+      "lat": 47.5062912,
+      "lon": 8.7141595,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 321854756,
+      "lat": 47.4980696,
+      "lon": 8.746625,
+      "tags": {
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "created_by": "Potlatch 0.10f",
+        "operator": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 321855166,
+      "lat": 47.5111545,
+      "lon": 8.7604652,
+      "tags": {
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "name": "BP",
+        "opening_hours": "PH,Mo-Su 00:00-24:00",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 324343384,
+      "lat": 47.3015936,
+      "lon": 8.4484256,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Independent",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Freie Tankstelle Zürcherstrasse",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 330142805,
+      "lat": 47.524994,
+      "lon": 8.5392925,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "brand:wikipedia": "en:BP",
+        "compressed_air": "yes",
+        "name": "Soli-Tankstelle",
+        "opening_hours": "24/7",
+        "operator": "BP"
+      }
+    },
+    {
+      "type": "node",
+      "id": 331317250,
+      "lat": 47.3674023,
+      "lon": 8.4943259,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "517",
+        "addr:postcode": "8055",
+        "addr:street": "Birmensdorferstrasse",
+        "alt_name": "Migrol Triemli",
+        "amenity": "fuel",
+        "branch": "Zürich Triemli",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Service Triemli",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 335477010,
+      "lat": 47.2669797,
+      "lon": 8.6508957,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "compressed_air": "yes",
+        "fuel:1_25": "no",
+        "fuel:1_50": "no",
+        "fuel:GTL_diesel": "no",
+        "fuel:HGV_diesel": "no",
+        "fuel:biodiesel": "no",
+        "fuel:biogas": "no",
+        "fuel:cng": "no",
+        "fuel:diesel": "no",
+        "fuel:e10": "no",
+        "fuel:e85": "no",
+        "fuel:electricity": "no",
+        "fuel:lpg": "no",
+        "fuel:octane_100": "no",
+        "fuel:octane_91": "no",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 338639819,
+      "lat": 47.3812597,
+      "lon": 8.5377769,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Sihlquai",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Avia Service HB",
+        "operator": "Avia Osterwalder Zürich",
+        "self_service": "yes",
+        "shop": "kiosk"
+      }
+    },
+    {
+      "type": "node",
+      "id": 339612237,
+      "lat": 47.2859721,
+      "lon": 8.5636417,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Thalwil",
+        "brand": "Eni",
+        "brand:wikidata": "Q565594",
+        "brand:wikipedia": "en:Eni",
+        "compressed_air": "yes",
+        "name": "Eni Thalwil"
+      }
+    },
+    {
+      "type": "node",
+      "id": 339612238,
+      "lat": 47.2864826,
+      "lon": 8.565863,
+      "tags": {
+        "addr:floor": "0",
+        "amenity": "fuel",
+        "branch": "Thalwil",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "brand:wikipedia": "en:BP",
+        "check_date": "2026-03-09",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "internet_access": "no",
+        "name": "BP Service Thalwil",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "self_service": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 339631367,
+      "lat": 47.2906713,
+      "lon": 8.4444262,
+      "tags": {
+        "addr:city": "Zwillikon",
+        "addr:housenumber": "1",
+        "addr:postcode": "8909",
+        "addr:street": "Ottenbacherstrasse",
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "name": "Ruedi Rüssel Ottenbacherstrasse",
+        "operator": "H.P. Breitschmid"
+      }
+    },
+    {
+      "type": "node",
+      "id": 339631500,
+      "lat": 47.2963684,
+      "lon": 8.4486157,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "brand:wikidata": "Q111725154",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Ruedi Rüssel Affolternstrasse",
+        "operator": "Automobile Reichenbach",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 341961288,
+      "lat": 47.4388196,
+      "lon": 8.4578719,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "compressed_air": "no",
+        "fixme": "vor Ort überprüfen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 344194669,
+      "lat": 47.3176278,
+      "lon": 8.6669872,
+      "tags": {
+        "addr:city": "Forch",
+        "addr:place": "Rastplatz Heuberg",
+        "addr:postcode": "8127",
+        "amenity": "fuel",
+        "branch": "A52 Heuberg",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "name": "Shell Heuberg",
+        "operator": "Shell (Switzerland)",
+        "website": "https://find.shell.com/ch/fuel/10023410-shell-heuberg/de_CH"
+      }
+    },
+    {
+      "type": "node",
+      "id": 355232174,
+      "lat": 47.3416225,
+      "lon": 8.7155853,
+      "tags": {
+        "addr:city": "Uster",
+        "addr:housenumber": "5",
+        "addr:postcode": "8610",
+        "addr:street": "Riedikerstrasse",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "compressed_air": "yes",
+        "name": "Avia",
+        "opening_hours": "24/7",
+        "operator": "Avia",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 362795202,
+      "lat": 47.4258408,
+      "lon": 8.5478098,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "56",
+        "addr:postcode": "8052",
+        "addr:street": "Glatttalstrasse",
+        "alt_name": "Shell kolbenacker glattal strasse glattalstrasse glatttal",
+        "amenity": "fuel",
+        "branch": "Zürich Kolbenacker",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Kolbenacker",
+        "opening_hours": "Mo-Sa 06:00-23:00; Su 07:00-22:00",
+        "website": "https://find.shell.com/ch/fuel/10023399-shell-kolbenacker",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 362798141,
+      "lat": 47.4310129,
+      "lon": 8.5442164,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:housenumber": "138",
+        "addr:postcode": "8052",
+        "addr:street": "Glatttalstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Glattalstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "fuel:octane_95": "yes",
+        "name": "Avia Glattalstrasse",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 370746834,
+      "lat": 47.4595255,
+      "lon": 8.3854725,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Otelfingen Landstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia Landstrasse",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 371009114,
+      "lat": 47.5183128,
+      "lon": 8.5927268,
+      "tags": {
+        "addr:city": "Embrach",
+        "addr:housenumber": "7",
+        "addr:postcode": "8424",
+        "addr:street": "Lochackerstrasse",
+        "alt_name": "Migrol Embrach",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Embrach Embraport",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "name": "Migrol Tankstelle Embrach",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 374188679,
+      "lat": 47.4911254,
+      "lon": 8.5032949,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "check_date": "2024-07-13",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 377012210,
+      "lat": 47.4117079,
+      "lon": 8.4558245,
+      "tags": {
+        "addr:city": "Oberengstringen",
+        "addr:housenumber": "158",
+        "addr:postcode": "8102",
+        "addr:street": "Zürcherstrasse",
+        "alt_name": "Migrol Oberengstringen",
+        "amenity": "fuel",
+        "branch": "Oberengstringen",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Service",
+        "opening_hours": "Mo-Sa 06:00-22:00; Su 07:00-21:00",
+        "operator": "Migrol",
+        "website": "https://www.migrol.ch/de/mobilit%C3%A4t/standorte-und-%C3%B6ffnungszeiten/migrol-service-oberengstringen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 407913989,
+      "lat": 47.5127502,
+      "lon": 8.5431018,
+      "tags": {
+        "addr:city": "Bülach",
+        "addr:housenumber": "46",
+        "addr:postcode": "8180",
+        "addr:street": "Zürichstrasse",
+        "amenity": "fuel",
+        "brand": "BP",
+        "compressed_air": "yes",
+        "name": "BP Tankstelle",
+        "operator": "BP Service"
+      }
+    },
+    {
+      "type": "node",
+      "id": 410844750,
+      "lat": 47.5008151,
+      "lon": 8.5978083,
+      "tags": {
+        "amenity": "fuel",
+        "name": "Landi"
+      }
+    },
+    {
+      "type": "node",
+      "id": 428876091,
+      "lat": 47.31532,
+      "lon": 8.5221094,
+      "tags": {
+        "amenity": "fuel",
+        "name": "Dangel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 432615367,
+      "lat": 47.3159652,
+      "lon": 8.5302907,
+      "tags": {
+        "addr:city": "Adliswil",
+        "addr:housenumber": "40",
+        "addr:postcode": "8134",
+        "addr:street": "Zürichstrasse",
+        "amenity": "fuel",
+        "branch": "Adliswil",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "name": "Avia Adliswil",
+        "opening_hours": "Mo-Th 07:15-12:00,13:00-17:30; Fr 07:15-12:00,13:00-16:30",
+        "operator": "Garage Sulzer"
+      }
+    },
+    {
+      "type": "node",
+      "id": 435573454,
+      "lat": 47.6843704,
+      "lon": 8.6600427,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Langwiesen",
+        "brand": "Coop Pronto",
+        "brand:wikidata": "Q1129777",
+        "name": "Coop Pronto",
+        "operator": "Coop Mineraloel",
+        "shop": "convenience",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 467136838,
+      "lat": 47.4325203,
+      "lon": 8.4684736,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Regensdorf",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "name": "Tamoil"
+      }
+    },
+    {
+      "type": "node",
+      "id": 474982856,
+      "lat": 47.3702456,
+      "lon": 8.5125042,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Birmensdorferstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "changing_table": "no",
+        "check_date": "2026-03-03",
+        "check_date:opening_hours": "2026-03-03",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Avia Birmensdorferstrasse",
+        "opening_hours": "Mo-Su,PH 00:00-23:00+",
+        "operator": "A.H. Meyer & Cie",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 480320550,
+      "lat": 47.3617439,
+      "lon": 8.5181345,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Tamoil",
+        "check_date": "2024-08-09",
+        "name": "Tamoil",
+        "operator": "Tamoil"
+      }
+    },
+    {
+      "type": "node",
+      "id": 500922433,
+      "lat": 47.4161953,
+      "lon": 8.5640414,
+      "tags": {
+        "addr:city": "Opfikon",
+        "addr:country": "CH",
+        "addr:housenumber": "119",
+        "addr:postcode": "8152",
+        "addr:street": "Hagenholzstrasse",
+        "amenity": "fuel",
+        "branch": "Opfikon Glattpark",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "SOCAR Opfikon",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 503621496,
+      "lat": 47.3160213,
+      "lon": 8.5798679,
+      "tags": {
+        "addr:city": "Küsnacht",
+        "addr:housenumber": "156",
+        "addr:postcode": "8700",
+        "addr:street": "Seestrasse",
+        "amenity": "fuel",
+        "branch": "Küsnacht-See",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "brand:wikipedia": "en:SOCAR",
+        "name": "SOCAR Küsnacht-See",
+        "operator": "SOCAR Energy Switzerland",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 505816846,
+      "lat": 47.4302305,
+      "lon": 8.4658983,
+      "tags": {
+        "addr:city": "Regensdorf",
+        "addr:housenumber": "12",
+        "addr:postcode": "8105",
+        "addr:street": "Watterstrasse",
+        "amenity": "fuel",
+        "brand": "Eni",
+        "brand:wikidata": "Q565594",
+        "brand:wikipedia": "en:Eni",
+        "compressed_air": "no",
+        "name": "Eni",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 534826542,
+      "lat": 47.2481368,
+      "lon": 8.6048958,
+      "tags": {
+        "addr:city": "Horgen",
+        "addr:housenumber": "1",
+        "addr:postcode": "8810",
+        "addr:street": "Im Schnegg",
+        "alt_name": "Migrol AMAG Horgen",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Horgen AMAG",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "check_date": "2026-01-06",
+        "check_date:compressed_air": "2026-01-06",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle AMAG Horgen",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 534836242,
+      "lat": 47.2376903,
+      "lon": 8.611854,
+      "tags": {
+        "addr:city": "Horgen",
+        "addr:floor": "0",
+        "addr:housenumber": "231",
+        "addr:postcode": "8810",
+        "addr:street": "Zugerstrasse",
+        "amenity": "fuel",
+        "brand": "BP",
+        "check_date": "2025-05-10",
+        "fuel:adblue": "yes",
+        "fuel:diesel": "yes",
+        "fuel:lpg": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "avec | BP Tankstelle",
+        "operator": "BP",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "self_service": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 542416037,
+      "lat": 47.4473818,
+      "lon": 8.4378679,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Dällikon",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia Dällikon",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 549072799,
+      "lat": 47.2713859,
+      "lon": 8.580952,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "name": "Avia",
+        "opening_hours": "24/7",
+        "operator": "Avia",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 559763141,
+      "lat": 47.2424106,
+      "lon": 8.4961167,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "name": "Agrola Dorfplatz",
+        "operator": "Agrola",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 566182962,
+      "lat": 47.2552871,
+      "lon": 8.6122837,
+      "tags": {
+        "addr:city": "Horgen",
+        "addr:housenumber": "287",
+        "addr:postcode": "8810",
+        "addr:street": "Seestrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Horgen",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "name": "SOCAR Horgen",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 572456939,
+      "lat": 47.4209538,
+      "lon": 8.5025926,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "586c",
+        "addr:postcode": "8046",
+        "addr:street": "Wehntalerstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Furttal",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "check_date:opening_hours": "2025-07-26",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Furttal",
+        "opening_hours": "Mo-Su 00:00-23:45",
+        "operator": "Shell (Switzerland)",
+        "shop": "convenience",
+        "website": "https://find.shell.com/ch/fuel/10023359-shell-furttal/de_CH",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 575172150,
+      "lat": 47.2886872,
+      "lon": 8.5740582,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Thalwil",
+        "brand": "Coop",
+        "compressed_air": "yes",
+        "name": "Coop Tankstelle Thalwil",
+        "operator": "Coop Mineraloel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 578221549,
+      "lat": 47.3403588,
+      "lon": 8.5193947,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "121",
+        "addr:postcode": "8041",
+        "addr:street": "Allmendstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Manegg",
+        "brand": "Socar",
+        "brand:wikidata": "Q1622293",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "SOCAR Manegg",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "phone": "+41 79 808 92 42",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 597414574,
+      "lat": 47.3024491,
+      "lon": 8.5463033,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Rüschlikon Auto Küry",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "name": "Avia",
+        "operator": "A.H. Meyer & Cie"
+      }
+    },
+    {
+      "type": "node",
+      "id": 611057606,
+      "lat": 47.5114381,
+      "lon": 8.544193,
+      "tags": {
+        "addr:city": "Bülach",
+        "addr:housenumber": "57",
+        "addr:postcode": "8180",
+        "addr:street": "Zürichstrasse",
+        "alt_name": "Migrol Bülach",
+        "amenity": "fuel",
+        "branch": "Bülach",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "brand:wikipedia": "de:Royal Dutch Shell",
+        "name": "Migrol Service Bülach",
+        "operator": "Migrol",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 611086591,
+      "lat": 47.5197883,
+      "lon": 8.5423099,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "name": "Seematt-Shop",
+        "operator": "A. Bürgi AG"
+      }
+    },
+    {
+      "type": "node",
+      "id": 623872891,
+      "lat": 47.2518412,
+      "lon": 8.7676795,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "opening_hours": "Mo-Su,PH 00:00-24:00",
+        "operator": "Agrola"
+      }
+    },
+    {
+      "type": "node",
+      "id": 634168057,
+      "lat": 47.5091032,
+      "lon": 8.5125684,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "name": "Agrola"
+      }
+    },
+    {
+      "type": "node",
+      "id": 732044511,
+      "lat": 47.3922397,
+      "lon": 8.4013293,
+      "tags": {
+        "amenity": "fuel",
+        "fuel:GTL_diesel": "yes",
+        "fuel:octane_91": "yes",
+        "fuel:octane_95": "yes",
+        "operator": "TAMOIL"
+      }
+    },
+    {
+      "type": "node",
+      "id": 734879882,
+      "lat": 47.5362104,
+      "lon": 8.7308534,
+      "tags": {
+        "addr:housenumber": "2",
+        "addr:street": "Stationsstrasse",
+        "amenity": "fuel",
+        "operator": "Agrola"
+      }
+    },
+    {
+      "type": "node",
+      "id": 771363263,
+      "lat": 47.4184706,
+      "lon": 8.5468061,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "459",
+        "addr:postcode": "8052",
+        "addr:street": "Schaffhauserstrasse",
+        "amenity": "fuel",
+        "brand": "Independent",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "note": "formerly/ehemals Esso Felsenrain"
+      }
+    },
+    {
+      "type": "node",
+      "id": 775345890,
+      "lat": 47.3226321,
+      "lon": 8.5781558,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Küsnacht ZH",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "compressed_air": "yes",
+        "name": "BP Garage Günthardt",
+        "operator": "Rudolf Günthardt AG"
+      }
+    },
+    {
+      "type": "node",
+      "id": 775938665,
+      "lat": 47.3857365,
+      "lon": 8.4936574,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Emil Frey Autohaus Altstetten",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BP Emil Frey Altstetten",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 776975625,
+      "lat": 47.2747939,
+      "lon": 8.8257725,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "compressed_air": "yes",
+        "fuel:adblue": "yes",
+        "fuel:diesel": "yes",
+        "fuel:electricity": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "opening_hours": "24/7",
+        "operator": "Landi-Bachtel",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "phone": "+41 55 251 27 49",
+        "shop": "doityourself",
+        "website": "http://www.landi-bachtel.ch/agrola/tankstellen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 856769114,
+      "lat": 47.281235,
+      "lon": 8.4006173,
+      "tags": {
+        "addr:city": "Ottenbach",
+        "addr:housenumber": "1",
+        "addr:postcode": "8913",
+        "addr:street": "Stüdlerstrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Ottenbach",
+        "compressed_air": "yes",
+        "description": "Nur Selbstbedienung",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Tankdiscount Ottenbach",
+        "opening_hours": "24/7",
+        "payment:account_cards": "yes",
+        "payment:coins": "no",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:notes": "yes",
+        "self_service": "yes",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 926942122,
+      "lat": 47.4049521,
+      "lon": 8.5497781,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Dörflistrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "changing_table": "no",
+        "check_date:compressed_air": "2026-02-01",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Dörflistrasse",
+        "opening_hours": "Mo-Su,PH 00:00-00:00",
+        "operator": "Avia Osterwalder Zürich",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 935187372,
+      "lat": 47.2224443,
+      "lon": 8.4983152,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 935831675,
+      "lat": 47.4133069,
+      "lon": 8.5208931,
+      "tags": {
+        "addr:housenumber": "351",
+        "addr:street": "Wehntalerstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Wehntalerstrasse",
+        "brand": "Coop",
+        "compressed_air": "no",
+        "fuel:adblue": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "operator": "Coop Mineraloel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 935831690,
+      "lat": 47.4123963,
+      "lon": 8.5239096,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Independent",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Wehntaler Tankstelle",
+        "opening_hours": "24/7",
+        "operator": "Wehntaler Autoservice",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 935832538,
+      "lat": 47.4113884,
+      "lon": 8.5268978,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Regensbergerstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Regensberg",
+        "opening_hours": "24/7",
+        "operator": "A.H. Meyer & Cie",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 956494164,
+      "lat": 47.2501062,
+      "lon": 8.7798785,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "name": "Avia",
+        "opening_hours": "24/7",
+        "operator": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 970843021,
+      "lat": 47.404558,
+      "lon": 8.5563801,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "brand:wikidata": "Q111725154",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Ruedi Rüssel",
+        "operator": "Semes Automobile",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:postcard": "yes",
+        "payment:visa": "yes",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1115940413,
+      "lat": 47.2684858,
+      "lon": 8.587297,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "name": "Horgengarage",
+        "operator": "Wuest"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1149570590,
+      "lat": 47.2560806,
+      "lon": 8.6015375,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Scall",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1210602994,
+      "lat": 47.1918171,
+      "lon": 8.6447698,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "operator": "LANDI Zimmerberg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1210603014,
+      "lat": 47.1899892,
+      "lon": 8.6459715,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "compressed_air": "yes",
+        "name": "Avia",
+        "operator": "H. P. Styger"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1258330247,
+      "lat": 47.4071384,
+      "lon": 8.5473271,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "315",
+        "addr:postcode": "8050",
+        "addr:street": "Schaffhauserstrasse",
+        "amenity": "fuel",
+        "brand": "Independent",
+        "check_date": "2023-12-10",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Discount-Tankstelle",
+        "note": "formerly/ehemals Migrol-Tankstelle",
+        "shop": "no",
+        "source": "survey"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1341487957,
+      "lat": 47.2473126,
+      "lon": 8.6387565,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Independent",
+        "compressed_air": "no",
+        "name": "Ruedi Rüssel",
+        "opening_hours": "24/7",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1348212458,
+      "lat": 47.5679681,
+      "lon": 8.5233063,
+      "tags": {
+        "addr:housenumber": "2",
+        "addr:postcode": "8193",
+        "addr:street": "Sandgruebstrasse",
+        "amenity": "fuel",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "compressed_air": "yes",
+        "name": "Tamoil",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1350936246,
+      "lat": 47.4046286,
+      "lon": 8.7197006,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "fuel:diesel": "yes",
+        "fuel:octane_91": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Autohaus Illnau AG"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1361319683,
+      "lat": 47.3678087,
+      "lon": 8.564167,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "118",
+        "addr:postcode": "8032",
+        "addr:street": "Bergstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Bergstrasse (Automat)",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Bergstrasse (Automat)",
+        "opening_hours": "24/7",
+        "shop": "no",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1361319687,
+      "lat": 47.367931,
+      "lon": 8.5644227,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "117",
+        "addr:postcode": "8032",
+        "addr:street": "Bergstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Bergstrasse (Shop)",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "no",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Bergstrasse (Shop)",
+        "opening_hours": "Mo-Sa 06:00-22:00; Su 08:00-22:00",
+        "shop": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1363040120,
+      "lat": 47.3625248,
+      "lon": 8.5480473,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "47",
+        "addr:postcode": "8008",
+        "addr:street": "Utoquai",
+        "alt_name": "Migrol AMAG Utoquai",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Seefeld AMAG",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle AMAG Utoquai",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1363673570,
+      "lat": 47.1967709,
+      "lon": 8.6794377,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Shell",
+        "operator": "Shell Schweiz",
+        "tenant": "Seeblick Garage AG"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1366349899,
+      "lat": 47.3624756,
+      "lon": 8.5681877,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Witikonerstrasse",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "compressed_air": "no",
+        "name": "BP Witikonerstrasse",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1366703127,
+      "lat": 47.4065994,
+      "lon": 8.7241822,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "fuel:HGV_diesel": "yes",
+        "fuel:diesel": "yes",
+        "name": "Agrola",
+        "operator": "Landi ZOLA"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1375339404,
+      "lat": 47.4252829,
+      "lon": 8.7441568,
+      "tags": {
+        "amenity": "fuel",
+        "name": "Tankstelle Nüssli"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1487761567,
+      "lat": 47.3943519,
+      "lon": 8.5297022,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "16",
+        "addr:postcode": "8037",
+        "addr:street": "Scheffelstrasse",
+        "alt_name": "Migrol Wipkingen",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Scheffelstrasse",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Tankstelle Wipkingen",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "shop": "no",
+        "tenant": "Garage Preisig",
+        "website": "https://www.migrol.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1488703647,
+      "lat": 47.4063348,
+      "lon": 8.5836156,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "692",
+        "addr:postcode": "8051",
+        "addr:street": "Winterthurerstrasse",
+        "alt_name": "Migrol Schwamendingen",
+        "amenity": "fuel",
+        "branch": "Zürich Schwamendingen",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Service Schwamendingen",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1488717329,
+      "lat": 47.4073726,
+      "lon": 8.5865182,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:housenumber": "401",
+        "addr:postcode": "8051",
+        "addr:street": "Ueberlandstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Ueberlandstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "fuel:adblue": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Ueberlandstrasse",
+        "opening_hours": "Mo-Sa 06:00-20:00; Su,PH 07:00-20:00",
+        "operator": "Avia Osterwalder Zürich",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1488738142,
+      "lat": 47.4062266,
+      "lon": 8.5831505,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "686",
+        "addr:postcode": "8051",
+        "addr:street": "Winterthurerstrasse",
+        "alt_name": "Migrol Schwamendingen",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Schwamendingen",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Tankstelle Schwamendingen",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1492328346,
+      "lat": 47.402714,
+      "lon": 8.577361,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Dübendorferstrasse",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "name": "Tamoil",
+        "opening_hours": "24/7",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1492865481,
+      "lat": 47.3956372,
+      "lon": 8.6061099,
+      "tags": {
+        "addr:city": "Dübendorf",
+        "addr:country": "CH",
+        "addr:housenumber": "89",
+        "addr:postcode": "8600",
+        "addr:street": "Zürichstrasse",
+        "amenity": "fuel",
+        "branch": "Dübendorf Sonnental",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Sonnental",
+        "opening_hours": "24/7",
+        "operator": "Shell (Switzerland)",
+        "self_service": "yes",
+        "shop": "convenience",
+        "website": "https://find.shell.com/ch/fuel/10023358-shell-sonnental/de_CH",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1513964564,
+      "lat": 47.361231,
+      "lon": 8.5224826,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Manessestrasse",
+        "brand": "Eni",
+        "brand:wikidata": "Q565594",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Eni Manessestrasse",
+        "opening_hours": "Mo-Th 05:45-22:00; Su,PH 06:00-22:00; Fr 05:45-23:30; Sa 06:00-23:30",
+        "shop": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1525269396,
+      "lat": 47.391139,
+      "lon": 8.5267589,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Independent",
+        "check_date": "2024-08-14",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Discount-Tankstelle",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1528037438,
+      "lat": 47.4039392,
+      "lon": 8.56718,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "brand:wikidata": "Q111725154",
+        "check_date": "2023-06-14",
+        "name": "Ruedi Rüssel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1580502878,
+      "lat": 47.346225,
+      "lon": 8.6018688,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zollikerberg",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "check_date": "2025-09-29",
+        "check_date:compressed_air": "2025-09-29",
+        "compressed_air": "yes",
+        "name": "Shell Zollikerberg",
+        "operator": "Moveri"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1612813249,
+      "lat": 47.1966754,
+      "lon": 8.6810593,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Shell",
+        "operator": "Shell Schweiz",
+        "tenant": "Seeblick Garage AG"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1619031481,
+      "lat": 47.2458149,
+      "lon": 8.647766,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1696273321,
+      "lat": 47.3841541,
+      "lon": 8.3957628,
+      "tags": {
+        "addr:city": "Dietikon",
+        "addr:housenumber": "386",
+        "addr:postcode": "8953",
+        "addr:street": "Bernstrasse",
+        "alt_name": "Migrol Reppischhof",
+        "amenity": "fuel",
+        "branch": "Dietikon Reppischhof",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "name": "Migrol Service Reppischhof",
+        "operator": "Migrol",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1735141082,
+      "lat": 47.3734647,
+      "lon": 8.681685,
+      "tags": {
+        "addr:city": "Nänikon",
+        "addr:housenumber": "7",
+        "addr:postcode": "8606",
+        "addr:street": "Grossrietstrasse",
+        "amenity": "fuel",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Lenzlinger Tankstellen",
+        "operator": "Lenzlinger Söhne AG",
+        "payment:cards": "yes",
+        "payment:notes": "yes",
+        "self_service": "yes",
+        "website": "https://www.lenzlinger.ch/tankstellen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1768343014,
+      "lat": 47.5797861,
+      "lon": 8.612637,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "name": "BP"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1791294272,
+      "lat": 47.4289183,
+      "lon": 8.5591906,
+      "tags": {
+        "addr:city": "Glattbrugg",
+        "addr:country": "CH",
+        "addr:housenumber": "40",
+        "addr:postcode": "8152",
+        "addr:street": "Schaffhauserstrasse",
+        "amenity": "fuel",
+        "branch": "Glattbrugg",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "check_date": "2025-07-24",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "SOCAR Glattbrugg",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "website": "https://www.socarenergy.ch/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1896270896,
+      "lat": 47.3965165,
+      "lon": 8.6116995,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Minoretti",
+        "name:de": "AVIA",
+        "name:en": "AVIA",
+        "name:fr": "AVIA",
+        "operator": "A.H. Meyer & Cie",
+        "shop": "no",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1924177999,
+      "lat": 47.4802114,
+      "lon": 8.4847451,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Niederhasli",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "check_date": "2024-07-13",
+        "name": "Avia Niederhasli",
+        "operator": "Avia Osterwalder Zürich",
+        "source": "survey"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2030250496,
+      "lat": 47.4310576,
+      "lon": 8.5662085,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Glattbrugg Talacker",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2080030876,
+      "lat": 47.3103623,
+      "lon": 8.556814,
+      "tags": {
+        "amenity": "fuel",
+        "name": "Garage Küry GmbH"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2086964148,
+      "lat": 47.3009386,
+      "lon": 8.8364358,
+      "tags": {
+        "addr:city": "Hinwil",
+        "addr:housenumber": "34",
+        "addr:postcode": "8340",
+        "addr:street": "Untere Bahnhofstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "compressed_air": "yes",
+        "compressed_air:fee": "no",
+        "compressed_air:valves": "schrader;sclaverand",
+        "name": "Agrola",
+        "opening_hours": "24/7",
+        "operator": "Agrola",
+        "self_service": "yes",
+        "service:bicycle:pump": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2100516385,
+      "lat": 47.6693995,
+      "lon": 8.6377475,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "compressed_air": "yes",
+        "name": "Landgarage",
+        "opening_hours": "24/7",
+        "operator": "Landi Marthalen",
+        "shop": "no",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2186282617,
+      "lat": 47.2346403,
+      "lon": 8.4277609,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "name": "Agrola Dorfstrasse"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2194509641,
+      "lat": 47.4000687,
+      "lon": 8.4116786,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Dietikon Zürcherstrasse",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Tamoil",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2214821219,
+      "lat": 47.3684503,
+      "lon": 8.4967351,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "484",
+        "addr:postcode": "8055",
+        "addr:street": "Birmensdorferstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Triemli",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "fuel:diesel": "yes",
+        "fuel:electricity": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "SOCAR Triemli",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "phone": "+41 44 450 33 35",
+        "website": "https://www.socarenergy.ch/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2290342093,
+      "lat": 47.5203202,
+      "lon": 8.5472046,
+      "tags": {
+        "addr:city": "Bülach",
+        "addr:housenumber": "46",
+        "addr:postcode": "8180",
+        "addr:street": "Winterthurerstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "name": "Agrola",
+        "operator": "Agrola"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2321655387,
+      "lat": 47.61111,
+      "lon": 8.7262668,
+      "tags": {
+        "addr:city": "Ossingen",
+        "addr:country": "CH",
+        "addr:housenumber": "25",
+        "addr:postcode": "8475",
+        "addr:street": "Mitteldorfstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "check_date": "2024-05-23",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "opening_hours": "24/7",
+        "operator": "Landi",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:notes": "yes",
+        "self_service": "yes",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2463639260,
+      "lat": 47.6096267,
+      "lon": 8.5340093,
+      "tags": {
+        "addr:city": "Rafz",
+        "addr:postcode": "8197",
+        "addr:street": "Badener Landstrasse",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "building": "yes",
+        "compressed_air": "yes",
+        "email": "info@wesag.ch",
+        "name": "Avia Wesag Auto AG",
+        "opening_hours": "24/7",
+        "operator": "Wesag Auto AG",
+        "phone": "+41 44 869 03 33",
+        "website": "https://www.wesag.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2463639822,
+      "lat": 47.6109984,
+      "lon": 8.5396397,
+      "tags": {
+        "addr:city": "Rafz",
+        "addr:postcode": "8197",
+        "addr:street": "Landstrasse",
+        "amenity": "fuel",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "compressed_air": "yes",
+        "name": "Tamoil Garage Sigrist",
+        "opening_hours": "24/7",
+        "operator": "Tamoil"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2492760745,
+      "lat": 47.4605932,
+      "lon": 8.5254818,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Kompogas"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2513636432,
+      "lat": 47.3921617,
+      "lon": 8.67484,
+      "tags": {
+        "addr:city": "Volketswil",
+        "addr:country": "CH",
+        "addr:housenumber": "30",
+        "addr:postcode": "8604",
+        "addr:street": "Tolackerstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "AGROLA",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2576644569,
+      "lat": 47.3274477,
+      "lon": 8.5299541,
+      "tags": {
+        "addr:city": "Adliswil",
+        "addr:country": "CH",
+        "addr:housenumber": "114",
+        "addr:postcode": "8134",
+        "addr:street": "Zürichstrasse",
+        "amenity": "fuel",
+        "branch": "Adliswil",
+        "brand": "Coop",
+        "brand:wikidata": "Q432564",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Coop",
+        "opening_hours": "Su-Th 05:30-23:00, Fr,Sa 05:30-24:00",
+        "operator": "Coop Mineraloel",
+        "shop": "convenience"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2611932131,
+      "lat": 47.2384952,
+      "lon": 8.7497668,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "fuel:diesel": "yes",
+        "fuel:octane_92": "yes",
+        "fuel:octane_98": "yes",
+        "name": "AVIA",
+        "operator": "AVIA",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2633729038,
+      "lat": 47.516266,
+      "lon": 8.6799636,
+      "tags": {
+        "addr:city": "Winterthur",
+        "addr:housenumber": "390",
+        "addr:postcode": "8408",
+        "addr:street": "Wülflingerstrasse",
+        "alt_name": "Coop Tankstelle Wülflingen",
+        "amenity": "fuel",
+        "branch": "Winterthur Wülflingen",
+        "brand": "Coop",
+        "fuel:diesel": "yes",
+        "fuel:octane_91": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "no",
+        "name": "Coop Tankstelle",
+        "operator": "Coop Mineraloel",
+        "payment:maestro": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2633729039,
+      "lat": 47.5149155,
+      "lon": 8.6823507,
+      "tags": {
+        "addr:city": "Winterthur",
+        "addr:housenumber": "95",
+        "addr:postcode": "8408",
+        "addr:street": "Wässerwiesenstrasse",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "fuel:diesel": "yes",
+        "fuel:octane_91": "yes",
+        "fuel:octane_95": "no",
+        "fuel:octane_98": "no",
+        "name": "Avia",
+        "opening_hours": "24/7",
+        "operator": "Bernhard Automobile AG",
+        "payment:maestro": "yes",
+        "phone": "+41 44 307 88 18",
+        "website": "https://www.autohaerti.ch/ueber-uns/dienstleistungen/tankstelle.html"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2697748656,
+      "lat": 47.3881064,
+      "lon": 8.5245108,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:housenumber": "210",
+        "addr:postcode": "8005",
+        "addr:street": "Heinrichstrasse",
+        "amenity": "fuel",
+        "check_date": "2024-04-14",
+        "compressed_air": "no",
+        "contact:phone": "+41 44 271 04 66",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "level": "0",
+        "name": "Rigoni & Co",
+        "operator": "Rigoni & Co"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2720687666,
+      "lat": 47.2397471,
+      "lon": 8.733336,
+      "tags": {
+        "addr:city": "Stäfa",
+        "addr:country": "CH",
+        "addr:housenumber": "42",
+        "addr:postcode": "8712",
+        "addr:street": "Tränkebachstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "maxheight": "4",
+        "name": "Agrola",
+        "opening_hours": "24/7",
+        "operator": "LANDI Stäfa-Männedorf AG",
+        "shop": "no",
+        "vending_machine": "fuel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2725280247,
+      "lat": 47.5214538,
+      "lon": 8.6575457,
+      "tags": {
+        "amenity": "fuel",
+        "check_date": "2025-01-12",
+        "fuel:biodiesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "source": "local_knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2741686844,
+      "lat": 47.39498,
+      "lon": 8.4870209,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Bernerstrasse Nord",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "check_date": "2024-08-21",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Bernerstrasse Nord",
+        "operator": "A.H. Meyer & Cie"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2800588923,
+      "lat": 47.3560414,
+      "lon": 8.5536233,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:postcode": "8008",
+        "amenity": "fuel",
+        "branch": "Zürich Dufourstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Dufourstrasse",
+        "opening_hours": "Mo-Su 00:00-00:00",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3009125956,
+      "lat": 47.2787664,
+      "lon": 8.759582,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Oil!",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "opening_hours": "24/7",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3056266301,
+      "lat": 47.2049041,
+      "lon": 8.70827,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "name": "Shell"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3086649249,
+      "lat": 47.4061725,
+      "lon": 8.471176,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "brand:wikidata": "Q111725154",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Ruedi Rüssel",
+        "opening_hours": "24/7",
+        "operator": "Duetto Automobile"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3121224677,
+      "lat": 47.3967811,
+      "lon": 8.4414569,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Schlieren Badenerstrasse",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell",
+        "opening_hours": "PH,Mo-Su 00:00-24:00",
+        "operator": "Moveri"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3135208633,
+      "lat": 47.4130697,
+      "lon": 8.4149802,
+      "tags": {
+        "addr:city": "Fahrweid",
+        "addr:housenumber": "54",
+        "addr:postcode": "8951",
+        "addr:street": "Fahrweidstrasse",
+        "alt_name": "Migrol Fahrweid",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Fahrweid",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle Fahrweid",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3274467749,
+      "lat": 47.3583523,
+      "lon": 8.5872489,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Independent",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "opening_hours": "PH,Mo-Su 00:00-24:00",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3293439029,
+      "lat": 47.4503419,
+      "lon": 8.5970286,
+      "tags": {
+        "addr:city": "Kloten",
+        "addr:housenumber": "113",
+        "addr:postcode": "8302",
+        "addr:street": "Bassersdorferstrasse",
+        "amenity": "fuel",
+        "branch": "Kloten",
+        "brand": "Coop",
+        "name": "Coop Tankstelle Kloten",
+        "operator": "Coop Mineraloel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3358399930,
+      "lat": 47.4067224,
+      "lon": 8.5382677,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Allenmoos",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "check_date": "2026-03-18",
+        "compressed_air": "yes",
+        "name": "BP Allenmoos",
+        "opening_hours": "24/7",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3358844941,
+      "lat": 47.3571454,
+      "lon": 8.7055232,
+      "tags": {
+        "addr:city": "Uster",
+        "addr:housenumber": "47",
+        "addr:postcode": "8610",
+        "addr:street": "Ackerstrasse",
+        "alt_name": "Migrol AMAG Uster",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Uster AMAG",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle AMAG Uster",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3358844942,
+      "lat": 47.4016204,
+      "lon": 8.610322,
+      "tags": {
+        "addr:city": "Dübendorf",
+        "addr:housenumber": "4",
+        "addr:postcode": "8600",
+        "addr:street": "Giessenstrasse",
+        "alt_name": "Migrol AMAG Dübendorf",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Dübendorf AMAG",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "check_date": "2024-09-28",
+        "name": "Migrol Tankstelle AMAG Dübendorf",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3373195693,
+      "lat": 47.4068433,
+      "lon": 8.4116243,
+      "tags": {
+        "addr:city": "Fahrweid",
+        "addr:housenumber": "1",
+        "addr:postcode": "8951",
+        "addr:street": "Überlandstrasse",
+        "amenity": "fuel",
+        "branch": "Fahrweid Limmatbrücke",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Limmatbrücke",
+        "operator": "Shell (Switzerland)",
+        "website": "https://find.shell.com/ch/fuel/10023323-shell-limmatbruecke/de_CH"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3385874251,
+      "lat": 47.3594959,
+      "lon": 8.4532841,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Birmensdorf",
+        "brand": "Coop",
+        "name": "Coop Tankstelle Birmensdorf",
+        "operator": "Coop Mineraloel",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3620863237,
+      "lat": 47.375256,
+      "lon": 8.490236,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Garage Resegatti",
+        "opening_hours": "24/7",
+        "operator": "A.H. Meyer & Cie"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3666276313,
+      "lat": 47.4811385,
+      "lon": 8.4652196,
+      "tags": {
+        "addr:city": "Dielsdorf",
+        "addr:housenumber": "1",
+        "addr:postcode": "8157",
+        "addr:street": "Ruchwiesenstrasse",
+        "alt_name": "Migrol Ruchwiesen",
+        "amenity": "fuel",
+        "branch": "Dielsdorf Ruchwiesen",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "name": "Migrol Service Ruchwiesen",
+        "operator": "Migrol",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3676208121,
+      "lat": 47.476254,
+      "lon": 8.5052021,
+      "tags": {
+        "addr:city": "Oberglatt",
+        "addr:housenumber": "51",
+        "addr:postcode": "8154",
+        "addr:street": "Kaiserstuhlstrasse",
+        "amenity": "fuel",
+        "branch": "Oberglatt",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "name": "SOCAR Oberglatt",
+        "operator": "SOCAR Energy Switzerland",
+        "phone": "+41 44 850 31 11",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3725780316,
+      "lat": 47.4151254,
+      "lon": 8.5183109,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "15",
+        "addr:postcode": "8046",
+        "addr:street": "Fronwaldstrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "brand": "OIL!",
+        "changing_table": "no",
+        "check_date": "2026-02-08",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "opening_hours": "24/7",
+        "operator": "Hürstwald Garage",
+        "payment:american_express": "yes",
+        "payment:dkv": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:uta": "yes",
+        "payment:visa": "yes",
+        "payment:visa_electron": "yes",
+        "shop": "no",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3790817939,
+      "lat": 47.3543871,
+      "lon": 8.9321595,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "fuel:HGV_diesel": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3796957666,
+      "lat": 47.4217428,
+      "lon": 8.4071653,
+      "tags": {
+        "addr:city": "Geroldswil",
+        "addr:housenumber": "65",
+        "addr:postcode": "8954",
+        "addr:street": "Limmattalstrasse",
+        "amenity": "fuel",
+        "branch": "Geroldswil",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "name": "Shell Geroldswil",
+        "operator": "Moveri",
+        "shop": "kiosk",
+        "website": "https://find.shell.com/ch/fuel/10023433-moveri-geroldswil/de_CH"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3810110865,
+      "lat": 47.4294941,
+      "lon": 8.3913972,
+      "tags": {
+        "addr:city": "Oetwil an der Limmat",
+        "addr:housenumber": "15",
+        "addr:postcode": "8955",
+        "addr:street": "Limmattalstrasse",
+        "alt_name": "Migrol Oetwil an der Limmat",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Oetwil an der Limmat",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle Oetwil a.d.L.",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3826204629,
+      "lat": 47.2805819,
+      "lon": 8.451352,
+      "tags": {
+        "addr:city": "Affoltern am Albis",
+        "addr:housenumber": "17",
+        "addr:postcode": "8910",
+        "addr:street": "Untere Bahnhofstrasse",
+        "amenity": "fuel",
+        "branch": "Affoltern am Albis",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "name": "Shell Affoltern a.A.",
+        "operator": "Moveri"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3826204630,
+      "lat": 47.2729064,
+      "lon": 8.4482579,
+      "tags": {
+        "addr:city": "Affoltern am Albis",
+        "addr:housenumber": "29",
+        "addr:postcode": "8910",
+        "addr:street": "Zürichstrasse",
+        "alt_name": "Migrol Affoltern a.A.",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Affoltern am Albis",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "yes",
+        "name": "Migrol Tankstelle Affoltern a.A.",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3856077382,
+      "lat": 47.3360236,
+      "lon": 8.5179148,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "check_date": "2023-09-23",
+        "compressed_air": "no",
+        "name": "Allmend Automobile",
+        "opening_hours": "Mo-Th 07:30-12:00,13:15-17:15; Fr 07:30-12:00,13:00-16:30",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4062268285,
+      "lat": 47.37199,
+      "lon": 8.5357876,
+      "tags": {
+        "amenity": "fuel",
+        "check_date": "2024-01-13",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4077197252,
+      "lat": 47.4171988,
+      "lon": 8.5405286,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Seebach Osterwalder",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "check_date": "2024-03-03",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Osterwalder Zürich",
+        "opening_hours": "Mo-Fr 06:00-22:00; PH,Sa 07:00-22:00",
+        "operator": "Avia Osterwalder Zürich",
+        "self_service": "yes",
+        "shop": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4088923696,
+      "lat": 47.2218008,
+      "lon": 8.675162,
+      "tags": {
+        "addr:city": "Wädenswil",
+        "addr:postcode": "8820",
+        "amenity": "fuel",
+        "brand": "BEBECO",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BEBECO",
+        "opening_hours": "24/7",
+        "operator": "Schweizer Armee",
+        "payment:bebeco": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4089017613,
+      "lat": 47.4286035,
+      "lon": 8.5179685,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:housenumber": "191",
+        "addr:postcode": "8046",
+        "addr:street": "Reckenholzstrasse",
+        "amenity": "fuel",
+        "brand": "BEBECO",
+        "check_date": "2025-12-07",
+        "check_date:compressed_air": "2025-12-07",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BEBECO",
+        "opening_hours": "24/7",
+        "operator": "Schweizer Armee",
+        "payment:bebeco": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4089028880,
+      "lat": 47.3790129,
+      "lon": 8.5491137,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:housenumber": "1",
+        "addr:postcode": "8092",
+        "addr:street": "Spöndlistrasse",
+        "amenity": "fuel",
+        "brand": "BEBECO",
+        "brand:wikidata": "Q62274373",
+        "check_date": "2024-04-22",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BEBECO",
+        "opening_hours": "24/7",
+        "operator": "Schweizer Armee",
+        "payment:bebeco": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4089035400,
+      "lat": 47.410457,
+      "lon": 8.5121281,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:housenumber": "11",
+        "addr:postcode": "8093",
+        "addr:street": "Schafmattstrasse",
+        "amenity": "fuel",
+        "brand": "BEBECO",
+        "brand:wikidata": "Q62274373",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BEBECO",
+        "opening_hours": "24/7",
+        "operator": "Schweizer Armee",
+        "payment:bebeco": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4089053385,
+      "lat": 47.3592877,
+      "lon": 8.4310994,
+      "tags": {
+        "addr:city": "Birmensdorf (ZH)",
+        "addr:postcode": "8903",
+        "amenity": "fuel",
+        "brand": "BEBECO",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BEBECO",
+        "opening_hours": "Mo-Fr 07:30-11:45,13:30-16:45",
+        "operator": "Schweizer Armee",
+        "payment:bebeco": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4127859166,
+      "lat": 47.4870974,
+      "lon": 8.7551312,
+      "tags": {
+        "addr:city": "Winterthur",
+        "addr:housenumber": "205",
+        "addr:postcode": "8405",
+        "addr:street": "Tösstalstrasse",
+        "amenity": "fuel",
+        "branch": "Winterthur Seen",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "compressed_air": "yes",
+        "name": "SOCAR Seen",
+        "operator": "SOCAR Energy Switzerland",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4228845595,
+      "lat": 47.5002265,
+      "lon": 8.785714,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "name": "Agrola",
+        "operator": "Landi Eulachtal"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4322098887,
+      "lat": 47.4858278,
+      "lon": 8.4520921,
+      "tags": {
+        "addr:city": "Dielsdorf",
+        "addr:housenumber": "4",
+        "addr:postcode": "8157",
+        "addr:street": "Wehntalerstrasse",
+        "alt_name": "Migrol Dielsdorf Wehntalerstrasse",
+        "amenity": "fuel",
+        "branch": "Dielsdorf Wehntalerstrasse",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "en:Royal Dutch Shell",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Service Wehntalerstrasse",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4353163721,
+      "lat": 47.3791236,
+      "lon": 8.6803113,
+      "tags": {
+        "addr:city": "Volketswil",
+        "addr:housenumber": "1",
+        "addr:postcode": "8604",
+        "addr:street": "Hölzliwisenstrasse",
+        "alt_name": "Migrol AMAG Volketswil",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Volketswil AMAG",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "name": "Migrol Tankstelle AMAG Volketswil",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4379763130,
+      "lat": 47.4923059,
+      "lon": 8.7589991,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "name": "Socar",
+        "opening_hours": "PH,Mo-Su 00:00-12:00+"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4424238921,
+      "lat": 47.4911259,
+      "lon": 8.4371213,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q110716465",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "BP",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4433552056,
+      "lat": 47.4138567,
+      "lon": 8.5493439,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "9",
+        "addr:postcode": "8050",
+        "addr:street": "Binzmühlestrasse",
+        "amenity": "fuel",
+        "branch": "Emil Frey Garage Zürich Nord",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "compressed_air": "yes",
+        "name": "SOCAR",
+        "opening_hours": "24/7",
+        "phone": "+41 44 306 77 77",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4435238292,
+      "lat": 47.4503807,
+      "lon": 8.5393004,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Rümlang Hofwisenstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "check_date": "2023-06-24",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Hofwisenstrasse",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "operator": "Avia Osterwalder Zürich",
+        "shop": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4449629543,
+      "lat": 47.403513,
+      "lon": 8.6127931,
+      "tags": {
+        "amenity": "fuel",
+        "fuel:LH2": "yes",
+        "name": "Move",
+        "operator": "EMPA"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4584155691,
+      "lat": 47.4293869,
+      "lon": 8.5590821,
+      "tags": {
+        "addr:city": "Glattbrugg",
+        "addr:country": "CH",
+        "addr:housenumber": "29",
+        "addr:postcode": "8152",
+        "addr:street": "Schaffhauserstrasse",
+        "amenity": "fuel",
+        "branch": "Glattbrugg",
+        "brand": "Coop",
+        "check_date": "2025-01-02",
+        "compressed_air": "yes",
+        "name": "Coop Tankstelle Glattbrugg",
+        "operator": "Coop Mineraloel",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4697887291,
+      "lat": 47.5172815,
+      "lon": 8.594189,
+      "tags": {
+        "addr:city": "Embrach",
+        "addr:housenumber": "2",
+        "addr:postcode": "8424",
+        "addr:street": "Industriestrasse",
+        "alt_name": "Coop Tankstelle Embrach",
+        "amenity": "fuel",
+        "branch": "Embrach",
+        "brand": "Coop",
+        "compressed_air": "yes",
+        "name": "Coop Tankstelle",
+        "operator": "Coop Mineraloel",
+        "phone": "+41 44 865 81 45",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4697941146,
+      "lat": 47.5176581,
+      "lon": 8.5947525,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia",
+        "operator": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4740888851,
+      "lat": 47.3965492,
+      "lon": 8.4670441,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "brand:wikidata": "Q111725154",
+        "name": "Ruedi Rüssel",
+        "operator": "Th. Willy"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820137498,
+      "lat": 47.3984726,
+      "lon": 8.6051007,
+      "tags": {
+        "addr:city": "Dübendorf",
+        "addr:country": "CH",
+        "addr:housenumber": "17",
+        "addr:postcode": "8600",
+        "addr:street": "Ringstrasse",
+        "amenity": "fuel",
+        "branch": "Dübendorf Bühlwiesen",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "check_date": "2024-08-27",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "SOCAR Bühlwiesen",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "shop": "convenience",
+        "website": "https://www.socarenergy.ch/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820137500,
+      "lat": 47.3353262,
+      "lon": 8.5408584,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "562",
+        "addr:postcode": "8038",
+        "addr:street": "Seestrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Seebucht",
+        "brand": "Socar",
+        "brand:wikidata": "Q1622293",
+        "brand:wikipedia": "en:SOCAR",
+        "check_date": "2024-09-01",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "no",
+        "name": "SOCAR Seebucht",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "phone": "+41 44 482 91 55",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820601025,
+      "lat": 47.3522069,
+      "lon": 8.5585571,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "3",
+        "addr:postcode": "8008",
+        "addr:street": "Horneggstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Hornegg",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Hornegg",
+        "opening_hours": "24/7",
+        "operator": "Shell (Switzerland)",
+        "shop": "kiosk",
+        "website": "https://find.shell.com/ch/fuel/10023320-shell-hornegg/de_CH",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820601027,
+      "lat": 47.408064,
+      "lon": 8.6016378,
+      "tags": {
+        "addr:city": "Wallisellen",
+        "addr:country": "CH",
+        "addr:housenumber": "2",
+        "addr:postcode": "8304",
+        "addr:street": "Husacherstrasse",
+        "alt_name": "Migrol Wallisellen",
+        "amenity": "fuel",
+        "branch": "Wallisellen Husacherstrasse",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "fuel:cng": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Service Wallisellen",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820601028,
+      "lat": 47.361258,
+      "lon": 8.5478749,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "2",
+        "addr:postcode": "8008",
+        "addr:street": "Bellerivestrasse",
+        "alt_name": "Migrol Seefeld",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Zürich Seefeld",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Tankstelle Seefeld",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "payment:american_express": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:visa": "yes",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820646304,
+      "lat": 47.4079849,
+      "lon": 8.5997702,
+      "tags": {
+        "addr:city": "Wallisellen",
+        "addr:country": "CH",
+        "addr:place": "Glattzentrum",
+        "addr:postcode": "8301",
+        "amenity": "fuel",
+        "branch": "Wallisellen Glatt",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Glatt",
+        "operator": "Shell",
+        "self_service": "yes",
+        "website": "https://find.shell.com/ch/fuel/10023344-shell-glatt/de_CH",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820646305,
+      "lat": 47.4032098,
+      "lon": 8.6075961,
+      "tags": {
+        "addr:city": "Dübendorf",
+        "addr:country": "CH",
+        "addr:housenumber": "97",
+        "addr:postcode": "8600",
+        "addr:street": "Ueberlandstrasse",
+        "amenity": "fuel",
+        "branch": "Dübendorf Im Giessen",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Im Giessen",
+        "operator": "Shell (Switzerland)",
+        "self_service": "yes",
+        "shop": "convenience",
+        "website": "https://find.shell.com/ch/fuel/10023386-shell-im-giessen/de_CH",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820646306,
+      "lat": 47.4319133,
+      "lon": 8.5631012,
+      "tags": {
+        "addr:city": "Glattbrugg",
+        "addr:country": "CH",
+        "addr:housenumber": "87",
+        "addr:postcode": "8152",
+        "addr:street": "Schaffhauserstrasse",
+        "amenity": "fuel",
+        "branch": "Glattbrugg",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "brand:wikipedia": "en:Royal Dutch Shell",
+        "fuel:diesel": "yes",
+        "fuel:octane_100": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Shell Glattbrugg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4828232529,
+      "lat": 47.4429478,
+      "lon": 8.4806515,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Watt Unterdorfstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "compressed_air": "yes",
+        "fuel:1_50": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Watt",
+        "opening_hours": "24/7",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4833061686,
+      "lat": 47.3940505,
+      "lon": 8.4820011,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:housenumber": "120",
+        "addr:postcode": "8048",
+        "addr:street": "Vulkanstrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "check_date": "2024-08-21",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "J. H. Keller AG",
+        "opening_hours": "24/7",
+        "operator": "Avia Osterwalder Zürich",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4833061689,
+      "lat": 47.3662195,
+      "lon": 8.5336955,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Haus zur Palme",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia Zur Palme",
+        "operator": "A.H. Meyer & Cie"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4833061690,
+      "lat": 47.3876457,
+      "lon": 8.5333362,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "98",
+        "addr:postcode": "8037",
+        "addr:street": "Wasserwerkstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Wasserwerkstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "check_date": "2024-08-14",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Avia Wasserwerkstrasse",
+        "opening_hours": "24/7",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4847777858,
+      "lat": 47.3875329,
+      "lon": 8.4986948,
+      "tags": {
+        "addr:city": "Zürich",
+        "addr:country": "CH",
+        "addr:housenumber": "461",
+        "addr:postcode": "8048",
+        "addr:street": "Hohlstrasse",
+        "amenity": "fuel",
+        "branch": "Zürich Letzipark",
+        "brand": "Coop",
+        "compressed_air": "yes",
+        "level": "0",
+        "name": "Coop Tankstelle Letzipark",
+        "opening_hours": "Su-Th 05:30-24:00; Fr-Sa 05:30-01:00",
+        "operator": "Coop Mineraloel",
+        "shop": "convenience",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4997840521,
+      "lat": 47.5716021,
+      "lon": 8.6472417,
+      "tags": {
+        "amenity": "fuel",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "operator": "Agrola"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5032062867,
+      "lat": 47.6375618,
+      "lon": 8.6969995,
+      "tags": {
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "name": "Badi's Freie Tankstelle",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5084007910,
+      "lat": 47.4919178,
+      "lon": 8.5520732,
+      "tags": {
+        "addr:city": "Winkel",
+        "addr:postcode": "8185",
+        "addr:street": "Tüfwisstrasse",
+        "amenity": "fuel",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Agrola",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5165572653,
+      "lat": 47.4642884,
+      "lon": 8.5265047,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Rümlang",
+        "brand": "Spar",
+        "brand:wikidata": "Q610492",
+        "name": "Spar Rümlang"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5192332363,
+      "lat": 47.2700306,
+      "lon": 8.8527951,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "name": "BP",
+        "operator": "BP"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5197977000,
+      "lat": 47.2364721,
+      "lon": 8.7764429,
+      "tags": {
+        "amenity": "fuel",
+        "automated": "yes",
+        "brand": "AVIA",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "opening_hours": "24/7",
+        "operator": "A.H. Meyer & Cie",
+        "self_service": "yes",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5197977001,
+      "lat": 47.2367258,
+      "lon": 8.7763434,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "AVIA",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "opening_hours": "Mo-Fr 06:00-21:00, Sa-Su 07:00-21:00",
+        "operator": "A.H. Meyer & Cie",
+        "shop": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5242262577,
+      "lat": 47.358531,
+      "lon": 8.5319389,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Seestrasse",
+        "brand": "Eni",
+        "brand:wikidata": "Q565594",
+        "compressed_air": "yes",
+        "name": "Eni Seestrasse",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5258126478,
+      "lat": 47.5629444,
+      "lon": 8.4262064,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "brand:wikipedia": "en:BP",
+        "name": "BP"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5370500872,
+      "lat": 47.4109696,
+      "lon": 8.5266314,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Zürich Wehntalerstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Avia",
+        "operator": "Avia Osterwalder Zürich",
+        "shop": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5464829035,
+      "lat": 47.4192262,
+      "lon": 8.414396,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Geroldswil",
+        "brand": "Coop",
+        "compressed_air": "yes",
+        "fuel:adblue": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Coop Tankstelle",
+        "operator": "Coop Mineraloel",
+        "self_service": "yes",
+        "shop": "fuel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5489790800,
+      "lat": 47.2831149,
+      "lon": 8.7614359,
+      "tags": {
+        "amenity": "fuel",
+        "name": "Ruedi Rüssel",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5514875835,
+      "lat": 47.4447009,
+      "lon": 8.4601767,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Regensdorf Pumpwerkstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "name": "Avia Pumpwerkstrasse",
+        "opening_hours": "24/7",
+        "operator": "Avia Osterwalder Zürich",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5514885103,
+      "lat": 47.4523897,
+      "lon": 8.4616405,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Adlikon bei Regensdorf",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "level": "0",
+        "name": "Agrola Adlikon"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5579134459,
+      "lat": 47.2629816,
+      "lon": 8.865991,
+      "tags": {
+        "addr:city": "Rüti (ZH)",
+        "addr:housenumber": "74",
+        "addr:postcode": "8630",
+        "addr:street": "Walderstrasse",
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "name": "BP"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5670394821,
+      "lat": 47.5550552,
+      "lon": 8.7689588,
+      "tags": {
+        "amenity": "fuel",
+        "name": "Agrola Tankstelle",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5678614593,
+      "lat": 47.3753876,
+      "lon": 8.5398134,
+      "tags": {
+        "access": "private",
+        "amenity": "fuel",
+        "opening_hours": "24/7",
+        "operator": "Stadt Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5721083669,
+      "lat": 47.4535469,
+      "lon": 8.5785075,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Kloten Flughafenstrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "no",
+        "name": "Avia Flughafenstrasse",
+        "opening_hours": "24/7",
+        "operator": "Avia Osterwalder Zürich"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5721083673,
+      "lat": 47.455013,
+      "lon": 8.5800231,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Kloten Schaffhauserstrasse",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "check_date": "2025-05-14",
+        "check_date:compressed_air": "2025-05-14",
+        "compressed_air": "yes",
+        "name": "BP Schaffhauserstrasse",
+        "opening_hours": "Mo-Su 06:00-23:00",
+        "operator": "Oskar Bader's Erben",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5940499368,
+      "lat": 47.2457204,
+      "lon": 8.5325333,
+      "tags": {
+        "addr:city": "Hausen am Albis",
+        "addr:housenumber": "5",
+        "addr:postcode": "8915",
+        "addr:street": "Albisstrasse",
+        "alt_name": "Migrol Hausen am Albis",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Hausen am Albis",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "check_date": "2025-03-02",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Migrol Tankstelle Hausen a.A.",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "tenant": "Garage Rüegg",
+        "website": "https://www.migrol.ch/de/",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6076240798,
+      "lat": 47.2484602,
+      "lon": 8.5303804,
+      "tags": {
+        "amenity": "fuel",
+        "check_date": "2025-03-02",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola Albisstrasse",
+        "opening_hours": "24/7",
+        "payment:cash": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6088224395,
+      "lat": 47.288847,
+      "lon": 8.7120186,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "brand:wikidata": "Q111725154",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Ruedi Rüssel",
+        "self_service": "yes",
+        "website": "https://www.oel-pool.com/unsere-tankstellen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6180364746,
+      "lat": 47.5967675,
+      "lon": 8.6695533,
+      "tags": {
+        "access": "no",
+        "amenity": "fuel",
+        "name": "Gewerbehaus 5"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6223284379,
+      "lat": 47.6511794,
+      "lon": 8.6527307,
+      "tags": {
+        "addr:city": "Benken ZH",
+        "addr:housenumber": "9",
+        "addr:postcode": "8463",
+        "addr:street": "Marthalerstrasse",
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Garage Bolli",
+        "opening_hours": "24/7",
+        "operator": "Garage Bolli",
+        "payment:credit_cards": "yes",
+        "payment:notes": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6407345181,
+      "lat": 47.3536972,
+      "lon": 8.9328548,
+      "tags": {
+        "addr:city": "Steg im Tösstal",
+        "addr:country": "CH",
+        "addr:postcode": "8496",
+        "addr:street": "Bahnhofstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "check_date": "2024-06-27",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "opening_hours": "24/7",
+        "operator": "Landi Bachtel",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6480377280,
+      "lat": 47.3264264,
+      "lon": 8.7832515,
+      "tags": {
+        "addr:city": "Wetzikon",
+        "addr:housenumber": "55",
+        "addr:postcode": "8620",
+        "addr:street": "Zürcherstrasse",
+        "amenity": "fuel",
+        "fuel:lpg": "yes",
+        "fuel:propane": "yes",
+        "name": "El Rolbanito",
+        "operator": "El Rolbanito",
+        "website": "https://www.gas-tankstellen.de/detail.php?tanke=19329"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6584592532,
+      "lat": 47.2638374,
+      "lon": 8.4283067,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "brand:wikipedia": "de:Agrola",
+        "name": "Agrola Dorfstrasse",
+        "operator": "Landi Obfelden"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6603380443,
+      "lat": 47.2155334,
+      "lon": 8.6066365,
+      "tags": {
+        "addr:city": "Hirzel",
+        "addr:housenumber": "42",
+        "addr:postcode": "8816",
+        "addr:street": "Dorfstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "check_date": "2024-07-14",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "operator": "LANDI Zimmerberg",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6611751135,
+      "lat": 47.3926384,
+      "lon": 8.475161,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Independent",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Scall",
+        "opening_hours": "Mo-Fr 06:00-22:00; Sa 07:00-22:00; Su 08:00-22:00"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6680253709,
+      "lat": 47.4500535,
+      "lon": 8.7017149,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "check_date:opening_hours": "2026-03-12",
+        "compressed_air": "yes",
+        "name": "BP Kemptthal Süd",
+        "opening_hours": "Mo-Th 05:00-01:00, Fr,Sa 00:00-00:00, Su 00:00-00:00",
+        "operator": "BP",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7003233349,
+      "lat": 47.3572373,
+      "lon": 8.6422562,
+      "tags": {
+        "addr:city": "Ebmatingen",
+        "addr:postcode": "8123",
+        "addr:street": "Lohwisstrasse",
+        "amenity": "fuel",
+        "branch": "Ebmatingen",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia Ebmatingen",
+        "opening_hours": "24/7",
+        "operator": "Avia Osterwalder Zürich",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7051810399,
+      "lat": 47.3891035,
+      "lon": 8.5101259,
+      "tags": {
+        "access": "private",
+        "addr:housenumber": "99",
+        "addr:street": "Pfingstweidstrasse",
+        "amenity": "fuel",
+        "noname": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7111931002,
+      "lat": 47.2408639,
+      "lon": 8.714637,
+      "tags": {
+        "addr:city": "Stäfa",
+        "addr:housenumber": "1",
+        "addr:postcode": "8712",
+        "addr:street": "Seestrasse",
+        "amenity": "fuel",
+        "branch": "Stäfa",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "brand:wikipedia": "en:SOCAR",
+        "name": "SOCAR Stäfa",
+        "operator": "SOCAR Energy Switzerland",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7180524077,
+      "lat": 47.2646326,
+      "lon": 8.661027,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Coop"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7360125203,
+      "lat": 47.3214243,
+      "lon": 8.640888,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Ruedi Rüssel",
+        "operator": "Garage Marcel Wyder"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7403418119,
+      "lat": 47.4017851,
+      "lon": 8.4526451,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Schlieren Industriestrasse",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia Industriestrasse",
+        "operator": "A.H. Meyer & Cie"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7600391895,
+      "lat": 47.3064785,
+      "lon": 8.8168191,
+      "tags": {
+        "alt_name": "Coop Tankstelle Hinwil",
+        "amenity": "fuel",
+        "branch": "Hinwil Center",
+        "brand": "Coop",
+        "compressed_air": "yes",
+        "name": "Coop Tankstelle",
+        "operator": "Coop Mineraloel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7684921023,
+      "lat": 47.2737376,
+      "lon": 8.9118883,
+      "tags": {
+        "addr:city": "Wald",
+        "addr:housenumber": "29",
+        "addr:postcode": "8636",
+        "addr:street": "Rütistrasse",
+        "amenity": "fuel",
+        "branch": "Wald ZH Waldhof",
+        "brand": "Shell",
+        "brand:wikidata": "Q154950",
+        "brand:wikipedia": "en:Royal Dutch Shell",
+        "name": "Shell Wald ZH",
+        "operator": "Shell (Switzerland)",
+        "website": "https://find.shell.com/ch/fuel/10023456-shell-waldhof/de_CH"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7702297267,
+      "lat": 47.39634,
+      "lon": 8.4400249,
+      "tags": {
+        "addr:city": "Schlieren",
+        "addr:country": "CH",
+        "addr:housenumber": "41",
+        "addr:postcode": "8952",
+        "addr:street": "Badenerstrasse",
+        "amenity": "fuel",
+        "branch": "Schlieren",
+        "brand": "Socar",
+        "brand:wikidata": "Q1622293",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "SOCAR Schlieren",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7702874122,
+      "lat": 47.2658346,
+      "lon": 8.7298735,
+      "tags": {
+        "addr:city": "Oetwil am See",
+        "addr:housenumber": "66",
+        "addr:postcode": "8618",
+        "addr:street": "Willikonerstrasse",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Oetwil am See",
+        "brand": "SOCAR",
+        "brand:wikidata": "Q1622293",
+        "name": "SOCAR Oetwil am See",
+        "opening_hours": "24/7",
+        "operator": "SOCAR Energy Switzerland",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.socarenergy.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7710511664,
+      "lat": 47.5587537,
+      "lon": 8.4345861,
+      "tags": {
+        "addr:city": "Weiach",
+        "addr:housenumber": "10",
+        "addr:postcode": "8187",
+        "addr:street": "Kaiserstuhlerstrasse",
+        "alt_name": "Migrol Weiach",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Weiach",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Migrol Tankstelle Weiach",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7914281885,
+      "lat": 47.3384962,
+      "lon": 8.5404282,
+      "tags": {
+        "amenity": "fuel",
+        "compressed_air": "no",
+        "name": "Hafen Wollishofen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7923664286,
+      "lat": 47.5580273,
+      "lon": 8.498791,
+      "tags": {
+        "amenity": "fuel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7944269485,
+      "lat": 47.2698833,
+      "lon": 8.5878572,
+      "tags": {
+        "amenity": "fuel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8191417545,
+      "lat": 47.4306294,
+      "lon": 8.6875185,
+      "tags": {
+        "amenity": "fuel",
+        "compressed_air": "no",
+        "name": "Garage plus"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8262631150,
+      "lat": 47.4154408,
+      "lon": 8.7205647,
+      "tags": {
+        "addr:city": "Illnau",
+        "addr:housenumber": "107",
+        "addr:postcode": "8308",
+        "addr:street": "Kempttalstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "shop": "convenience",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8278567115,
+      "lat": 47.360375,
+      "lon": 8.793889,
+      "tags": {
+        "addr:city": "Pfäffikon ZH",
+        "addr:housenumber": "157",
+        "addr:postcode": "8330",
+        "addr:street": "Hochstrasse",
+        "amenity": "fuel",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Lenzlinger Tankstellen",
+        "operator": "Lenzlinger Söhne AG",
+        "payment:cards": "yes",
+        "payment:notes": "yes",
+        "self_service": "yes",
+        "website": "https://www.lenzlinger.ch/tankstellen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8349863451,
+      "lat": 47.4750355,
+      "lon": 8.4811385,
+      "tags": {
+        "amenity": "fuel",
+        "fixme": "Öffentlich zugänglich? Sah fast so aus beim Vorbeiradeln...",
+        "fuel:diesel": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8714466441,
+      "lat": 47.5218943,
+      "lon": 8.8904804,
+      "tags": {
+        "amenity": "fuel",
+        "operator": "Agrola"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9005199657,
+      "lat": 47.3251676,
+      "lon": 8.7859423,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "AVIA",
+        "opening_hours": "24/7",
+        "payment:american_express": "yes",
+        "payment:girocard": "no",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:notes": "yes",
+        "payment:postfinance_card": "yes",
+        "payment:visa": "yes",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9097117332,
+      "lat": 47.4982955,
+      "lon": 8.75433,
+      "tags": {
+        "addr:city": "Winterthur",
+        "addr:housenumber": "166",
+        "addr:postcode": "8404",
+        "addr:street": "St. Gallerstrasse",
+        "amenity": "fuel",
+        "brand": "Etzelpark",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Etzelpark Winti Benzin",
+        "opening_hours": "24/7",
+        "operator": "Petrol Tech GmbH",
+        "self_service": "yes",
+        "website": "https://etzelparkbenzin.ch/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9349521108,
+      "lat": 47.4611631,
+      "lon": 8.5183392,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "brand:wikipedia": "de:Avia International",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9420034735,
+      "lat": 47.3807486,
+      "lon": 8.6828929,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Volketswil Brunnenstrasse",
+        "brand": "Coop",
+        "compressed_air": "yes",
+        "name": "Coop",
+        "operator": "Coop Mineraloel",
+        "shop": "convenience"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10160267814,
+      "lat": 47.516341,
+      "lon": 8.6782876,
+      "tags": {
+        "addr:city": "Winterthur",
+        "addr:housenumber": "405",
+        "addr:postcode": "8408",
+        "addr:street": "Wülflingerstrasse",
+        "amenity": "fuel",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Tamoil Tankstelle",
+        "opening_hours": "24/7",
+        "operator": "Tamoil",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10598764329,
+      "lat": 47.3822548,
+      "lon": 8.5224674,
+      "tags": {
+        "amenity": "fuel",
+        "fuel:diesel": "yes",
+        "note": "Nur für Eisenbahnfahrzeuge – Railway vehicles only",
+        "operator": "SBB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10707802410,
+      "lat": 47.631078,
+      "lon": 8.7866392,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "fuel:adblue": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Agrola",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10873466298,
+      "lat": 47.5738509,
+      "lon": 8.5991929,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "name": "Avia",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11002965308,
+      "lat": 47.2638378,
+      "lon": 8.7260174,
+      "tags": {
+        "access": "private",
+        "amenity": "fuel",
+        "fuel:diesel": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11247572502,
+      "lat": 47.2868609,
+      "lon": 8.6070774,
+      "tags": {
+        "amenity": "fuel",
+        "check_date": "2023-10-08",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11247572508,
+      "lat": 47.2979957,
+      "lon": 8.5979311,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "check_date": "2023-10-08",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11323344293,
+      "lat": 47.3020303,
+      "lon": 8.8456263,
+      "tags": {
+        "addr:city": "Hinwil",
+        "addr:country": "CH",
+        "addr:housenumber": "4.1",
+        "addr:postcode": "8340",
+        "addr:street": "Oberdorfstrasse",
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "AVIA"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329043056,
+      "lat": 47.2556356,
+      "lon": 8.687028,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Avia",
+        "phone": "+41 44 307 88 18",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11446164240,
+      "lat": 47.4888862,
+      "lon": 8.5944169,
+      "tags": {
+        "addr:city": "Lufingen",
+        "addr:postcode": "8426",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Agrola",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11486230578,
+      "lat": 47.3998792,
+      "lon": 8.6249075,
+      "tags": {
+        "addr:city": "Dübendorf",
+        "addr:housenumber": "224",
+        "addr:postcode": "8600",
+        "addr:street": "Ueberlandstrasse",
+        "amenity": "fuel",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Tamoil",
+        "opening_hours": "24/7",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11486230579,
+      "lat": 47.3945209,
+      "lon": 8.6548163,
+      "tags": {
+        "addr:city": "Volketswil",
+        "addr:housenumber": "63",
+        "addr:postcode": "8604",
+        "addr:street": "Zürcherstrasse",
+        "amenity": "fuel",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Gfenn Benzin",
+        "opening_hours": "24/7",
+        "operator": "Voegtlin-Meyer",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11486230581,
+      "lat": 47.3823596,
+      "lon": 8.6713659,
+      "tags": {
+        "addr:city": "Volketswil",
+        "addr:housenumber": "1",
+        "addr:postcode": "8604",
+        "addr:street": "Chlirietstrasse",
+        "amenity": "fuel",
+        "brand": "Coop",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "Volkiland",
+        "operator": "Coop Mineraloel",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11767444235,
+      "lat": 47.3928416,
+      "lon": 8.4929085,
+      "tags": {
+        "amenity": "fuel",
+        "fuel:lng": "yes",
+        "operator": "energie360°",
+        "payment:cards": "yes",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11842384092,
+      "lat": 47.2859651,
+      "lon": 8.617557,
+      "tags": {
+        "addr:city": "Herrliberg",
+        "addr:housenumber": "18",
+        "addr:postcode": "8704",
+        "addr:street": "Humrigenstrasse",
+        "amenity": "fuel",
+        "brand": "Agrola",
+        "brand:wikidata": "Q397351",
+        "compressed_air": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "name": "Agrola",
+        "opening_hours": "24/7",
+        "operator": "LANDI Mittlerer Zürisee",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11902521971,
+      "lat": 47.5168422,
+      "lon": 8.7701156,
+      "tags": {
+        "amenity": "fuel",
+        "fuel:diesel": "yes",
+        "note": "Nur für Eisenbahnfahrzeuge ‒ for railway vehicles only",
+        "opening_hours": "24/7",
+        "operator": "SBB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12050268278,
+      "lat": 47.5132079,
+      "lon": 8.766567,
+      "tags": {
+        "access": "private",
+        "amenity": "fuel",
+        "fuel:HGV_diesel": "yes",
+        "opening_hours": "24/7",
+        "shop": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12163869425,
+      "lat": 47.5162612,
+      "lon": 8.7662624,
+      "tags": {
+        "addr:city": "Winterthur",
+        "addr:housenumber": "1",
+        "addr:postcode": "8404",
+        "addr:street": "Albert-Einstein-Strasse",
+        "amenity": "fuel",
+        "name": "Coop"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12310159890,
+      "lat": 47.3362305,
+      "lon": 8.6200573,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Avia",
+        "brand:wikidata": "Q300147",
+        "name": "Avia"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12465103095,
+      "lat": 47.4167133,
+      "lon": 8.3967135,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "coop",
+        "fuel:h35": "yes",
+        "fuel:h70": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12722342587,
+      "lat": 47.3926867,
+      "lon": 8.4930633,
+      "tags": {
+        "access": "private",
+        "amenity": "fuel",
+        "fuel:lng": "yes",
+        "operator": "energie360°",
+        "payment:cards": "yes",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12798245971,
+      "lat": 47.2209381,
+      "lon": 8.6607112,
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "check_date": "2025-08-19",
+        "check_date:compressed_air": "2025-08-19",
+        "compressed_air": "yes",
+        "name": "Tamoil",
+        "opening_hours": "24/7",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12863583714,
+      "lat": 47.4321508,
+      "lon": 8.4688584,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Regensdorf",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "level": "0",
+        "name": "BP Service Regensdorf"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13058180125,
+      "lat": 47.5236355,
+      "lon": 8.7153962,
+      "tags": {
+        "addr:city": "Seuzach",
+        "addr:housenumber": "3",
+        "addr:postcode": "8472",
+        "addr:street": "Schaffhauserstrasse",
+        "amenity": "fuel",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "name": "BP",
+        "opening_hours": "24/7",
+        "self_service": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13058229174,
+      "lat": 47.5284228,
+      "lon": 8.7099753,
+      "tags": {
+        "addr:city": "Seuzach",
+        "addr:housenumber": "75",
+        "addr:postcode": "8472",
+        "addr:street": "Schaffhauserstrasse",
+        "alt_name": "Migrol Seuzach",
+        "amenity": "fuel",
+        "automated": "yes",
+        "branch": "Seuzach",
+        "brand": "Migrol",
+        "brand:wikidata": "Q1747771",
+        "brand:wikipedia": "de:Migrol",
+        "compressed_air": "no",
+        "fuel:diesel": "yes",
+        "fuel:octane_95": "yes",
+        "fuel:octane_98": "yes",
+        "maxheight": "3.4",
+        "name": "Migrol Tankstelle Seuzach",
+        "opening_hours": "24/7",
+        "operator": "Migrol",
+        "self_service": "yes",
+        "shop": "no",
+        "website": "https://www.migrol.ch/de/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13069101333,
+      "lat": 47.2883526,
+      "lon": 8.5436421,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Langnau am Albis",
+        "brand": "Tamoil",
+        "brand:wikidata": "Q706793",
+        "brand:wikipedia": "en:Tamoil",
+        "compressed_air": "yes",
+        "name": "Tamoil"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13438064802,
+      "lat": 47.3030551,
+      "lon": 8.6910203,
+      "tags": {
+        "amenity": "fuel",
+        "name": "Soft Car Wash"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13556440625,
+      "lat": 47.4120437,
+      "lon": 8.4550254,
+      "tags": {
+        "amenity": "fuel",
+        "branch": "Unterengstringen",
+        "brand": "BP",
+        "brand:wikidata": "Q152057",
+        "compressed_air": "yes",
+        "fuel:GTL_diesel": "yes",
+        "fuel:diesel": "yes",
+        "fuel:octane_87": "yes",
+        "fuel:octane_92": "yes",
+        "fuel:octane_98": "yes",
+        "name": "BP Service Engstringen",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "shop": "convenience"
+      }
+    }
+  ]
+}
