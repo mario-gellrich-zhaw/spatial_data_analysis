@@ -258,11 +258,15 @@ A custom **Leaflet `GridLayer`** decodes each tile into a `Float32Array` elevati
 - ESRI World Imagery aerial photo as background
 - Elevation cache per tile — slider moves are instant after first load
 
-**How to start:**
+**How to start and stop:**
 
 ```bash
+# Start
 cd 09_JavaScript_Flood_Simulator
-python3 -m http.server 8080
+python -m http.server 8080
+
+# Stop
+pkill -f "http.server 8080"
 ```
 
 Then open **http://localhost:8080** in your browser.
