@@ -1,6 +1,6 @@
 /* ============================================================
    Swiss Flood Simulator
-   Elevation data: AWS Terrarium tiles (free, CORS-enabled)
+    Elevation data: AWS Terrain Tiles (free, CORS-enabled)
    Encoding: elevation = (R * 256 + G + B/256) - 32768  [metres]
    ============================================================ */
 
