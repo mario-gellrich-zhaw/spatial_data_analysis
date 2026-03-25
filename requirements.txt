@@ -17,3 +17,4 @@ geopandas
 spacy
 wordcloud
 fiona
+python-pptx
