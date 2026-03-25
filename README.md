@@ -241,7 +241,7 @@ A client-side web application that simulates rising flood levels over Swiss citi
 
 **How it works:**
 
-The app loads **AWS Terrain Tiles** — a free, global elevation dataset with ~10 m resolution. Each tile encodes height as an RGB value:
+The app loads **AWS Terrain Tiles** — a free, global elevation dataset. Each tile encodes height as an RGB value:
 
 ```
 elevation [m] = (R × 256 + G + B/256) − 32768
