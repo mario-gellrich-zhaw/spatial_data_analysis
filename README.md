@@ -261,8 +261,10 @@ A custom **Leaflet `GridLayer`** decodes each tile into a `Float32Array` elevati
 **How to start and stop:**
 
 ```bash
+# cd into app folder
+cd /workspaces/spatial_data_analysis/09_JavaScript_Flood_Simulator
+
 # Start
-cd 09_JavaScript_Flood_Simulator
 python -m http.server 8080
 
 # Stop
