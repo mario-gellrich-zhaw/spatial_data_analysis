@@ -241,7 +241,7 @@ A client-side web application that simulates rising flood levels over Swiss citi
 
 **How it works:**
 
-The app loads **AWS Terrain Tiles** (Terrarium format) — a free, global, CORS-enabled elevation dataset with ~10 m resolution. Each tile encodes height as an RGB value:
+The app loads **AWS Terrain Tiles** — a free, global elevation dataset with ~10 m resolution. Each tile encodes height as an RGB value:
 
 ```
 elevation [m] = (R × 256 + G + B/256) − 32768
@@ -262,7 +262,7 @@ A custom **Leaflet `GridLayer`** decodes each tile into a `Float32Array` elevati
 
 ```bash
 # cd into app folder
-cd /workspaces/spatial_data_analysis/09_JavaScript_Flood_Simulator
+cd /workspaces/spatial_data_analysis/09_JS_Flood_Simulator
 
 # Start
 python -m http.server 8080
