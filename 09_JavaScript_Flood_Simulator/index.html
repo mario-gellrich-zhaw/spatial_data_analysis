@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schweizer Hochwasser-Simulator</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div id="app">
+        <header id="header">
+            <div id="header-left">
+                <h1>Schweizer Hochwasser-Simulator</h1>
+                <p id="city-desc">Simuliere steigenden Wasserstand anhand eines digitalen Höhenmodells</p>
+            </div>
+            <nav id="city-selector">
+                <label for="city-select">Stadt:</label>
+                <select id="city-select">
+                    <option value="bern">Bern</option>
+                    <option value="zuerich">Zürich</option>
+                    <option value="genf">Genf</option>
+                    <option value="basel">Basel</option>
+                    <option value="lausanne">Lausanne</option>
+                    <option value="winterthur">Winterthur</option>
+                    <option value="luzern">Luzern</option>
+                    <option value="stgallen">St. Gallen</option>
+                    <option value="lugano">Lugano</option>
+                    <option value="biel">Biel/Bienne</option>
+                    <option value="thun">Thun</option>
+                    <option value="koeniz">Köniz</option>
+                    <option value="lachauxdefonds">La Chaux-de-Fonds</option>
+                    <option value="fribourg">Fribourg</option>
+                    <option value="schaffhausen">Schaffhausen</option>
+                    <option value="chur">Chur</option>
+                    <option value="vernier">Vernier</option>
+                    <option value="uster">Uster</option>
+                    <option value="sion">Sion/Sitten</option>
+                    <option value="emmen">Emmen</option>
+                    <option value="lancy">Lancy</option>
+                    <option value="zug">Zug</option>
+                    <option value="kriens">Kriens</option>
+                    <option value="rapperswiljona">Rapperswil-Jona</option>
+                    <option value="meyrin">Meyrin</option>
+                </select>
+            </nav>
+        </header>
+
+        <div id="map-container">
+            <div id="map"></div>
+            <div id="loading-overlay">
+                <div id="loading-spinner"></div>
+                <span>Höhendaten werden geladen…</span>
+            </div>
+            <div id="zoom-warning">Zoom herauszoomen für Hochwassersimulation (max. Zoom 14)</div>
+        </div>
+
+        <div id="controls">
+            <div id="slider-section">
+                <div id="slider-header">
+                    <span id="water-label">Wasseranstieg</span>
+                    <span id="flood-value">+0.0 m</span>
+                </div>
+                <div id="slider-track-container">
+                    <input type="range" id="flood-slider" min="0" max="2000" value="0" step="5"/>
+                </div>
+                <div id="elevation-info">
+                    <span>Referenzpegel: <strong id="ref-elevation">511</strong> m ü.M.</span>
+                    <span>Aktuell: <strong id="current-elevation">511.0</strong> m ü.M.</span>
+                    <span id="river-name">Aare</span>
+                </div>
+            </div>
+
+            <div id="action-buttons">
+                <button id="animate-btn" class="action-btn primary">&#9654; Animieren</button>
+                <button id="reset-btn" class="action-btn secondary">&#8635; Reset</button>
+            </div>
+
+            <div id="legend">
+                <div class="legend-title">Legende</div>
+                <div class="legend-item">
+                    <span class="legend-swatch" style="background: rgba(255,200,50,0.65); border: 1px solid rgba(255,165,0,0.8)"></span>
+                    Gefährdet (&lt;0.5 m)
+                </div>
+                <div class="legend-item">
+                    <span class="legend-swatch" style="background: rgba(64,164,223,0.5)"></span>
+                    Überflutet (flach)
+                </div>
+                <div class="legend-item">
+                    <span class="legend-swatch" style="background: rgba(15,80,160,0.85)"></span>
+                    Überflutet (tief)
+                </div>
+                <div class="legend-item legend-dem">
+                    <span class="legend-swatch dem"></span>
+                    Höhenmodell: AWS Terrarium ~10 m
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
