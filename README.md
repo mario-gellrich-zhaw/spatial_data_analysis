@@ -286,6 +286,98 @@ In GitHub Codespaces: go to the **Ports** tab → port **8080** → click the gl
 
 ---
 
+---
+
+## 🔧 Repository Setup
+
+### Configuring your repository's remotes
+
+First, make sure the upstream has been added and the origin's URL is set.
+
+```bash
+# In the VS Code Terminal type ...
+git remote -v
+
+# The output should look like (YOUR-USERNAME should be your user name on GitHub) ...
+# origin    git@github.com:YOUR-USERNAME/spatial_data_analysis.git (fetch)
+# origin    git@github.com:YOUR-USERNAME/spatial_data_analysis.git (push)
+# upstream  https://github.com/mario-gellrich-zhaw/spatial_data_analysis.git (fetch)
+# upstream  https://github.com/mario-gellrich-zhaw/spatial_data_analysis.git (push)
+
+# If this is not set correctly, type (replace YOUR-USERNAME with your user name on GitHub) ...
+git remote add upstream https://github.com/mario-gellrich-zhaw/spatial_data_analysis.git
+git remote set-url origin https://github.com/YOUR-USERNAME/spatial_data_analysis.git
+```
+
+### Sync origin with upstream
+
+To sync your fork (origin) and GitHub Codespaces environment with the upstream repository, you need to regularly pull the latest course materials. We recommend doing this before starting each week's exercises.
+
+**Before syncing** — check your current status:
+
+```bash
+git status
+```
+
+If you have uncommitted changes, either commit them or stash them:
+
+```bash
+# Option A: Commit your changes
+git add .
+git commit -m "Your commit message"
+git push origin main
+
+# Option B: Temporarily stash your changes
+git stash
+```
+
+**Recommended: Merge upstream changes (preserves your work)**
+
+This is the safest approach as it preserves your local commits and modifications:
+
+```bash
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
+> **Note:** If merge conflicts occur, VS Code will help you resolve them using the Merge Editor (see "Solving merge conflicts" section below).
+
+**Advanced: Clean reset to upstream (discards local changes)**
+
+> **WARNING:** This option will overwrite all your local changes on the main branch. Only use this if you want a completely clean copy of upstream, or your local changes are accidentally broken and you want to start fresh.
+
+```bash
+git fetch upstream
+git checkout main
+git reset --hard upstream/main
+git push origin main --force
+```
+
+**Alternative: Use rebase (for advanced users)**
+
+If you want a cleaner commit history without merge commits:
+
+```bash
+git fetch upstream
+git checkout main
+git rebase upstream/main
+git push origin main --force-with-lease
+```
+
+> **Best practice:** Sync at the beginning of each week to ensure you have the latest materials before starting new exercises.
+
+### Solving merge conflicts
+
+Later in the course you will modify the Python code provided on GitHub. When you modify Python code, merge conflicts may occur — this is when two or more changes conflict with each other. This usually happens when multiple people are working on the same project and they try to merge their changes into a common codebase.
+
+In VS Code, you can use the Merge Editor to solve merge conflicts.
+
+The following video explains how this works: https://www.youtube.com/watch?v=KuB6hYoLozw
+
+---
+
 <div align="center">
 
 **Built for the classroom · Open source · Pull requests welcome**
