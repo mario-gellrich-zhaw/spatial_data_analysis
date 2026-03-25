@@ -19,6 +19,9 @@
 ![Folium](https://img.shields.io/badge/Folium-Maps-77B829?style=flat-square&logo=leaflet&logoColor=white)
 ![QGIS](https://img.shields.io/badge/QGIS-PyQGIS-589632?style=flat-square&logo=qgis&logoColor=white)
 ![spaCy](https://img.shields.io/badge/spaCy-NLP-09A3D5?style=flat-square&logo=spacy&logoColor=white)
+![Leaflet](https://img.shields.io/badge/Leaflet-WebGIS-77B829?style=flat-square&logo=leaflet&logoColor=white)
+![JavaScript](https://img.shields.io/badge/Vanilla_JS-ES2022-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![AWS](https://img.shields.io/badge/AWS-Terrain_Tiles-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
 
 </div>
 
@@ -38,7 +41,9 @@ flowchart LR
     M07["✍️<br/><br/><b>07 · Tripadvisor</b><br/><b>NLP</b><br/><br/>NER<br/>Heatmaps"]
     M08["⚙️<br/><br/><b>08 · PyQGIS</b><br/><br/>Headless<br/>Choropleth"]
 
-    M01 ==> M02 ==> M03 ==> M04 ==> M05 ==> M06 ==> M07 ==> M08
+    M09["🌊<br/><br/><b>09 · Flood</b><br/><b>Simulator</b><br/><br/>DEM · Canvas<br/>WebGIS"]
+
+    M01 ==> M02 ==> M03 ==> M04 ==> M05 ==> M06 ==> M07 ==> M08 ==> M09
 
     linkStyle default stroke:#aaa,stroke-width:3px
 
@@ -50,6 +55,7 @@ flowchart LR
     style M06 fill:#3d2a0a,stroke:#FF9800,stroke-width:2px,color:#fff
     style M07 fill:#3d2a0a,stroke:#FF9800,stroke-width:2px,color:#fff
     style M08 fill:#3d0a0a,stroke:#f44336,stroke-width:2px,color:#fff
+    style M09 fill:#0a1f3d,stroke:#1d8cf8,stroke-width:2px,color:#fff
 ```
 
 ---
@@ -66,6 +72,7 @@ flowchart LR
 | 06 | **Raster Data** | Rasterio, NumPy, Matplotlib | Read, clip, and analyse raster grids band by band | ⭐⭐⭐ |
 | 07 | **Tripadvisor NLP → Map** | spaCy, Folium, WordCloud | Extract place names from reviews and map them | ⭐⭐⭐ |
 | 08 | **QGIS / PyQGIS** | PyQGIS, GADM, QgsProject | Script a styled choropleth map with zero GUI interaction | ⭐⭐⭐⭐ |
+| 09 | **Flood Simulator** | Leaflet.js, HTML5 Canvas, AWS Terrain Tiles | Interactive web app simulating flood levels for Swiss cities | ⭐⭐⭐ |
 
 ---
 
@@ -225,6 +232,51 @@ Runs **headless** (no QGIS GUI needed) via the PyQGIS API. A single script downl
 
 ![QGIS](https://img.shields.io/badge/-PyQGIS-589632?style=flat-square&logo=qgis&logoColor=white)
 ![GADM](https://img.shields.io/badge/-GADM_Data-888?style=flat-square)
+
+---
+
+### 09 · Flood Simulator
+
+A client-side web application that simulates rising flood levels over Swiss cities using a freely available digital elevation model (DEM). No backend or API key required.
+
+**How it works:**
+
+The app loads **AWS Terrain Tiles** (Terrarium format) — a free, global, CORS-enabled elevation dataset with ~10 m resolution. Each tile encodes height as an RGB value:
+
+```
+elevation [m] = (R × 256 + G + B/256) − 32768
+```
+
+A custom **Leaflet `GridLayer`** decodes each tile into a `Float32Array` elevation cache. On every slider change, pixels where `elevation ≤ river_level + flood_rise` are coloured blue (depth-dependent intensity), and pixels within 0.5 m above the flood line are highlighted amber as a risk zone — all without re-fetching any tiles.
+
+**Features:**
+- 25 largest Swiss cities selectable via dropdown (all municipalities > ~26 000 inhabitants)
+- Water rise slider: 0 – 25 m above the reference river/lake level
+- Animated flood rise (▶ Animieren button)
+- Depth-dependent colouring: shallow = light blue, deep = dark blue
+- Risk zone (< 0.5 m above flood line) shown in amber
+- ESRI World Imagery aerial photo as background
+- Elevation cache per tile — slider moves are instant after first load
+
+**How to start:**
+
+```bash
+cd 09_JavaScript_Flood_Simulator
+python3 -m http.server 8080
+```
+
+Then open **http://localhost:8080** in your browser.
+In GitHub Codespaces: go to the **Ports** tab → port **8080** → click the globe icon.
+
+| City reference levels used | |
+|---|---|
+| River / lake level | Base elevation for flood calculation |
+| Slider 0 m | No flood overlay (river visible in aerial photo) |
+| Slider > 0 m | Flood simulation starts |
+
+![Leaflet](https://img.shields.io/badge/-Leaflet.js-77B829?style=flat-square&logo=leaflet&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-Vanilla_JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![AWS](https://img.shields.io/badge/-AWS_Terrain_Tiles-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
 
 ---
 
