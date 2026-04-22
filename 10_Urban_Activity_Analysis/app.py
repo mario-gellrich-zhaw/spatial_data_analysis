@@ -391,14 +391,14 @@ elif page == "4. Clustering":
     with col1:
         elbow = alt.Chart(scan).mark_line(
             point=True, color=PRIMARY, strokeWidth=3).encode(
-            x=alt.X("k:O", title="k", axis=alt.Axis(labelAngle=-45)),
+            x=alt.X("k:O", title="k", axis=alt.Axis(labelAngle=0)),
             y=alt.Y("inertia:Q", title="Inertia (lower = tighter)"),
         ).properties(height=280, title="Elbow method")
         st.altair_chart(elbow, use_container_width=True)
     with col2:
         sil = alt.Chart(scan).mark_line(
             point=True, color=ACCENT, strokeWidth=3).encode(
-            x=alt.X("k:O", axis=alt.Axis(labelAngle=-45)),
+            x=alt.X("k:O", axis=alt.Axis(labelAngle=0)),
             y=alt.Y("silhouette:Q", title="Silhouette (higher = better)"),
         ).properties(height=280, title="Silhouette score")
         st.altair_chart(sil, use_container_width=True)
