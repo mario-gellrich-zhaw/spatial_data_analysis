@@ -28,24 +28,29 @@ ACCENT  = "#F96167"   # coral
 COLORS = ["#065A82", "#F96167", "#2C5F2D", "#FFC700", "#6D2E46"]
 
 DEFAULTS = [
-    dict(name="Store A", x=2.5, y=7.5, size=1200, quality=7, years=8,  parking=True),
-    dict(name="Store B", x=7.5, y=7.5, size=2500, quality=6, years=15, parking=True),
-    dict(name="Store C", x=5.0, y=2.5, size=900,  quality=8, years=5,  parking=False),
-    dict(name="Store D", x=2.5, y=3.0, size=1800, quality=5, years=20, parking=True),
-    dict(name="Store E", x=7.5, y=3.0, size=600,  quality=9, years=3,  parking=False),
+    {"name": "Store A", "x": 2.5, "y": 7.5, "size": 1200, "quality": 7,
+     "years": 8,  "parking": True},
+    {"name": "Store B", "x": 7.5, "y": 7.5, "size": 2500, "quality": 6,
+     "years": 15, "parking": True},
+    {"name": "Store C", "x": 5.0, "y": 2.5, "size": 900,  "quality": 8,
+     "years": 5,  "parking": False},
+    {"name": "Store D", "x": 2.5, "y": 3.0, "size": 1800, "quality": 5,
+     "years": 20, "parking": True},
+    {"name": "Store E", "x": 7.5, "y": 3.0, "size": 600,  "quality": 9,
+     "years": 3,  "parking": False},
 ]
 
 x_lin = np.linspace(0, CITY_KM, GRID_N)
 y_lin = np.linspace(0, CITY_KM, GRID_N)
 XX, YY = np.meshgrid(x_lin, y_lin)
 
-MAP_LAYOUT = dict(
-    xaxis=dict(title="X (km)", range=[-0.3, CITY_KM + 0.3]),
-    yaxis=dict(title="Y (km)", range=[-0.3, CITY_KM + 0.3], scaleanchor="x"),
-    margin=dict(l=0, r=0, t=40, b=0),
-    height=470,
-    plot_bgcolor="white",
-)
+MAP_LAYOUT = {
+    "xaxis": {"title": "X (km)", "range": [-0.3, CITY_KM + 0.3]},
+    "yaxis": {"title": "Y (km)", "range": [-0.3, CITY_KM + 0.3], "scaleanchor": "x"},
+    "margin": {"l": 0, "r": 0, "t": 40, "b": 0},
+    "height": 470,
+    "plot_bgcolor": "white",
+}
 
 
 # ── Core model functions ───────────────────────────────────────────────────────
@@ -56,25 +61,27 @@ def make_population(mode: str) -> np.ndarray:
         return np.ones((GRID_N, GRID_N))
     # Four urban population clusters
     centers = [(2.5, 2.5, 1.0), (7.5, 7.5, 1.2), (5.0, 7.0, 0.8), (7.5, 2.5, 0.9)]
-    pop = sum(
+    density = sum(
         w * np.exp(-((XX - cx) ** 2 + (YY - cy) ** 2) / 2.5)
         for cx, cy, w in centers
     )
-    return pop / pop.max()
+    return density / density.max()
 
 
-def store_attractiveness(s: dict, alpha: float, beta: float, gamma: float) -> float:
+def store_attractiveness(  # pylint: disable=redefined-outer-name
+    s: dict, alpha: float, beta: float, gamma: float
+) -> float:
     """Composite attractiveness A_j for store s (scalar)."""
-    A = (s["size"] / 1000) ** alpha
-    A *= (s["quality"] / 10) ** beta
-    A *= (max(s["years"], 1) / 20) ** gamma
+    attr = (s["size"] / 1000) ** alpha
+    attr *= (s["quality"] / 10) ** beta
+    attr *= (max(s["years"], 1) / 20) ** gamma
     # Binary parking variable: exp(1)=e if parking, exp(0)=1 if not
     # (Mahajan & Jain 1977 transformation)
-    A *= np.e if s["parking"] else 1.0
-    return max(A, 1e-10)
+    attr *= np.e if s["parking"] else 1.0
+    return max(attr, 1e-10)
 
 
-def calc_mci(
+def calc_mci(  # pylint: disable=redefined-outer-name
     stores: list[dict],
     lam: float,
     alpha: float,
@@ -90,16 +97,18 @@ def calc_mci(
     n = len(stores)
     attract = np.zeros((n, GRID_N, GRID_N))
     for j, s in enumerate(stores):
-        A = store_attractiveness(s, alpha, beta, gamma)
+        attr = store_attractiveness(s, alpha, beta, gamma)
         dist = np.clip(
             np.sqrt((XX - s["x"]) ** 2 + (YY - s["y"]) ** 2), 0.05, None
         )
-        attract[j] = A / dist ** lam
+        attract[j] = attr / dist ** lam
     total = attract.sum(axis=0)
     return attract / np.where(total > 0, total, 1e-10)
 
 
-def market_shares(probs: np.ndarray, pop: np.ndarray) -> list[float]:
+def market_shares(  # pylint: disable=redefined-outer-name
+    probs: np.ndarray, pop: np.ndarray
+) -> list[float]:
     """Population-weighted market shares (%) for each store."""
     return [
         float((probs[j] * pop).sum() / pop.sum() * 100)
@@ -110,13 +119,15 @@ def market_shares(probs: np.ndarray, pop: np.ndarray) -> list[float]:
 def discrete_colorscale(colors: list[str]) -> list:
     """Build a step/discrete colorscale from a list of hex colors."""
     n = len(colors)
-    cs = []
-    for j, c in enumerate(colors):
-        cs += [[j / n, c], [(j + 1) / n, c]]
-    return cs
+    steps = []
+    for idx, c in enumerate(colors):
+        steps += [[idx / n, c], [(idx + 1) / n, c]]
+    return steps
 
 
-def add_store_markers(fig, stores: list[dict], shares: list[float] | None = None):
+def add_store_markers(  # pylint: disable=redefined-outer-name
+    fig, stores: list[dict], shares: list[float] | None = None
+):
     """Overlay square store markers with hover info."""
     for j, s in enumerate(stores):
         hover = (
@@ -133,15 +144,15 @@ def add_store_markers(fig, stores: list[dict], shares: list[float] | None = None
                 x=[s["x"]],
                 y=[s["y"]],
                 mode="markers+text",
-                marker=dict(
-                    size=16,
-                    color=COLORS[j % len(COLORS)],
-                    symbol="square",
-                    line=dict(color="white", width=2),
-                ),
+                marker={
+                    "size": 16,
+                    "color": COLORS[j % len(COLORS)],
+                    "symbol": "square",
+                    "line": {"color": "white", "width": 2},
+                },
                 text=[s["name"]],
                 textposition="top center",
-                textfont=dict(size=10, color="black"),
+                textfont={"size": 10, "color": "black"},
                 name=s["name"],
                 hovertemplate=hover + "<extra></extra>",
                 showlegend=False,
@@ -150,7 +161,7 @@ def add_store_markers(fig, stores: list[dict], shares: list[float] | None = None
     return fig
 
 
-def sample_consumers(
+def sample_consumers(  # pylint: disable=redefined-outer-name
     n: int,
     pop: np.ndarray,
     x_lin: np.ndarray,
@@ -161,7 +172,7 @@ def sample_consumers(
     flat = pop.flatten()
     flat = flat / flat.sum()
     idx = rng.choice(len(flat), size=n, p=flat)
-    rows, cols = np.unravel_index(idx, pop.shape)
+    rows, cols = np.unravel_index(idx, pop.shape)  # pylint: disable=unbalanced-tuple-unpacking
     cell_w = x_lin[1] - x_lin[0]
     cell_h = y_lin[1] - y_lin[0]
     cx = x_lin[cols] + rng.uniform(-cell_w / 2, cell_w / 2, n)
@@ -169,7 +180,7 @@ def sample_consumers(
     return np.clip(cx, 0, CITY_KM), np.clip(cy, 0, CITY_KM)
 
 
-def assign_stores_array(
+def assign_stores_array(  # pylint: disable=redefined-outer-name,too-many-arguments,too-many-positional-arguments,too-many-locals
     cx: np.ndarray,
     cy: np.ndarray,
     stores: list[dict],
@@ -183,9 +194,9 @@ def assign_stores_array(
     n_c, n_s = len(cx), len(stores)
     attract = np.zeros((n_c, n_s))
     for j, s in enumerate(stores):
-        A = store_attractiveness(s, alpha, beta, gamma)
+        attr = store_attractiveness(s, alpha, beta, gamma)
         dist = np.clip(np.sqrt((cx - s["x"]) ** 2 + (cy - s["y"]) ** 2), 0.05, None)
-        attract[:, j] = A / dist ** lam
+        attract[:, j] = attr / dist ** lam
     total = attract.sum(axis=1, keepdims=True)
     p_ij = attract / np.where(total > 0, total, 1e-10)
     return np.array([rng.choice(n_s, p=p_ij[i]) for i in range(n_c)])
@@ -274,7 +285,8 @@ followed by ease of pedestrian access (32%) and sociodemographic trade area char
     with col_form:
         st.markdown("**Choice probability:**")
         st.latex(
-            r"P_{ij} = \frac{A_j \cdot d_{ij}^{-\lambda}}{\displaystyle\sum_{k=1}^{n} A_k \cdot d_{ik}^{-\lambda}}"
+            r"P_{ij} = \frac{A_j \cdot d_{ij}^{-\lambda}}"
+            r"{\displaystyle\sum_{k=1}^{n} A_k \cdot d_{ik}^{-\lambda}}"
         )
         st.markdown("**Store attractiveness:**")
         st.latex(
@@ -356,8 +368,8 @@ with right:
     fig_bar.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
     fig_bar.update_layout(
         showlegend=False,
-        margin=dict(l=0, r=55, t=10, b=0),
-        xaxis=dict(title="Market Share (%)", range=[0, max(shares) * 1.3]),
+        margin={"l": 0, "r": 55, "t": 10, "b": 0},
+        xaxis={"title": "Market Share (%)", "range": [0, max(shares) * 1.3]},
         yaxis_title="",
     )
     st.plotly_chart(fig_bar, use_container_width=True)
@@ -411,8 +423,8 @@ with left:
                     z=pop, x=x_lin, y=y_lin,
                     showscale=False,
                     colorscale=[[0, "rgba(0,0,0,0)"], [1, "rgba(0,0,0,0)"]],
-                    line=dict(color="rgba(0,0,0,0.45)", width=1),
-                    contours=dict(showlabels=True, labelfont=dict(size=8, color="black")),
+                    line={"color": "rgba(0,0,0,0.45)", "width": 1},
+                    contours={"showlabels": True, "labelfont": {"size": 8, "color": "black"}},
                     name="Population density",
                     hoverinfo="skip",
                 )
@@ -426,7 +438,7 @@ with left:
                     x=s["x"] + 0.4 * np.cos(theta),
                     y=s["y"] + 0.4 * np.sin(theta),
                     mode="lines",
-                    line=dict(color="black", width=1.2, dash="dot"),
+                    line={"color": "black", "width": 1.2, "dash": "dot"},
                     showlegend=False,
                     hoverinfo="skip",
                 )
@@ -455,7 +467,7 @@ with left:
                 z=probs[j_sel],
                 x=x_lin, y=y_lin,
                 colorscale="Blues",
-                colorbar=dict(title="P(choose)", tickformat=".0%"),
+                colorbar={"title": "P(choose)", "tickformat": ".0%"},
                 zmin=0, zmax=1,
             )
         )
@@ -487,10 +499,10 @@ with left:
             new_yrs  = st.slider("Years operative", 1, 30, 1, key="nyrs")
             new_park = st.checkbox("Parking", True, key="npark")
 
-        new_store = dict(
-            name="New Store", x=new_x, y=new_y,
-            size=new_size, quality=new_qual, years=new_yrs, parking=new_park,
-        )
+        new_store = {
+            "name": "New Store", "x": new_x, "y": new_y,
+            "size": new_size, "quality": new_qual, "years": new_yrs, "parking": new_park,
+        }
         stores_ext   = stores + [new_store]
         probs_ext    = calc_mci(stores_ext, lam, alpha, beta, gamma)
         shares_ext   = market_shares(probs_ext, pop)
@@ -519,13 +531,13 @@ with left:
             go.Scatter(
                 x=[new_x], y=[new_y],
                 mode="markers+text",
-                marker=dict(
-                    size=20, color="#8c564b", symbol="star",
-                    line=dict(color="white", width=2),
-                ),
+                marker={
+                    "size": 20, "color": "#8c564b", "symbol": "star",
+                    "line": {"color": "white", "width": 2},
+                },
                 text=["New Store"],
                 textposition="top center",
-                textfont=dict(size=10, color="black"),
+                textfont={"size": 10, "color": "black"},
                 name="New Store",
                 hovertemplate=(
                     f"<b>New Store</b><br>Size: {new_size} m²<br>"
@@ -544,7 +556,9 @@ with left:
                 "Store":           [s["name"] for s in stores] + ["New Store"],
                 "Before (%)":      [round(shares[j], 1) for j in range(n_stores)] + ["—"],
                 "After (%)":       [round(shares_ext[j], 1) for j in range(n_stores + 1)],
-                "Change (pp)":     [round(shares_ext[j] - shares[j], 1) for j in range(n_stores)] + ["—"],
+                "Change (pp)":     (
+                    [round(shares_ext[j] - shares[j], 1) for j in range(n_stores)] + ["—"]
+                ),
                 "Est. Sales (€M)": [round(est_ext[j], 2) for j in range(n_stores + 1)],
             }
         ).set_index("Store")
@@ -559,7 +573,8 @@ with left:
     with tab4:
         st.markdown(
             "**How does distance sensitivity λ shape the competitive landscape?**  \n"
-            "For each value of λ, market shares are recomputed with all other parameters held constant."
+            "For each value of λ, market shares are recomputed "
+            "with all other parameters held constant."
         )
 
         lam_vals   = np.arange(0.5, 3.05, 0.1)
@@ -578,7 +593,7 @@ with left:
                     y=share_data[s["name"]],
                     mode="lines",
                     name=s["name"],
-                    line=dict(color=COLORS[j], width=2.5),
+                    line={"color": COLORS[j], "width": 2.5},
                 )
             )
         fig4.add_vline(
@@ -593,15 +608,15 @@ with left:
             yaxis_title="Market Share (%)",
             title="Market share vs. distance sensitivity λ",
             height=420,
-            margin=dict(l=0, r=0, t=40, b=0),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+            margin={"l": 0, "r": 0, "t": 40, "b": 0},
+            legend={"orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1},
         )
         st.plotly_chart(fig4, use_container_width=True)
 
         st.markdown(
             "**Interpretation:**  \n"
-            "- At **low λ** (≈ 0.5): distance barely matters — consumers shop at the most attractive "
-            "store regardless of proximity. Larger/better stores dominate.  \n"
+            "- At **low λ** (≈ 0.5): distance barely matters — consumers shop at "
+            "the most attractive store regardless of proximity. Larger/better stores dominate.  \n"
             "- At **high λ** (≈ 3.0): consumers strongly prefer the nearest store — stores in "
             "densely populated areas gain, remote high-quality stores lose.  \n"
             "- The paper found λ ≈ 1–2 typical for urban supermarket competition, with distance "
@@ -654,10 +669,10 @@ with left:
             fig_snap.add_trace(
                 go.Scatter(
                     x=cx, y=cy, mode="markers",
-                    marker=dict(
-                        color=colors_c, size=6, opacity=0.8,
-                        line=dict(color="white", width=0.5),
-                    ),
+                    marker={
+                        "color": colors_c, "size": 6, "opacity": 0.8,
+                        "line": {"color": "white", "width": 0.5},
+                    },
                     showlegend=False, hoverinfo="skip",
                 )
             )
@@ -698,10 +713,11 @@ with left:
                 height=290,
             )
             fig_cmp.update_layout(
-                margin=dict(l=0, r=0, t=50, b=0),
-                legend=dict(
-                    orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0,
-                ),
+                margin={"l": 0, "r": 0, "t": 50, "b": 0},
+                legend={
+                    "orientation": "h", "yanchor": "bottom", "y": 1.02,
+                    "xanchor": "left", "x": 0,
+                },
                 xaxis_title="", yaxis_title="Market Share (%)",
                 title="Theoretical vs. sampled",
             )
@@ -732,10 +748,10 @@ with left:
         def _consumer_scatter(x_pos, y_pos, sz: int = 7) -> go.Scatter:
             return go.Scatter(
                 x=x_pos, y=y_pos, mode="markers",
-                marker=dict(
-                    color=colors_a, size=sz, opacity=0.85,
-                    line=dict(color="white", width=0.5),
-                ),
+                marker={
+                    "color": colors_a, "size": sz, "opacity": 0.85,
+                    "line": {"color": "white", "width": 0.5},
+                },
                 showlegend=False, hoverinfo="skip",
             )
 
@@ -777,13 +793,13 @@ with left:
                     x=[s["x"] for s in stores],
                     y=[s["y"] for s in stores],
                     mode="markers+text",
-                    marker=dict(
-                        size=16, color=COLORS[:n_stores], symbol="square",
-                        line=dict(color="white", width=2),
-                    ),
+                    marker={
+                        "size": 16, "color": COLORS[:n_stores], "symbol": "square",
+                        "line": {"color": "white", "width": 2},
+                    },
                     text=[s["name"] for s in stores],
                     textposition="top center",
-                    textfont=dict(size=10, color="black"),
+                    textfont={"size": 10, "color": "black"},
                     showlegend=False, hoverinfo="skip",
                 ),
                 # Trace 2: consumer dots (animated)
@@ -794,34 +810,34 @@ with left:
                 **MAP_LAYOUT,
                 title=f"Shopping trips — {n_anim} consumers",
                 updatemenus=[
-                    dict(
-                        type="buttons",
-                        showactive=False,
-                        y=0, x=0.5,
-                        xanchor="center", yanchor="top",
-                        pad=dict(t=50),
-                        buttons=[
-                            dict(
-                                label="▶ Play",
-                                method="animate",
-                                args=[None, dict(
-                                    frame=dict(duration=80, redraw=True),
-                                    fromcurrent=True,
-                                    transition=dict(duration=0),
-                                    mode="immediate",
-                                )],
-                            ),
-                            dict(
-                                label="⏸ Pause",
-                                method="animate",
-                                args=[[None], dict(
-                                    frame=dict(duration=0, redraw=False),
-                                    mode="immediate",
-                                    transition=dict(duration=0),
-                                )],
-                            ),
+                    {
+                        "type": "buttons",
+                        "showactive": False,
+                        "y": 0, "x": 0.5,
+                        "xanchor": "center", "yanchor": "top",
+                        "pad": {"t": 50},
+                        "buttons": [
+                            {
+                                "label": "▶ Play",
+                                "method": "animate",
+                                "args": [None, {
+                                    "frame": {"duration": 80, "redraw": True},
+                                    "fromcurrent": True,
+                                    "transition": {"duration": 0},
+                                    "mode": "immediate",
+                                }],
+                            },
+                            {
+                                "label": "⏸ Pause",
+                                "method": "animate",
+                                "args": [[None], {
+                                    "frame": {"duration": 0, "redraw": False},
+                                    "mode": "immediate",
+                                    "transition": {"duration": 0},
+                                }],
+                            },
                         ],
-                    )
+                    }
                 ],
             ),
         )
