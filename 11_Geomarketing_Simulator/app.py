@@ -379,8 +379,9 @@ with right:
 
 # ── Left column: map tabs ──────────────────────────────────────────────────────
 with left:
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(
-        ["🗺 Trade Areas", "📊 Choice Probability", "🆕 New Store Scenario", "📈 Sensitivity Analysis", "👥 Consumer Simulation"]
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
+        ["🗺 Trade Areas", "📊 Choice Probability", "🆕 New Store Scenario",
+         "📈 Sensitivity Analysis", "👥 Consumer Simulation", "📚 Exercises"]
     )
 
     # ── Tab 1: Trade areas ─────────────────────────────────────────────────────
@@ -829,4 +830,141 @@ with left:
             "Dot colour = assigned store (matching trade area colours). "
             "Consumers depart from home, visit their chosen store, then return. "
             "The spatial pull of nearby attractive stores is visible in the flow pattern."
+        )
+
+    # ── Tab 6: Exercises ───────────────────────────────────────────────────────
+    with tab6:
+        st.title("📚 Student Exercises")
+        st.info(
+            "These exercises are **voluntary** and designed to deepen your understanding "
+            "of the MCI model at your own pace. They are not graded unless your instructor "
+            "specifies otherwise."
+        )
+
+        st.markdown("""
+### Level 1 — Reproduce
+
+Work entirely within the app — no coding required.
+
+1. Open the **Sensitivity Analysis** tab. Move λ from 0.5 to 3.0 in the sidebar.
+   Which store gains the most market share at high λ? Which loses the most?
+   Look at each store's position relative to the population clusters and explain why.
+
+2. Set **α (store size weight)** to 0 in the sidebar. How do the market shares change?
+   What does α = 0 mean conceptually — which variable are you effectively switching off?
+
+3. Switch the population distribution from *Urban clusters* to *Uniform*.
+   Which stores gain or lose market share? Explain in terms of the MCI formula.
+
+4. Open the **Consumer Simulation** tab. Set *Consumers (snapshot)* to 50 and click
+   **Resample** five times. Write down the RMSE each time. Repeat with N = 500.
+   What pattern do you observe? What statistical principle does this illustrate?
+
+5. Open the **New Store Scenario** tab. Place a new store at X = 5, Y = 5 (city centre)
+   with default attributes. Which existing store loses the most market share?
+   Does the answer change if you give the new store a larger floor area?
+
+---
+
+### Level 2 — Explain
+
+Interpret results and connect them to the MCI theory.
+
+6. Store B has the largest floor area (2 500 m²). Does it always have the largest
+   market share? Find a combination of λ, α, and β where Store A dominates despite
+   being smaller. Explain which part of the MCI formula makes this possible.
+
+7. In the **Consumer Simulation**, some consumers located inside a store's dominant
+   trade area (coloured background) are assigned to a *different* store.
+   How is this possible given the MCI formula? Why is it realistic?
+
+8. The **Attractiveness Scores A_j** are shown in the right panel. Can a store with a
+   *lower* A_j still achieve a *higher* market share than one with a higher A_j?
+   Set up a concrete two-store example and identify the condition under which this happens.
+
+9. The paper reports that distance has **100 % normalised importance** — higher than any
+   other variable. Use the **Sensitivity Analysis** tab to illustrate this:
+   at λ = 0.5 vs. λ = 2.5, what is the range (max − min) of market shares across the
+   five stores? What is the strategic implication for a retailer choosing between a
+   central and a peripheral location?
+
+---
+
+### Level 3 — Extend
+
+Modify `app.py` to add new features.
+
+10. **Add a "Number of checkouts" attribute** to each store (the paper found 20 %
+    normalised importance). Add a slider (range 4–40, default 10) in the store
+    configuration and extend the attractiveness formula:
+
+    ```
+    A_j = ... × (checkouts_j / 20) ** δ
+    ```
+
+    Add a sensitivity slider δ in the sidebar. How does it affect the ranking of stores?
+
+11. **Dynamic trade area boundary.** The 400 m circle is a fixed rule of thumb.
+    Replace it with the isoline where P_ij = 0.5: the location where a consumer is
+    equally likely to choose store j or any other store. Use `go.Contour` on the
+    `probs[j]` array. Compare how the 50 %-boundary shape varies across stores with
+    different attractiveness levels.
+
+12. **Trip distance histogram.** In the **Consumer Simulation**, add a histogram below
+    the map showing the Euclidean distance each consumer travels to reach their assigned
+    store. Does the shape of the distribution change when you increase λ?
+    What distribution would you expect in the limiting case λ → ∞?
+
+13. **Spatial non-stationarity (Equation 5–6 of the paper).** The extended MCI model
+    makes the distance parameter consumer-specific:
+
+    ```
+    λ_i = w + q · R_i,   where R_i = max_distance_i / min_distance_i
+    ```
+
+    Implement this in `assign_stores_array`: for each consumer compute R_i across all
+    stores, then use λ_i instead of the global λ. Add sliders w and q to the sidebar.
+    Which consumers are most affected by this adjustment?
+
+---
+
+### Level 4 — Connect to the paper
+
+14. **Logarithmic linearisation (Equation 2).** The paper transforms the MCI model
+    into a linear regression by taking logs. Starting from:
+
+    ```
+    P_ij = A_j · d_ij^{-λ} / Σ_k ( A_k · d_ik^{-λ} )
+    ```
+
+    derive:
+
+    ```
+    log( P_ij / P̄_i ) = Σ_k λ_k · log( A_kj / Ā_k ) + λ · log( d_ij / d̄_i )
+    ```
+
+    where bars denote geometric means across stores. Why does this transformation
+    allow ordinary least squares (OLS) to estimate the sensitivity parameters?
+    What assumption does it impose on the error term?
+
+15. **Calibration accuracy (Table 2 of the paper).** The paper achieves R² = 84–88 %.
+    In our simulation "truth" is the MCI model itself, so a perfect calibration gives
+    R² = 1. Simulate measurement error by adding Gaussian noise to the theoretical
+    market shares, fit an OLS regression (use `sklearn.linear_model.LinearRegression`),
+    and compute R². How large does the standard deviation of the noise need to be before
+    R² drops below 84 %? What does this tell you about data quality requirements?
+
+16. **Independence of irrelevant alternatives (IIA).** The MCI model assumes IIA:
+    adding a new store reduces every existing store's share *proportionally* to its
+    current share. Verify this in the **New Store Scenario** tab: record the market
+    shares before and after adding a new store. For each existing store, compute
+    `after / before`. Are all ratios equal? If not, explain why the continuous-grid
+    approximation introduces small deviations from perfect IIA.
+""")
+
+        st.divider()
+        st.caption(
+            "Source: Baviera-Puig, Buitrago-Vera & Escribá-Pérez (2016). "
+            "Geomarketing Models in Supermarket Location Strategies. "
+            "Journal of Business Economics and Management, 17(6), 1205–1221."
         )
