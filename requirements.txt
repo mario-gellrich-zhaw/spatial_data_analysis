@@ -21,3 +21,4 @@ python-pptx
 streamlit>=1.30
 altair>=5.0
 pydeck>=0.8
+plotly=6.7.0
