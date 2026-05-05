@@ -1,0 +1,974 @@
+{
+  "117": {
+    "income": 72.1,
+    "popDens": 506.1,
+    "frgPct": 17.1,
+    "empRate": 62.1
+  },
+  "131": {
+    "income": 86.1,
+    "popDens": 2438.1,
+    "frgPct": 37.8,
+    "empRate": 39.6
+  },
+  "3": {
+    "income": 88.9,
+    "popDens": 749.9,
+    "frgPct": 16.6,
+    "empRate": 18.2
+  },
+  "154": {
+    "income": 174.4,
+    "popDens": 1178.3,
+    "frgPct": 26.5,
+    "empRate": 44.0
+  },
+  "135": {
+    "income": 166.5,
+    "popDens": 3458.5,
+    "frgPct": 32.9,
+    "empRate": 46.3
+  },
+  "196": {
+    "income": 78.7,
+    "popDens": 513.6,
+    "frgPct": 17.2,
+    "empRate": 34.9
+  },
+  "121": {
+    "income": 68.4,
+    "popDens": 1486.6,
+    "frgPct": 26.0,
+    "empRate": 56.7
+  },
+  "241": {
+    "income": 110.7,
+    "popDens": 318.5,
+    "frgPct": 20.0,
+    "empRate": 20.5
+  },
+  "14": {
+    "income": 117.8,
+    "popDens": 1389.9,
+    "frgPct": 17.1,
+    "empRate": 24.8
+  },
+  "160": {
+    "income": 184.4,
+    "popDens": 1001.1,
+    "frgPct": 24.8,
+    "empRate": 64.6
+  },
+  "13": {
+    "income": 97.8,
+    "popDens": 312.4,
+    "frgPct": 22.3,
+    "empRate": 20.6
+  },
+  "161": {
+    "income": 164.8,
+    "popDens": 1664.6,
+    "frgPct": 26.1,
+    "empRate": 44.1
+  },
+  "119": {
+    "income": 80.3,
+    "popDens": 379.3,
+    "frgPct": 14.6,
+    "empRate": 40.5
+  },
+  "195": {
+    "income": 113.1,
+    "popDens": 708.7,
+    "frgPct": 21.5,
+    "empRate": 21.1
+  },
+  "242": {
+    "income": 86.3,
+    "popDens": 588.8,
+    "frgPct": 24.9,
+    "empRate": 38.6
+  },
+  "111": {
+    "income": 73.6,
+    "popDens": 227.7,
+    "frgPct": 10.2,
+    "empRate": 32.6
+  },
+  "248": {
+    "income": 169.1,
+    "popDens": 1065.8,
+    "frgPct": 18.9,
+    "empRate": 23.0
+  },
+  "194": {
+    "income": 85.5,
+    "popDens": 2372.2,
+    "frgPct": 20.2,
+    "empRate": 30.9
+  },
+  "114": {
+    "income": 61.3,
+    "popDens": 83.2,
+    "frgPct": 14.6,
+    "empRate": 26.6
+  },
+  "193": {
+    "income": 90.6,
+    "popDens": 1361.9,
+    "frgPct": 24.2,
+    "empRate": 33.9
+  },
+  "198": {
+    "income": 78.6,
+    "popDens": 1228.7,
+    "frgPct": 23.0,
+    "empRate": 49.2
+  },
+  "173": {
+    "income": 77.5,
+    "popDens": 282.9,
+    "frgPct": 7.7,
+    "empRate": 21.4
+  },
+  "197": {
+    "income": 78.0,
+    "popDens": 1973.3,
+    "frgPct": 27.1,
+    "empRate": 51.2
+  },
+  "250": {
+    "income": 76.0,
+    "popDens": 1316.8,
+    "frgPct": 24.9,
+    "empRate": 64.1
+  },
+  "297": {
+    "income": 65.4,
+    "popDens": 165.0,
+    "frgPct": 15.5,
+    "empRate": 39.7
+  },
+  "177": {
+    "income": 77.0,
+    "popDens": 623.5,
+    "frgPct": 19.1,
+    "empRate": 48.5
+  },
+  "172": {
+    "income": 79.0,
+    "popDens": 684.8,
+    "frgPct": 18.2,
+    "empRate": 65.9
+  },
+  "247": {
+    "income": 64.3,
+    "popDens": 2851.4,
+    "frgPct": 46.1,
+    "empRate": 100.8
+  },
+  "24": {
+    "income": 81.6,
+    "popDens": 95.9,
+    "frgPct": 7.3,
+    "empRate": 20.4
+  },
+  "225": {
+    "income": 77.1,
+    "popDens": 456.6,
+    "frgPct": 11.8,
+    "empRate": 20.1
+  },
+  "102": {
+    "income": 71.2,
+    "popDens": 198.6,
+    "frgPct": 26.1,
+    "empRate": 15.2
+  },
+  "31": {
+    "income": 78.9,
+    "popDens": 737.3,
+    "frgPct": 9.0,
+    "empRate": 28.2
+  },
+  "23": {
+    "income": 76.7,
+    "popDens": 82.3,
+    "frgPct": 8.8,
+    "empRate": 23.7
+  },
+  "218": {
+    "income": 77.3,
+    "popDens": 179.5,
+    "frgPct": 10.4,
+    "empRate": 65.9
+  },
+  "216": {
+    "income": 82.0,
+    "popDens": 238.2,
+    "frgPct": 8.0,
+    "empRate": 22.7
+  },
+  "58": {
+    "income": 72.1,
+    "popDens": 424.1,
+    "frgPct": 24.5,
+    "empRate": 21.2
+  },
+  "214": {
+    "income": 77.4,
+    "popDens": 130.4,
+    "frgPct": 7.8,
+    "empRate": 25.5
+  },
+  "32": {
+    "income": 81.4,
+    "popDens": 131.8,
+    "frgPct": 8.2,
+    "empRate": 30.7
+  },
+  "43": {
+    "income": 86.0,
+    "popDens": 118.8,
+    "frgPct": 9.5,
+    "empRate": 27.1
+  },
+  "26": {
+    "income": 82.3,
+    "popDens": 118.3,
+    "frgPct": 9.9,
+    "empRate": 19.6
+  },
+  "55": {
+    "income": 86.1,
+    "popDens": 589.3,
+    "frgPct": 24.1,
+    "empRate": 28.8
+  },
+  "211": {
+    "income": 71.1,
+    "popDens": 90.6,
+    "frgPct": 8.6,
+    "empRate": 20.6
+  },
+  "39": {
+    "income": 75.5,
+    "popDens": 145.7,
+    "frgPct": 9.6,
+    "empRate": 27.3
+  },
+  "28": {
+    "income": 74.9,
+    "popDens": 139.6,
+    "frgPct": 15.4,
+    "empRate": 57.0
+  },
+  "21": {
+    "income": 68.9,
+    "popDens": 106.1,
+    "frgPct": 10.6,
+    "empRate": 21.3
+  },
+  "61": {
+    "income": 84.0,
+    "popDens": 215.3,
+    "frgPct": 11.6,
+    "empRate": 33.2
+  },
+  "30": {
+    "income": 83.3,
+    "popDens": 333.4,
+    "frgPct": 13.4,
+    "empRate": 69.0
+  },
+  "70": {
+    "income": 72.5,
+    "popDens": 142.2,
+    "frgPct": 9.6,
+    "empRate": 13.1
+  },
+  "71": {
+    "income": 91.5,
+    "popDens": 164.7,
+    "frgPct": 12.4,
+    "empRate": 36.8
+  },
+  "33": {
+    "income": 73.8,
+    "popDens": 201.6,
+    "frgPct": 12.2,
+    "empRate": 52.2
+  },
+  "67": {
+    "income": 77.0,
+    "popDens": 436.4,
+    "frgPct": 22.2,
+    "empRate": 29.2
+  },
+  "37": {
+    "income": 69.6,
+    "popDens": 127.4,
+    "frgPct": 11.8,
+    "empRate": 25.5
+  },
+  "41": {
+    "income": 68.8,
+    "popDens": 105.0,
+    "frgPct": 5.0,
+    "empRate": 25.3
+  },
+  "35": {
+    "income": 73.8,
+    "popDens": 135.7,
+    "frgPct": 11.4,
+    "empRate": 60.7
+  },
+  "38": {
+    "income": 69.8,
+    "popDens": 147.4,
+    "frgPct": 19.7,
+    "empRate": 52.7
+  },
+  "40": {
+    "income": 71.9,
+    "popDens": 111.0,
+    "frgPct": 8.2,
+    "empRate": 29.1
+  },
+  "22": {
+    "income": 78.5,
+    "popDens": 149.3,
+    "frgPct": 12.8,
+    "empRate": 29.5
+  },
+  "25": {
+    "income": 80.1,
+    "popDens": 709.6,
+    "frgPct": 13.3,
+    "empRate": 23.7
+  },
+  "34": {
+    "income": 93.6,
+    "popDens": 280.4,
+    "frgPct": 13.8,
+    "empRate": 26.8
+  },
+  "191": {
+    "income": 77.7,
+    "popDens": 2151.5,
+    "frgPct": 35.9,
+    "empRate": 68.6
+  },
+  "199": {
+    "income": 80.6,
+    "popDens": 1327.6,
+    "frgPct": 24.6,
+    "empRate": 60.0
+  },
+  "249": {
+    "income": 94.2,
+    "popDens": 1177.8,
+    "frgPct": 25.8,
+    "empRate": 25.4
+  },
+  "245": {
+    "income": 77.9,
+    "popDens": 3134.0,
+    "frgPct": 34.0,
+    "empRate": 17.4
+  },
+  "243": {
+    "income": 64.7,
+    "popDens": 2970.7,
+    "frgPct": 46.2,
+    "empRate": 68.2
+  },
+  "178": {
+    "income": 86.1,
+    "popDens": 308.7,
+    "frgPct": 13.3,
+    "empRate": 27.5
+  },
+  "244": {
+    "income": 82.3,
+    "popDens": 2556.5,
+    "frgPct": 26.8,
+    "empRate": 101.9
+  },
+  "200": {
+    "income": 83.7,
+    "popDens": 1005.9,
+    "frgPct": 27.3,
+    "empRate": 73.5
+  },
+  "251": {
+    "income": 80.1,
+    "popDens": 894.6,
+    "frgPct": 29.1,
+    "empRate": 45.2
+  },
+  "181": {
+    "income": 63.2,
+    "popDens": 215.1,
+    "frgPct": 14.5,
+    "empRate": 31.1
+  },
+  "261": {
+    "income": 82.9,
+    "popDens": 4779.0,
+    "frgPct": 32.5,
+    "empRate": 116.9
+  },
+  "69": {
+    "income": 85.6,
+    "popDens": 2623.2,
+    "frgPct": 31.0,
+    "empRate": 120.7
+  },
+  "246": {
+    "income": 90.1,
+    "popDens": 907.9,
+    "frgPct": 18.1,
+    "empRate": 11.7
+  },
+  "54": {
+    "income": 79.9,
+    "popDens": 1846.4,
+    "frgPct": 25.8,
+    "empRate": 74.0
+  },
+  "66": {
+    "income": 71.5,
+    "popDens": 3759.2,
+    "frgPct": 44.9,
+    "empRate": 91.5
+  },
+  "182": {
+    "income": 72.5,
+    "popDens": 93.3,
+    "frgPct": 7.5,
+    "empRate": 24.7
+  },
+  "84": {
+    "income": 74.1,
+    "popDens": 926.2,
+    "frgPct": 29.4,
+    "empRate": 65.9
+  },
+  "87": {
+    "income": 87.3,
+    "popDens": 598.7,
+    "frgPct": 15.9,
+    "empRate": 13.6
+  },
+  "85": {
+    "income": 85.6,
+    "popDens": 648.4,
+    "frgPct": 26.8,
+    "empRate": 23.3
+  },
+  "180": {
+    "income": 84.2,
+    "popDens": 262.6,
+    "frgPct": 10.4,
+    "empRate": 26.3
+  },
+  "96": {
+    "income": 72.3,
+    "popDens": 1268.1,
+    "frgPct": 35.6,
+    "empRate": 60.0
+  },
+  "52": {
+    "income": 79.7,
+    "popDens": 1309.4,
+    "frgPct": 24.9,
+    "empRate": 38.9
+  },
+  "296": {
+    "income": 77.9,
+    "popDens": 526.7,
+    "frgPct": 27.4,
+    "empRate": 40.1
+  },
+  "228": {
+    "income": 63.3,
+    "popDens": 193.6,
+    "frgPct": 20.5,
+    "empRate": 33.4
+  },
+  "83": {
+    "income": 76.7,
+    "popDens": 1124.1,
+    "frgPct": 26.0,
+    "empRate": 35.4
+  },
+  "97": {
+    "income": 76.0,
+    "popDens": 663.4,
+    "frgPct": 29.8,
+    "empRate": 76.2
+  },
+  "176": {
+    "income": 83.6,
+    "popDens": 467.5,
+    "frgPct": 20.8,
+    "empRate": 50.0
+  },
+  "231": {
+    "income": 65.6,
+    "popDens": 485.7,
+    "frgPct": 22.4,
+    "empRate": 23.4
+  },
+  "64": {
+    "income": 99.0,
+    "popDens": 558.0,
+    "frgPct": 16.8,
+    "empRate": 18.4
+  },
+  "62": {
+    "income": 71.0,
+    "popDens": 1044.6,
+    "frgPct": 33.4,
+    "empRate": 185.8
+  },
+  "94": {
+    "income": 81.3,
+    "popDens": 417.1,
+    "frgPct": 23.1,
+    "empRate": 80.0
+  },
+  "82": {
+    "income": 112.7,
+    "popDens": 361.6,
+    "frgPct": 11.6,
+    "empRate": 22.2
+  },
+  "95": {
+    "income": 90.4,
+    "popDens": 197.9,
+    "frgPct": 16.2,
+    "empRate": 55.0
+  },
+  "86": {
+    "income": 75.5,
+    "popDens": 1016.4,
+    "frgPct": 31.8,
+    "empRate": 73.2
+  },
+  "213": {
+    "income": 98.6,
+    "popDens": 313.2,
+    "frgPct": 7.5,
+    "empRate": 18.8
+  },
+  "226": {
+    "income": 73.8,
+    "popDens": 88.0,
+    "frgPct": 8.0,
+    "empRate": 19.4
+  },
+  "90": {
+    "income": 71.8,
+    "popDens": 827.0,
+    "frgPct": 25.8,
+    "empRate": 26.8
+  },
+  "63": {
+    "income": 93.5,
+    "popDens": 466.6,
+    "frgPct": 19.1,
+    "empRate": 16.8
+  },
+  "92": {
+    "income": 64.5,
+    "popDens": 876.1,
+    "frgPct": 37.2,
+    "empRate": 24.2
+  },
+  "89": {
+    "income": 71.8,
+    "popDens": 1386.9,
+    "frgPct": 26.1,
+    "empRate": 28.0
+  },
+  "65": {
+    "income": 79.7,
+    "popDens": 109.3,
+    "frgPct": 14.2,
+    "empRate": 20.2
+  },
+  "72": {
+    "income": 110.2,
+    "popDens": 559.2,
+    "frgPct": 15.0,
+    "empRate": 21.6
+  },
+  "51": {
+    "income": 78.6,
+    "popDens": 969.8,
+    "frgPct": 24.8,
+    "empRate": 44.2
+  },
+  "294": {
+    "income": 73.1,
+    "popDens": 202.6,
+    "frgPct": 18.0,
+    "empRate": 31.7
+  },
+  "101": {
+    "income": 76.3,
+    "popDens": 384.3,
+    "frgPct": 27.1,
+    "empRate": 22.8
+  },
+  "60": {
+    "income": 66.3,
+    "popDens": 599.6,
+    "frgPct": 33.9,
+    "empRate": 44.1
+  },
+  "224": {
+    "income": 69.5,
+    "popDens": 781.6,
+    "frgPct": 24.8,
+    "empRate": 35.9
+  },
+  "219": {
+    "income": 77.0,
+    "popDens": 451.9,
+    "frgPct": 17.3,
+    "empRate": 28.8
+  },
+  "99": {
+    "income": 82.1,
+    "popDens": 343.4,
+    "frgPct": 15.4,
+    "empRate": 24.5
+  },
+  "98": {
+    "income": 73.0,
+    "popDens": 133.5,
+    "frgPct": 9.9,
+    "empRate": 16.6
+  },
+  "88": {
+    "income": 111.4,
+    "popDens": 525.7,
+    "frgPct": 13.3,
+    "empRate": 20.2
+  },
+  "91": {
+    "income": 82.2,
+    "popDens": 448.6,
+    "frgPct": 17.1,
+    "empRate": 27.4
+  },
+  "56": {
+    "income": 72.6,
+    "popDens": 741.8,
+    "frgPct": 28.0,
+    "empRate": 38.1
+  },
+  "93": {
+    "income": 85.1,
+    "popDens": 362.3,
+    "frgPct": 20.3,
+    "empRate": 13.1
+  },
+  "220": {
+    "income": 66.7,
+    "popDens": 133.5,
+    "frgPct": 11.9,
+    "empRate": 18.1
+  },
+  "215": {
+    "income": 93.0,
+    "popDens": 269.4,
+    "frgPct": 8.2,
+    "empRate": 19.3
+  },
+  "59": {
+    "income": 79.8,
+    "popDens": 321.2,
+    "frgPct": 13.8,
+    "empRate": 19.7
+  },
+  "81": {
+    "income": 73.4,
+    "popDens": 64.8,
+    "frgPct": 13.3,
+    "empRate": 45.3
+  },
+  "68": {
+    "income": 67.3,
+    "popDens": 649.8,
+    "frgPct": 28.1,
+    "empRate": 16.0
+  },
+  "227": {
+    "income": 85.6,
+    "popDens": 984.1,
+    "frgPct": 13.3,
+    "empRate": 35.5
+  },
+  "230": {
+    "income": 70.1,
+    "popDens": 1662.6,
+    "frgPct": 24.5,
+    "empRate": 64.8
+  },
+  "298": {
+    "income": 82.6,
+    "popDens": 344.0,
+    "frgPct": 8.9,
+    "empRate": 23.9
+  },
+  "100": {
+    "income": 73.9,
+    "popDens": 177.9,
+    "frgPct": 14.1,
+    "empRate": 21.7
+  },
+  "53": {
+    "income": 74.8,
+    "popDens": 1328.3,
+    "frgPct": 28.0,
+    "empRate": 51.3
+  },
+  "57": {
+    "income": 75.7,
+    "popDens": 284.4,
+    "frgPct": 14.8,
+    "empRate": 28.9
+  },
+  "223": {
+    "income": 84.7,
+    "popDens": 379.4,
+    "frgPct": 11.8,
+    "empRate": 29.0
+  },
+  "221": {
+    "income": 101.6,
+    "popDens": 537.1,
+    "frgPct": 9.1,
+    "empRate": 22.2
+  },
+  "138": {
+    "income": 88.0,
+    "popDens": 1810.4,
+    "frgPct": 19.5,
+    "empRate": 31.5
+  },
+  "6": {
+    "income": 88.0,
+    "popDens": 154.2,
+    "frgPct": 17.5,
+    "empRate": 26.1
+  },
+  "7": {
+    "income": 79.5,
+    "popDens": 367.5,
+    "frgPct": 18.3,
+    "empRate": 23.8
+  },
+  "8": {
+    "income": 75.1,
+    "popDens": 137.5,
+    "frgPct": 12.9,
+    "empRate": 27.1
+  },
+  "293": {
+    "income": 107.4,
+    "popDens": 690.9,
+    "frgPct": 22.2,
+    "empRate": 39.6
+  },
+  "12": {
+    "income": 88.4,
+    "popDens": 173.4,
+    "frgPct": 10.7,
+    "empRate": 22.1
+  },
+  "9": {
+    "income": 87.0,
+    "popDens": 399.1,
+    "frgPct": 14.8,
+    "empRate": 32.3
+  },
+  "158": {
+    "income": 99.1,
+    "popDens": 1713.4,
+    "frgPct": 19.3,
+    "empRate": 42.1
+  },
+  "295": {
+    "income": 105.1,
+    "popDens": 745.8,
+    "frgPct": 29.5,
+    "empRate": 44.8
+  },
+  "153": {
+    "income": 79.5,
+    "popDens": 720.4,
+    "frgPct": 20.7,
+    "empRate": 33.2
+  },
+  "4": {
+    "income": 86.3,
+    "popDens": 275.8,
+    "frgPct": 16.0,
+    "empRate": 27.2
+  },
+  "155": {
+    "income": 100.5,
+    "popDens": 2381.3,
+    "frgPct": 20.4,
+    "empRate": 43.9
+  },
+  "118": {
+    "income": 65.4,
+    "popDens": 1221.3,
+    "frgPct": 24.8,
+    "empRate": 41.1
+  },
+  "10": {
+    "income": 75.1,
+    "popDens": 758.8,
+    "frgPct": 21.5,
+    "empRate": 21.9
+  },
+  "137": {
+    "income": 113.7,
+    "popDens": 1792.8,
+    "frgPct": 21.3,
+    "empRate": 56.5
+  },
+  "159": {
+    "income": 119.0,
+    "popDens": 1792.2,
+    "frgPct": 21.3,
+    "empRate": 23.9
+  },
+  "157": {
+    "income": 68.4,
+    "popDens": 792.1,
+    "frgPct": 29.3,
+    "empRate": 47.6
+  },
+  "1": {
+    "income": 105.0,
+    "popDens": 250.4,
+    "frgPct": 14.2,
+    "empRate": 22.3
+  },
+  "11": {
+    "income": 81.5,
+    "popDens": 515.5,
+    "frgPct": 13.1,
+    "empRate": 26.4
+  },
+  "113": {
+    "income": 71.3,
+    "popDens": 744.2,
+    "frgPct": 18.4,
+    "empRate": 24.1
+  },
+  "112": {
+    "income": 79.4,
+    "popDens": 632.6,
+    "frgPct": 11.4,
+    "empRate": 49.3
+  },
+  "116": {
+    "income": 80.7,
+    "popDens": 414.7,
+    "frgPct": 13.9,
+    "empRate": 49.2
+  },
+  "2": {
+    "income": 71.1,
+    "popDens": 1161.8,
+    "frgPct": 28.7,
+    "empRate": 56.2
+  },
+  "136": {
+    "income": 92.7,
+    "popDens": 891.2,
+    "frgPct": 27.8,
+    "empRate": 19.8
+  },
+  "156": {
+    "income": 130.7,
+    "popDens": 1200.6,
+    "frgPct": 23.2,
+    "empRate": 41.2
+  },
+  "141": {
+    "income": 106.8,
+    "popDens": 3298.0,
+    "frgPct": 29.0,
+    "empRate": 36.3
+  },
+  "152": {
+    "income": 174.2,
+    "popDens": 718.6,
+    "frgPct": 22.4,
+    "empRate": 21.9
+  },
+  "5": {
+    "income": 90.8,
+    "popDens": 578.6,
+    "frgPct": 16.4,
+    "empRate": 39.1
+  },
+  "151": {
+    "income": 185.5,
+    "popDens": 1934.9,
+    "frgPct": 23.0,
+    "empRate": 34.6
+  },
+  "139": {
+    "income": 162.8,
+    "popDens": 2079.2,
+    "frgPct": 33.7,
+    "empRate": 50.1
+  },
+  "120": {
+    "income": 62.0,
+    "popDens": 399.5,
+    "frgPct": 26.6,
+    "empRate": 34.3
+  },
+  "192": {
+    "income": 95.1,
+    "popDens": 605.4,
+    "frgPct": 19.9,
+    "empRate": 28.1
+  },
+  "115": {
+    "income": 79.2,
+    "popDens": 563.0,
+    "frgPct": 14.6,
+    "empRate": 26.0
+  },
+  "29": {
+    "income": 87.0,
+    "popDens": 612.9,
+    "frgPct": 14.2,
+    "empRate": 41.1
+  },
+  "27": {
+    "income": 71.7,
+    "popDens": 1457.3,
+    "frgPct": 22.5,
+    "empRate": 32.2
+  },
+  "292": {
+    "income": 70.8,
+    "popDens": 116.4,
+    "frgPct": 9.0,
+    "empRate": 44.7
+  }
+}

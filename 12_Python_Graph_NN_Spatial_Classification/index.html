@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graph-NN Geodemographic Lab</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #0f172a; }
+    body { display: flex; flex-direction: column; }
+
+    /* ── top bar ── */
+    #topbar { height: 60px; flex-shrink: 0; display: flex; align-items: center; gap: 12px;
+      padding: 0 18px; background: #fff; border-bottom: 1px solid #e2e8f0; z-index: 10; }
+    #refbar { flex-shrink: 0; display: none; align-items: center; gap: 8px; padding: 0 18px;
+      height: 38px; background: #eff6ff; border-bottom: 1px solid #bfdbfe;
+      font-size: 11px; color: #1e40af; }
+    #stats { display: flex; gap: 16px; }
+    .stat { text-align: center; }
+    .stat-n { font-weight: 700; font-size: 18px; color: #0f172a; line-height: 1; }
+    .stat-l { font-size: 13px; color: #94a3b8; }
+    #method-badge { display: none; align-items: center; gap: 5px;
+      padding: 4px 10px; border-radius: 20px; }
+    #view-tabs { display: flex; background: #f1f5f9; border-radius: 8px; padding: 3px; gap: 2px; }
+    #view-tabs button { padding: 7px 18px; border-radius: 6px; border: none; cursor: pointer;
+      font-size: 16px; font-weight: 600; transition: all 0.15s; background: transparent; color: #64748b; }
+    #view-tabs button.active { background: #fff; color: #0f172a; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+    #ref-btn { background: none; border: 1px solid #e2e8f0; cursor: pointer;
+      padding: 7px 14px; border-radius: 6px; font-size: 15px; color: #64748b; }
+
+    /* ── main layout ── */
+    #main { flex: 1; display: flex; overflow: hidden; min-height: 0; }
+    #canvas-wrap { flex: 1; position: relative; overflow: hidden; background: #f8fafc; }
+    #map-svg, #graph-svg { position: absolute; top: 0; left: 0; display: block; }
+    #map-hint { position: absolute; bottom: 12px; left: 14px; font-size: 10px;
+      color: #94a3b8; pointer-events: none; }
+
+    /* ── tooltip ── */
+    #tooltip { position: absolute; display: none; pointer-events: none; width: 205px;
+      background: rgba(255,255,255,.97); border: 1px solid #e2e8f0; border-radius: 10px;
+      padding: 10px 12px; box-shadow: 0 4px 20px rgba(0,0,0,.12); z-index: 20; }
+
+    /* ── sidebar ── */
+    #sidebar { width: 290px; flex-shrink: 0; display: flex; flex-direction: column;
+      background: #fff; border-left: 1px solid #e2e8f0; overflow: hidden; }
+    #controls-section { flex: 0 1 auto; padding: 14px 16px; border-bottom: 1px solid #f1f5f9;
+      overflow-y: auto; }
+    #panel { flex: 1; overflow-y: auto; min-height: 0; }
+
+    /* ── controls ── */
+    .section-title { font-size: 14px; font-weight: 700; color: #3b82f6;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .slider-row { margin-bottom: 10px; }
+    .slider-row .row-hdr { display: flex; justify-content: space-between;
+      font-size: 16px; margin-bottom: 3px; }
+    .slider-row .row-hdr span { color: #374151; font-weight: 500; }
+    .slider-row .row-hdr b { color: #1d4ed8; font-weight: 700; }
+    .slider-row input[type=range] { width: 100%; accent-color: #3b82f6; cursor: pointer; }
+    .btn-row { display: flex; gap: 6px; margin-top: 10px; }
+    .btn-primary { flex: 1; padding: 11px 0; border-radius: 8px; border: none; cursor: pointer;
+      background: #3b82f6; color: #fff; font-weight: 700; font-size: 16px; }
+    .btn-primary:hover { background: #2563eb; }
+    .btn-primary:disabled { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; }
+    .btn-secondary { flex: 1; padding: 11px 0; border-radius: 8px;
+      border: 1px solid #3b82f6; cursor: pointer; background: #eff6ff;
+      color: #1d4ed8; font-weight: 700; font-size: 16px; display: none; }
+    #py-hint { margin-top: 6px; font-size: 14px; color: #94a3b8; text-align: center; line-height: 1.6; }
+    #py-hint code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; color: #475569; }
+
+    /* ── cluster cards ── */
+    .cluster-card { margin: 0 12px 10px; border-radius: 10px; padding: 10px 12px; border: 1px solid; }
+    .feat-bar { margin-bottom: 5px; }
+    .feat-bar-hdr { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 2px; }
+    .feat-bar-hdr span { color: #64748b; }
+    .feat-bar-hdr b { color: #0f172a; }
+    .feat-bar-track { height: 5px; border-radius: 3px; background: #e2e8f0; overflow: hidden; }
+    .feat-bar-fill { height: 100%; border-radius: 3px; transition: width .4s ease; }
+    .card-places { margin-top: 6px; font-size: 14px; color: #64748b; line-height: 1.7; }
+
+    /* ── detail panel ── */
+    .detail-row { display: flex; justify-content: space-between; font-size: 16px;
+      padding: 5px 0; border-bottom: 1px solid #f1f5f9; }
+    .detail-row span { color: #64748b; }
+    .detail-row b { color: #0f172a; }
+
+    /* ── scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+    /* ── static pages (method / exercises) ── */
+    #page-method, #page-exercises { flex: 1; overflow-y: auto; background: #f8fafc; }
+    .page-inner { max-width: 780px; margin: 0 auto; padding: 40px 32px; }
+    .page-h1 { font-size: 30px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+    .page-sub { font-size: 18px; color: #64748b; line-height: 1.6; margin-bottom: 32px; }
+
+    /* method steps */
+    .method-step { display: flex; gap: 20px; margin-bottom: 28px; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: #3b82f6; color: #fff;
+      font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-size: 21px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .step-body p { font-size: 17px; color: #374151; line-height: 1.7; }
+    .step-body p + p { margin-top: 8px; }
+    .method-list { margin: 8px 0 0 18px; }
+    .method-list li { font-size: 17px; color: #374151; line-height: 1.9; }
+    .formula { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 3px solid #3b82f6;
+      border-radius: 6px; padding: 10px 16px; font-family: monospace; font-size: 18px;
+      color: #1e40af; margin: 10px 0; }
+    .method-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 16px; }
+    .method-table th { background: #f1f5f9; padding: 6px 10px; text-align: left;
+      font-weight: 600; color: #374151; border-bottom: 1px solid #e2e8f0; }
+    .method-table td { padding: 5px 10px; border-bottom: 1px solid #f1f5f9; color: #374151; }
+    .method-table tr:last-child td { border-bottom: none; }
+    .arch-diagram { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin: 14px 0; }
+    .arch-box { border-radius: 8px; padding: 8px 10px; text-align: center; font-size: 15px;
+      font-weight: 600; line-height: 1.4; }
+    .arch-box span { font-weight: 400; font-size: 13px; display: block; opacity: .8; }
+    .arch-arrow { color: #94a3b8; font-size: 14px; }
+    .arch-in  { background: #f1f5f9; color: #374151;  border: 1px solid #e2e8f0; }
+    .arch-enc { background: #eff6ff; color: #1d4ed8;  border: 1px solid #bfdbfe; }
+    .arch-lat { background: #f5f3ff; color: #6d28d9;  border: 1px solid #ddd6fe; }
+    .arch-dec { background: #fef3c7; color: #92400e;  border: 1px solid #fde68a; }
+    .arch-out { background: #f0fdf4; color: #166534;  border: 1px solid #bbf7d0; }
+    .ref-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px;
+      padding: 20px 24px; margin-top: 8px; }
+
+    /* wider content columns for both static pages */
+    #page-method .page-inner,
+    #page-exercises .page-inner { max-width: 1100px; padding: 40px 48px; }
+    .ex-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 18px; }
+    .ex-hdr { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .ex-num { width: 28px; height: 28px; border-radius: 50%; background: #0f172a; color: #fff;
+      font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; }
+    .ex-meta { flex: 1; }
+    .ex-title { font-size: 20px; font-weight: 700; color: #0f172a; line-height: 1.3; }
+    .ex-badge { display: inline-block; padding: 2px 9px; border-radius: 20px;
+      font-size: 14px; font-weight: 700; margin-top: 4px; }
+    .ex-basic    { background: #f0fdf4; color: #15803d; }
+    .ex-inter    { background: #eff6ff; color: #1d4ed8; }
+    .ex-advanced { background: #fdf2f8; color: #9d174d; }
+    .ex-body { font-size: 17px; color: #374151; line-height: 1.7; }
+    .ex-body ul { margin: 8px 0 0 18px; }
+    .ex-body li { margin-bottom: 5px; }
+    .ex-body .hint { margin-top: 10px; padding: 8px 12px; background: #f8fafc;
+      border-radius: 6px; font-size: 16px; color: #64748b; border-left: 3px solid #e2e8f0; }
+    .ex-body code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px;
+      font-family: monospace; font-size: 16px; color: #475569; }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div id="topbar">
+  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+    <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+      </svg>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:20px;color:#0f172a;line-height:1.2">Geodemographic Lab</div>
+      <div style="font-size:14px;color:#94a3b8">Zürich Canton · GNN Segmentation</div>
+    </div>
+  </div>
+  <div id="stats"></div>
+  <div style="flex:1"></div>
+  <div id="method-badge"></div>
+  <div id="view-tabs">
+    <button id="tab-map"       class="active" onclick="setTab('map')">Map</button>
+    <button id="tab-graph"     onclick="setTab('graph')">Graph</button>
+    <button id="tab-method"    onclick="setTab('method')">Method</button>
+    <button id="tab-exercises" onclick="setTab('exercises')">Exercises</button>
+  </div>
+  <button id="ref-btn" onclick="toggleRef()">Reference</button>
+</div>
+
+<!-- Reference banner -->
+<div id="refbar">
+  <b>De Sabbata S, Liu P (2023).</b>
+  <span>"A GNN framework for spatial geodemographic classification."</span>
+  <i>IJGIS, 37(12), 2464–2486.</i>
+  <span style="color:#93c5fd">· Features are simulated (BFS-seeded synthetic data)</span>
+</div>
+
+<!-- Main -->
+<div id="main">
+  <div id="canvas-wrap">
+    <svg id="map-svg"   style="cursor:grab"></svg>
+    <svg id="graph-svg" style="cursor:grab;display:none;background:#f8fafc"></svg>
+    <div id="map-hint">Scroll to zoom · Drag to pan · Click to select</div>
+    <button id="names-btn" onclick="toggleNames()"
+      style="display:none;position:absolute;top:12px;left:14px;padding:6px 14px;border-radius:8px;
+             border:1px solid #e2e8f0;background:#fff;font-size:13px;font-weight:600;
+             color:#374151;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08)">
+      Show names
+    </button>
+    <div id="tooltip"></div>
+  </div>
+
+  <div id="sidebar">
+    <div id="controls-section">
+      <div class="section-title">GNN Parameters</div>
+
+      <div class="slider-row">
+        <div class="row-hdr"><span>Clusters (k)</span><b id="k-val">5</b></div>
+        <input type="range" id="k-sl" min="2" max="8" value="5">
+      </div>
+      <div class="slider-row">
+        <div class="row-hdr"><span>Message-passing layers</span><b id="l-val">2</b></div>
+        <input type="range" id="l-sl" min="0" max="3" value="2">
+      </div>
+
+      <div class="section-title" style="margin-top:4px">Feature weights</div>
+      <div id="feat-sliders"></div>
+
+      <div class="btn-row">
+        <button class="btn-primary"   id="run-btn" onclick="runJs()">▶ Run JS GNN</button>
+        <button class="btn-secondary" id="py-btn"  onclick="loadPy()">Load Python</button>
+      </div>
+      <div id="py-hint"></div>
+    </div>
+
+    <div id="panel"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     Method page
+══════════════════════════════════════════════════════════ -->
+<div id="page-method" style="display:none">
+  <div class="page-inner">
+    <h1 class="page-h1">Method &amp; Data</h1>
+    <p class="page-sub">Step-by-step explanation of the GCN-based geodemographic classification pipeline, following De Sabbata &amp; Liu (2023).</p>
+
+    <div class="method-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h2 class="step-title">What is geodemographic classification?</h2>
+        <p>Geodemographic classification groups geographic areas by socio-economic similarity. Traditional methods such as K-Means treat each area independently. <strong>Graph Neural Networks (GNNs)</strong> go further by incorporating <em>spatial neighbourhood structure</em>: a municipality's representation is shaped not only by its own features, but also by those of its neighbours.</p>
+        <p>This matters because neighbouring areas often share infrastructure, labour markets, and cultural characteristics — patterns that attribute-only clustering misses. De Sabbata &amp; Liu (2023) proposed the first GNN framework designed specifically for this task.</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h2 class="step-title">Study area and data</h2>
+        <p><strong>Boundaries:</strong> 162 municipalities in Kanton Zürich, Switzerland (swisstopo GeoJSON, EPSG:4326). Each municipality is identified by its BFS number (Bundesamt für Statistik).</p>
+        <p><strong>Features:</strong> Four socio-economic attributes from BFS municipal statistics, joined to the GeoJSON by BFS number:</p>
+        <table class="method-table">
+          <tr><th>Feature</th><th>BFS variable</th><th>Notes</th></tr>
+          <tr><td>Mean taxable income (kCHF)</td><td><code>mean_taxable_income</code></td><td>Mean taxable income per taxpayer (BFS: <em>pro Steuerpflichtigen/-r</em>)</td></tr>
+          <tr><td>Population density (/km²)</td><td><code>pop_dens</code></td><td>Inhabitants per km²</td></tr>
+          <tr><td>Share of foreign residents (%)</td><td><code>frg_pct</code></td><td>Percentage of non-Swiss residents</td></tr>
+          <tr><td>Employment rate (%)</td><td><code>emp / pop × 100</code></td><td>Jobs per 100 residents; values &gt; 100 indicate net job importers</td></tr>
+        </table>
+        <p style="font-size:12px;color:#64748b">Missing values (5 municipalities for income, 4 for employment) are imputed from the mean of the 5 spatially nearest municipalities that have a valid value for that variable.</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h2 class="step-title">Spatial graph construction</h2>
+        <p>Spatial relationships are encoded as an <strong>undirected graph G = (V, E)</strong>:</p>
+        <ul class="method-list">
+          <li><strong>Nodes V</strong> — one per municipality (|V| = 162)</li>
+          <li><strong>Edges E</strong> — an edge (i, j) is added if municipalities i and j share ≥ 2 boundary coordinate pairs, i.e. they have a common border segment (Queen's-case contiguity)</li>
+        </ul>
+        <p>The resulting planar graph has roughly 400 edges and a mean degree of ~5. You can inspect it in the <strong>Graph</strong> tab. After clustering, within-cluster edges are highlighted in the cluster colour.</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h2 class="step-title">Normalised adjacency matrix</h2>
+        <p>To stabilise gradient flow, the adjacency matrix is augmented with self-loops and symmetrically normalised (Kipf &amp; Welling, 2017):</p>
+        <div class="formula">Â = D̂<sup>−½</sup> (A + I) D̂<sup>−½</sup></div>
+        <p>where <strong>A</strong> is the binary adjacency matrix, <strong>I</strong> is the identity (self-loops preserve each node's own features during aggregation), and <strong>D̂</strong> is the diagonal degree matrix of (A + I). The symmetric normalisation prevents nodes with many neighbours from dominating the update.</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h2 class="step-title">GCN autoencoder</h2>
+        <p>The model is a <strong>graph autoencoder</strong> trained unsupervised to reconstruct the standardised feature matrix from a compact spatial embedding:</p>
+        <div class="arch-diagram">
+          <div class="arch-box arch-in">Input X<br><span>n × 6</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-box arch-enc">GCN enc 1<br><span>6 → 16, ReLU</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-box arch-enc">GCN enc 2<br><span>16 → 8, ReLU</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-box arch-lat">Embedding Z<br><span>n × 8</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-box arch-dec">Decoder<br><span>8 → 6, linear</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-box arch-out">X̂ (recon.)<br><span>n × 6</span></div>
+        </div>
+        <p>Each GCN layer applies a graph-aware linear transform:</p>
+        <div class="formula">H<sup>(l+1)</sup> = ReLU( Â · H<sup>(l)</sup> · W<sup>(l)</sup> )</div>
+        <p>Multiplying by <strong>Â</strong> aggregates (averages) the feature vectors of each node's neighbours before applying the weight matrix — this is the <em>message-passing</em> step.</p>
+        <p><strong>Number of message-passing layers</strong> controls how wide the spatial context window is:</p>
+        <table class="method-table">
+          <tr><th>Layers</th><th>Neighbourhood reached</th><th>Effect</th></tr>
+          <tr><td>0</td><td>Node itself only</td><td>Equivalent to K-Means on raw features — no spatial context</td></tr>
+          <tr><td>1</td><td>Direct neighbours (1-hop)</td><td>Each embedding reflects own features + immediate border municipalities</td></tr>
+          <tr><td>2 (default)</td><td>2-hop neighbourhood</td><td>Context spans ~2 municipal boundaries; good balance</td></tr>
+          <tr><td>3+</td><td>3-hop and beyond</td><td>Risk of <em>over-smoothing</em>: embeddings converge as every node sees a large, similar neighbourhood — analogous to blurring an image too many times</td></tr>
+        </table>
+        <p><strong>Training:</strong> MSE loss between X̂ and the standardised input X, minimised with SGD + momentum (lr = 0.015, momentum = 0.9, 400 epochs). No class labels are used — this is fully unsupervised.</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <h2 class="step-title">K-Means clustering on the embeddings</h2>
+        <p>After training, the 8-dimensional node embeddings <strong>Z</strong> encode both socio-economic similarity <em>and</em> spatial neighbourhood context. K-Means (k = 5, 20 random initialisations) is applied to Z to produce the final geodemographic segments.</p>
+        <p>Because Z has been shaped by message passing, municipalities that are both attributally similar <em>and</em> spatially proximate cluster together more coherently than standard K-Means on raw features. The JS version in this app omits the training loop (fixed random weights) and is therefore a fast approximation; the Python version trains fully.</p>
+      </div>
+    </div>
+
+    <div class="ref-box">
+      <div style="font-size:11px;font-weight:700;color:#1d4ed8;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">References</div>
+      <p style="font-size:14px;color:#1e40af;line-height:1.7">De Sabbata S, Liu P (2023). <em>A graph neural network framework for spatial geodemographic classification.</em> <strong>International Journal of Geographical Information Science</strong>, 37(12), 2464–2486.</p>
+      <p style="margin-top:8px;font-size:12px;color:#3b82f6">Kipf TN, Welling M (2017). <em>Semi-supervised classification with graph convolutional networks.</em> ICLR 2017.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     Exercises page
+══════════════════════════════════════════════════════════ -->
+<div id="page-exercises" style="display:none">
+  <div class="page-inner">
+    <h1 class="page-h1">Student Exercises</h1>
+    <p class="page-sub">Work through the exercises in the interactive lab. Use the controls in the sidebar to adjust parameters and observe how the map and graph change. All exercises can be completed in the browser — no coding required unless marked ★.</p>
+
+    <div class="ex-card">
+      <div class="ex-hdr">
+        <div class="ex-num">1</div>
+        <div class="ex-meta">
+          <div class="ex-title">Explore the spatial adjacency graph</div>
+          <span class="ex-badge ex-basic">Basic</span>
+        </div>
+      </div>
+      <div class="ex-body">
+        <ul>
+          <li>Click <strong>Run JS GNN</strong> with the default settings (k = 5, layers = 2).</li>
+          <li>Switch to the <strong>Graph</strong> tab. Edges between municipalities in the same cluster are coloured; cross-cluster edges are grey.</li>
+          <li>Click on a municipality node to see its neighbours listed in the sidebar. Find one with many neighbours (high degree) and one with few.</li>
+          <li>Do municipalities that share an edge tend to be in the same cluster? Give two counter-examples where they are not.</li>
+        </ul>
+        <div class="hint">Tip: drag nodes to untangle the layout. The graph uses force-directed placement seeded from geographic coordinates.</div>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-hdr">
+        <div class="ex-num">2</div>
+        <div class="ex-meta">
+          <div class="ex-title">Effect of the number of clusters k</div>
+          <span class="ex-badge ex-basic">Basic</span>
+        </div>
+      </div>
+      <div class="ex-body">
+        <ul>
+          <li>Run the GNN with k = 2. Describe the two clusters in geographic terms (e.g. urban vs. rural).</li>
+          <li>Increase k step by step to 4, 6, and 8. Sketch or note how the map changes each time.</li>
+          <li>At which k do the clusters become most interpretable? Is there a "correct" value of k? Justify your answer.</li>
+        </ul>
+        <div class="hint">Cluster profiles (mean income, age, density, etc.) are shown in the sidebar after each run — use them to label each cluster.</div>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-hdr">
+        <div class="ex-num">3</div>
+        <div class="ex-meta">
+          <div class="ex-title">Feature importance through weighting</div>
+          <span class="ex-badge ex-inter">Intermediate</span>
+        </div>
+      </div>
+      <div class="ex-body">
+        <ul>
+          <li>Run with all feature weights = 1 (default). Note the cluster boundaries.</li>
+          <li>Set <strong>Population density</strong> weight to 0 and re-run. Describe how the clusters change. Which municipalities move?</li>
+          <li>Now set <strong>Income</strong> to 2 and all other weights to 0.5. Which spatial pattern dominates?</li>
+          <li>Which single feature seems to drive the urban–rural split most strongly? Verify your hypothesis by setting all weights to 0 except that one.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-hdr">
+        <div class="ex-num">4</div>
+        <div class="ex-meta">
+          <div class="ex-title">The role of spatial context (message-passing depth)</div>
+          <span class="ex-badge ex-inter">Intermediate</span>
+        </div>
+      </div>
+      <div class="ex-body">
+        <ul>
+          <li>Set <strong>Message-passing layers</strong> to <strong>0</strong> and run. With 0 layers the GNN reduces to a simple projection of raw features — no spatial aggregation occurs.</li>
+          <li>Set layers to <strong>2</strong> (default) and re-run. Compare the two maps.</li>
+          <li>Are the clusters more spatially compact (contiguous) with 0 or with 2 layers? Measure informally by counting isolated municipalities.</li>
+          <li>Set layers to <strong>3</strong>. Does adding a third hop improve or worsen compactness? Why might very deep GNNs over-smooth?</li>
+        </ul>
+        <div class="hint">Over-smoothing: with many layers every node aggregates an increasingly large neighbourhood, eventually causing all embeddings to converge — analogous to blurring an image too many times.</div>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-hdr">
+        <div class="ex-num">5</div>
+        <div class="ex-meta">
+          <div class="ex-title">Compare JS GNN with the trained Python GNN</div>
+          <span class="ex-badge ex-inter">Intermediate</span>
+        </div>
+      </div>
+      <div class="ex-body">
+        <ul>
+          <li>In a terminal, run: <code>python gnn_geodemographic.py</code> (conda env: <code>gisenv</code>).</li>
+          <li>Click <strong>Load Python</strong> in the sidebar. The map now shows clusters from the fully trained autoencoder.</li>
+          <li>Compare with the JS result (click <strong>Re-run JS GNN</strong> to switch back). Which municipalities change cluster? How many?</li>
+          <li>The JS version uses random fixed weights; the Python version minimises reconstruction loss over 400 epochs. Which produces more spatially coherent clusters, and why?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-hdr">
+        <div class="ex-num">6</div>
+        <div class="ex-meta">
+          <div class="ex-title">Interpret and label the geodemographic segments</div>
+          <span class="ex-badge ex-inter">Intermediate</span>
+        </div>
+      </div>
+      <div class="ex-body">
+        <ul>
+          <li>Run the Python results (or JS with k = 5). Read the cluster profile cards in the sidebar.</li>
+          <li>Assign a descriptive label to each cluster, e.g. <em>urban core</em>, <em>affluent suburban</em>, <em>working-class suburban</em>, <em>small town</em>, <em>rural peripheral</em>.</li>
+          <li>Click on the city of Zürich on the map. Which cluster does it belong to? Does the profile match your expectations?</li>
+          <li>Find at least one municipality whose cluster assignment surprises you. How do you explain it?</li>
+        </ul>
+        <div class="hint">Use the tooltip (hover over any municipality) to see its individual feature values alongside the cluster average.</div>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-hdr">
+        <div class="ex-num">7</div>
+        <div class="ex-meta">
+          <div class="ex-title">Critical evaluation — limitations and extensions ★</div>
+          <span class="ex-badge ex-advanced">Advanced</span>
+        </div>
+      </div>
+      <div class="ex-body">
+        <ul>
+          <li><strong>Simulated data:</strong> In what ways could synthetic features mislead the classification compared to real census data? Give two concrete examples of bias the simulation might introduce.</li>
+          <li><strong>Feature selection:</strong> What additional socio-economic or environmental features would you include in a real study of Kanton Zürich? Consult the Swiss Federal Statistical Office (BFS) website for ideas.</li>
+          <li><strong>Validation:</strong> No ground-truth geodemographic labels exist. Propose two methods for evaluating the quality of the classification — one internal (using only the data) and one external (using an independent source).</li>
+          <li><strong>Loss function:</strong> The autoencoder uses MSE reconstruction loss. Is this the right objective for geodemographic classification? What alternative training objectives could be used?</li>
+        </ul>
+        <div class="hint">★ These questions require written reflection (no browser interaction needed). Suitable as a homework or seminar task.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* ═══════════════════════════════════════════════════════════════
+   Constants
+═══════════════════════════════════════════════════════════════ */
+const PAL       = ['#ef4444','#f97316','#eab308','#22c55e','#3b82f6','#8b5cf6','#ec4899','#14b8a6'];
+const PAL_LIGHT = ['#fef2f2','#fff7ed','#fefce8','#f0fdf4','#eff6ff','#f5f3ff','#fdf2f8','#f0fdfa'];
+const FEAT_KEYS = ['income','popDens','frgPct','empRate'];
+const FEAT_LBL  = ['Income (kCHF)','Density /km²','Foreign %','Emp. rate %'];
+const ZURICH    = [8.541, 47.376];
+const NS = 'http://www.w3.org/2000/svg';
+
+/* ═══════════════════════════════════════════════════════════════
+   Global state
+═══════════════════════════════════════════════════════════════ */
+const S = {
+  nodes: [], adj: [], bbox: null,
+  labels: null, method: 'js',
+  tab: 'map', k: 5, layers: 2,
+  fw: [1,1,1,1],
+  sel: null,
+  realData: false,
+  showAllNames: false,
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   Seeded RNG
+═══════════════════════════════════════════════════════════════ */
+function mkRNG(seed) {
+  let s = ((seed % 2147483647) + 2147483647) % 2147483647 || 1;
+  const next = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+  const norm = (mu, si) => {
+    const u = next() || 1e-9, v = next();
+    return mu + si * Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  };
+  return { next, norm };
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Geometry
+═══════════════════════════════════════════════════════════════ */
+function flatCoords(geom) {
+  if (geom.type === 'Polygon')      return geom.coordinates[0];
+  if (geom.type === 'MultiPolygon') return geom.coordinates[0][0];
+  return [];
+}
+function centroid(coords) {
+  let sx = 0, sy = 0;
+  coords.forEach(([x, y]) => { sx += x; sy += y; });
+  return [sx / coords.length, sy / coords.length];
+}
+function haversineKm([lng1, lat1], [lng2, lat2]) {
+  const R = 6371, r = Math.PI / 180;
+  const dLat = (lat2-lat1)*r, dLng = (lng2-lng1)*r;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*r)*Math.cos(lat2*r)*Math.sin(dLng/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(Math.max(0, a)));
+}
+function computeBBox(features) {
+  let x0=Infinity, x1=-Infinity, y0=Infinity, y1=-Infinity;
+  features.forEach(f => flatCoords(f.geometry).forEach(([x,y]) => {
+    if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y;
+  }));
+  return { x0, x1, y0, y1 };
+}
+function project([lng, lat], b, W, H, pad=28) {
+  const midLat = (b.y0+b.y1)/2, cosL = Math.cos(midLat*Math.PI/180);
+  const dLng = (b.x1-b.x0)*cosL, dLat = b.y1-b.y0;
+  const sc = Math.min((W-pad*2)/dLng, (H-pad*2)/dLat);
+  const ox = pad+((W-pad*2)-dLng*sc)/2;
+  const oy = pad+((H-pad*2)-dLat*sc)/2;
+  return [ox+(lng-b.x0)*cosL*sc, oy+(b.y1-lat)*sc];
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Feature loading (real data) + simulated fallback
+═══════════════════════════════════════════════════════════════ */
+function buildNodes(geoFeatures, featData) {
+  return geoFeatures.map(f => {
+    const bfs = f.properties.BFS;
+    const [lng, lat] = centroid(flatCoords(f.geometry));
+    const dist = haversineKm([lng, lat], ZURICH);
+    const fd = featData[String(bfs)] || {};
+    return {
+      id: bfs, name: f.properties.NAME, district: f.properties.BEZIRKSNAM,
+      lng, lat, distKm: +dist.toFixed(2),
+      income:  fd.income  ?? 0,
+      popDens: fd.popDens ?? 0,
+      frgPct:  fd.frgPct  ?? 0,
+      empRate: fd.empRate ?? 0,
+    };
+  });
+}
+function simFeatures(features) {
+  // Fallback when features.json is not yet available (run Python first)
+  return features.map(f => {
+    const bfs = f.properties.BFS;
+    const [lng, lat] = centroid(flatCoords(f.geometry));
+    const dist = haversineKm([lng, lat], ZURICH);
+    const u = Math.max(0, 1 - dist / 35);
+    const rng = mkRNG(bfs * 1009 + 7);
+    return {
+      id: bfs, name: f.properties.NAME, district: f.properties.BEZIRKSNAM,
+      lng, lat, distKm: +dist.toFixed(2),
+      income:  Math.max(40,  Math.round(rng.norm(55 + u*55, 12))),
+      popDens: Math.max(50,  Math.round(rng.norm(300 + u*3500, 400 + u*1200))),
+      frgPct:  Math.max(3,   Math.min(55, Math.round(rng.norm(12 + u*22, 6)))),
+      empRate: Math.max(5,   Math.min(120, Math.round(rng.norm(20 + u*60, 15)))),
+    };
+  });
+}
+function normalise(nodes) {
+  const rng = {};
+  FEAT_KEYS.forEach(k => {
+    const vs = nodes.map(n=>n[k]);
+    rng[k] = { mn: Math.min(...vs), mx: Math.max(...vs) };
+  });
+  return nodes.map(n => {
+    const norm = {};
+    FEAT_KEYS.forEach(k => { norm[k] = (n[k]-rng[k].mn)/((rng[k].mx-rng[k].mn)||1); });
+    return {...n, norm};
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Spatial adjacency
+═══════════════════════════════════════════════════════════════ */
+function buildAdj(features) {
+  const sets = features.map(f =>
+    new Set(flatCoords(f.geometry).map(([x,y])=>`${x.toFixed(5)},${y.toFixed(5)}`)));
+  const adj = features.map(() => []);
+  for (let i=0; i<features.length; i++) {
+    for (let j=i+1; j<features.length; j++) {
+      let sh=0;
+      for (const k of sets[i]) { if(sets[j].has(k)){sh++; if(sh>=2)break;} }
+      if (sh>=2) { adj[i].push(j); adj[j].push(i); }
+    }
+  }
+  return adj;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   JS GNN  (2-layer GCN, mean aggregation)
+═══════════════════════════════════════════════════════════════ */
+function mmul(A, B) {
+  const R=A.length, C=B[0].length, K=B.length;
+  return Array.from({length:R}, (_,i) =>
+    Array.from({length:C}, (_,j) =>
+      A[i].reduce((s,v,k)=>s+v*B[k][j], 0)));
+}
+function relu(M) { return M.map(r=>r.map(v=>Math.max(0,v))); }
+function mkW(rows, cols, seed) {
+  const rng=mkRNG(seed), sc=Math.sqrt(2/rows);
+  return Array.from({length:rows}, ()=>Array.from({length:cols},()=>rng.norm(0,sc)));
+}
+function ahat(adj, n) {
+  const A = Array.from({length:n}, (_,i) => { const r=new Array(n).fill(0); r[i]=1; adj[i].forEach(j=>r[j]=1); return r; });
+  const d = A.map(r=>1/Math.sqrt(r.reduce((s,v)=>s+v,0)));
+  return A.map((r,i)=>r.map((v,j)=>d[i]*v*d[j]));
+}
+function runGNN(nodes, adj, fw, layers) {
+  const n=nodes.length, Ah=ahat(adj,n);
+  const W1=mkW(4,16,1337), W2=mkW(16,8,7777);
+  const X = nodes.map(nd=>FEAT_KEYS.map((k,i)=>nd.norm[k]*(fw[i]??1)));
+  let H = relu(mmul(mmul(Ah,X),W1));
+  for(let l=0;l<layers;l++) H=relu(mmul(mmul(Ah,H),W2));
+  return H;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   K-Means
+═══════════════════════════════════════════════════════════════ */
+function kmeans(embs, k) {
+  const n=embs.length, rng=mkRNG(k*17+3);
+  const C=[embs[Math.floor(rng.next()*n)].slice()];
+  while(C.length<k){
+    const ds=embs.map(e=>Math.min(...C.map(c=>c.reduce((s,v,j)=>s+(v-e[j])**2,0))));
+    const tot=ds.reduce((a,b)=>a+b,0);
+    let r=rng.next()*tot, idx=0;
+    for(;idx<n-1;idx++){r-=ds[idx];if(r<=0)break;}
+    C.push(embs[idx].slice());
+  }
+  let L=new Array(n).fill(0);
+  for(let it=0;it<100;it++){
+    const nL=embs.map(e=>{let b=0,bd=Infinity; C.forEach((c,ci)=>{const d=c.reduce((s,v,j)=>s+(v-e[j])**2,0);if(d<bd){bd=d;b=ci;}}); return b;});
+    if(nL.every((l,i)=>l===L[i]))break;
+    L=nL;
+    C.forEach((c,ci)=>{
+      const m=embs.filter((_,i)=>L[i]===ci);
+      if(!m.length)return;
+      c.forEach((_,j)=>{c[j]=m.reduce((s,e)=>s+e[j],0)/m.length;});
+    });
+  }
+  return L;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SVG Map
+═══════════════════════════════════════════════════════════════ */
+let mapSvg, mapG, mapPaths=[];
+let mTf={x:0,y:0,k:1}, mPan=null;
+
+function initMap(features) {
+  mapSvg = document.getElementById('map-svg');
+  const {w,h} = svgDims();
+  mapSvg.setAttribute('width',w); mapSvg.setAttribute('height',h);
+  mapG = document.createElementNS(NS,'g');
+  mapSvg.appendChild(mapG);
+
+  const byId={};
+  S.nodes.forEach((nd,i)=>{ byId[nd.id]={...nd,idx:i}; });
+
+  features.forEach(f => {
+    const pts = flatCoords(f.geometry).map(c=>project(c,S.bbox,w,h));
+    const d   = 'M'+pts.map(([x,y])=>`${x.toFixed(1)},${y.toFixed(1)}`).join('L')+'Z';
+    const p   = document.createElementNS(NS,'path');
+    p.setAttribute('d',d);
+    p.setAttribute('fill','#d1d5db');
+    p.setAttribute('fill-opacity','0.5');
+    p.setAttribute('stroke','#fff');
+    p.setAttribute('stroke-width','0.6');
+    p.style.cursor='pointer';
+    p.style.transition='fill-opacity .2s';
+
+    const bfs=f.properties.BFS, nd=byId[bfs];
+    p.addEventListener('mouseenter', e=>showTip(e,nd));
+    p.addEventListener('mousemove',  e=>moveTip(e));
+    p.addEventListener('mouseleave', hideTip);
+    p.addEventListener('click', ()=>selectId(S.sel===bfs?null:bfs));
+    mapG.appendChild(p);
+    mapPaths.push({p, bfs, nd});
+  });
+
+  mapSvg.addEventListener('wheel', e=>{
+    e.preventDefault();
+    const r=mapSvg.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
+    const f=e.deltaY<0?1.15:0.87, nk=Math.max(.5,Math.min(14,mTf.k*f));
+    mTf.x=mx-(mx-mTf.x)*(nk/mTf.k); mTf.y=my-(my-mTf.y)*(nk/mTf.k); mTf.k=nk;
+    applyMapTf();
+  });
+  mapSvg.addEventListener('mousedown', e=>{mPan={ox:e.clientX-mTf.x,oy:e.clientY-mTf.y}; mapSvg.style.cursor='grabbing';});
+  mapSvg.addEventListener('mousemove', e=>{if(!mPan)return; mTf.x=e.clientX-mPan.ox; mTf.y=e.clientY-mPan.oy; applyMapTf();});
+  mapSvg.addEventListener('mouseup',   ()=>{mPan=null; mapSvg.style.cursor='grab';});
+  mapSvg.addEventListener('mouseleave',()=>{mPan=null; mapSvg.style.cursor='grab'; hideTip();});
+}
+function applyMapTf(){
+  mapG.setAttribute('transform',`translate(${mTf.x},${mTf.y}) scale(${mTf.k})`);
+  mapPaths.forEach(({p})=>p.setAttribute('stroke-width',(0.6/mTf.k).toFixed(3)));
+}
+function refreshMapColors(){
+  mapPaths.forEach(({p,bfs,nd})=>{
+    const cl = nd && S.labels ? S.labels[nd.idx] : null;
+    const sel = S.sel===bfs;
+    p.setAttribute('fill', cl!=null?PAL[cl%PAL.length]:'#d1d5db');
+    p.setAttribute('fill-opacity', cl!=null?(sel?'1':'0.75'):'0.5');
+    p.setAttribute('stroke', sel?'#1e293b':'#fff');
+    p.setAttribute('stroke-width', ((sel?1.8:0.6)/mTf.k).toFixed(3));
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Tooltip
+═══════════════════════════════════════════════════════════════ */
+function tipHTML(nd) {
+  if(!nd) return '';
+  const cl=S.labels?S.labels[nd.idx]:null;
+  const badge = cl!=null
+    ? `<div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:6px;background:${PAL_LIGHT[cl%PAL.length]};padding:2px 8px;border-radius:20px;border:1px solid ${PAL[cl%PAL.length]}44">
+         <div style="width:8px;height:8px;border-radius:50%;background:${PAL[cl%PAL.length]}"></div>
+         <span style="font-size:11px;font-weight:600;color:${PAL[cl%PAL.length]}">Cluster ${cl+1}</span>
+       </div><br>` : '';
+  return `<div style="font-weight:700;font-size:13px;color:#0f172a;margin-bottom:2px">${nd.name}</div>
+    <div style="font-size:11px;color:#64748b;margin-bottom:${cl!=null?4:8}px">${nd.district}</div>${badge}
+    ${[['Income',`${nd.income}k CHF`],['Density',`${nd.popDens}/km²`],
+       ['Foreign',`${nd.frgPct}%`],['Emp. rate',`${nd.empRate}%`]]
+      .map(([k,v])=>`<div style="display:flex;justify-content:space-between;font-size:11px;line-height:1.7">
+        <span style="color:#64748b">${k}</span><span style="color:#0f172a;font-weight:500">${v}</span></div>`).join('')}`;
+}
+function tipPos(e) {
+  const wrap=document.getElementById('canvas-wrap'), r=wrap.getBoundingClientRect();
+  const x=e.clientX-r.left, y=e.clientY-r.top;
+  const tt=document.getElementById('tooltip');
+  tt.style.left=Math.min(x+14,wrap.clientWidth-215)+'px';
+  tt.style.top =Math.min(y-10, wrap.clientHeight-175)+'px';
+}
+function showTip(e,nd){ if(!nd)return; document.getElementById('tooltip').innerHTML=tipHTML(nd); document.getElementById('tooltip').style.display='block'; tipPos(e); }
+function moveTip(e){ if(document.getElementById('tooltip').style.display==='none')return; tipPos(e); }
+function hideTip(){ document.getElementById('tooltip').style.display='none'; }
+
+/* ═══════════════════════════════════════════════════════════════
+   Force-directed Graph
+═══════════════════════════════════════════════════════════════ */
+let gSvg, gG, gNodes=[], gEdges=[];
+let gTf={x:0,y:0,k:1}, gPan=null;
+let gDrag=null, gPos=null, gAlpha=0, gFrame=null;
+
+function initGraph() {
+  gSvg=document.getElementById('graph-svg');
+  const {w,h}=svgDims();
+  gSvg.setAttribute('width',w); gSvg.setAttribute('height',h);
+
+  const cx=w/2, cy=h/2, rng=mkRNG(42);
+  gPos = S.nodes.map(nd=>({
+    x: cx+(nd.lng-8.54)*1600+(rng.next()-.5)*30,
+    y: cy-(nd.lat-47.4)*2000+(rng.next()-.5)*30,
+    vx:0,vy:0,fx:null,fy:null
+  }));
+  gAlpha=0.8;
+
+  gG=document.createElementNS(NS,'g');
+  gSvg.appendChild(gG);
+
+  // Edges
+  gEdges=[];
+  S.adj.forEach((nb,i)=>nb.forEach(j=>{
+    if(j<=i)return;
+    const l=document.createElementNS(NS,'line');
+    l.setAttribute('stroke','#cbd5e1'); l.setAttribute('stroke-width','0.7'); l.setAttribute('opacity','0.6');
+    gG.appendChild(l);
+    gEdges.push({l,i,j});
+  }));
+
+  // Nodes
+  gNodes=S.nodes.map((nd,i)=>{
+    const g=document.createElementNS(NS,'g'); g.style.cursor='pointer';
+    const c=document.createElementNS(NS,'circle');
+    c.setAttribute('r','6'); c.setAttribute('fill','#f1f5f9');
+    c.setAttribute('stroke','#94a3b8'); c.setAttribute('stroke-width','1.5');
+    const t=document.createElementNS(NS,'text');
+    t.setAttribute('text-anchor','middle'); t.setAttribute('dy','-12');
+    t.setAttribute('font-size','9'); t.setAttribute('font-weight','600');
+    t.setAttribute('fill','#0f172a'); t.style.pointerEvents='none'; t.style.display='none';
+    g.appendChild(c); g.appendChild(t); gG.appendChild(g);
+
+    g.addEventListener('mousedown', e=>{
+      e.stopPropagation(); gDrag=i;
+      if(gPos){gPos[i].fx=gPos[i].x; gPos[i].fy=gPos[i].y;}
+      gAlpha=Math.max(gAlpha,.3);
+    });
+    g.addEventListener('click', e=>{
+      e.stopPropagation(); selectId(S.sel===nd.id?null:nd.id);
+    });
+    return {g,c,t,nd,idx:i};
+  });
+
+  gSvg.addEventListener('mousedown', e=>{ if(e.target.closest('g'))return; gPan={ox:e.clientX-gTf.x,oy:e.clientY-gTf.y}; gSvg.style.cursor='grabbing'; });
+  gSvg.addEventListener('mousemove', e=>{
+    if(gDrag!=null&&gPos){
+      const r=gSvg.getBoundingClientRect();
+      gPos[gDrag].fx=(e.clientX-r.left-gTf.x)/gTf.k;
+      gPos[gDrag].fy=(e.clientY-r.top -gTf.y)/gTf.k;
+      gAlpha=Math.max(gAlpha,.15); return;
+    }
+    if(gPan){ gTf.x=e.clientX-gPan.ox; gTf.y=e.clientY-gPan.oy; gG.setAttribute('transform',`translate(${gTf.x},${gTf.y}) scale(${gTf.k})`); }
+  });
+  const endDrag=()=>{ gPan=null; if(gDrag!=null&&gPos){gPos[gDrag].fx=null;gPos[gDrag].fy=null;} gDrag=null; gSvg.style.cursor='grab'; };
+  gSvg.addEventListener('mouseup',    endDrag);
+  gSvg.addEventListener('mouseleave', endDrag);
+  gSvg.addEventListener('wheel', e=>{
+    e.preventDefault();
+    const r=gSvg.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
+    const f=e.deltaY<0?1.12:.89, nk=Math.max(.2,Math.min(8,gTf.k*f));
+    gTf.x=mx-(mx-gTf.x)*(nk/gTf.k); gTf.y=my-(my-gTf.y)*(nk/gTf.k); gTf.k=nk;
+    gG.setAttribute('transform',`translate(${gTf.x},${gTf.y}) scale(${gTf.k})`);
+  });
+
+  runForce();
+}
+
+function runForce() {
+  if(gFrame) cancelAnimationFrame(gFrame);
+  const w=gSvg.clientWidth, h=gSvg.clientHeight, cx=w/2, cy=h/2;
+  const tick=()=>{
+    const a=gAlpha; gAlpha=Math.max(0,a*.986);
+    const p=gPos, n=p.length;
+    if(a>.001){
+      for(let i=0;i<n;i++) for(let j=i+1;j<n;j++){
+        const dx=p[j].x-p[i].x, dy=p[j].y-p[i].y;
+        const d2=Math.max(1,dx*dx+dy*dy), d=Math.sqrt(d2), f=a*700/d2;
+        p[i].vx-=(dx/d)*f; p[i].vy-=(dy/d)*f; p[j].vx+=(dx/d)*f; p[j].vy+=(dy/d)*f;
+      }
+      S.adj.forEach((nb,i)=>nb.forEach(j=>{
+        if(j<=i)return;
+        const dx=p[j].x-p[i].x, dy=p[j].y-p[i].y;
+        const d=Math.sqrt(dx*dx+dy*dy)||1, f=a*(d-40)*.006;
+        p[i].vx+=(dx/d)*f; p[i].vy+=(dy/d)*f; p[j].vx-=(dx/d)*f; p[j].vy-=(dy/d)*f;
+      }));
+      for(let i=0;i<n;i++){ p[i].vx+=(cx-p[i].x)*.0015*a; p[i].vy+=(cy-p[i].y)*.0015*a; }
+      for(let i=0;i<n;i++){
+        if(p[i].fx!=null){p[i].x=p[i].fx;p[i].y=p[i].fy;p[i].vx=0;p[i].vy=0;continue;}
+        p[i].vx*=.62; p[i].vy*=.62; p[i].x+=p[i].vx; p[i].y+=p[i].vy;
+      }
+    }
+    gEdges.forEach(({l,i,j})=>{
+      const a=p[i],b=p[j]; if(!a||!b)return;
+      l.setAttribute('x1',a.x.toFixed(1)); l.setAttribute('y1',a.y.toFixed(1));
+      l.setAttribute('x2',b.x.toFixed(1)); l.setAttribute('y2',b.y.toFixed(1));
+    });
+    gNodes.forEach(({g,idx})=>{ const q=p[idx]; if(q) g.setAttribute('transform',`translate(${q.x.toFixed(1)},${q.y.toFixed(1)})`); });
+    gFrame=requestAnimationFrame(tick);
+  };
+  gFrame=requestAnimationFrame(tick);
+}
+
+function refreshGraphColors(){
+  gEdges.forEach(({l,i,j})=>{
+    const same=S.labels&&S.labels[i]===S.labels[j];
+    const cl=S.labels?S.labels[i]:null;
+    l.setAttribute('stroke', same?PAL[cl%PAL.length]:'#cbd5e1');
+    l.setAttribute('stroke-width', same?'1.4':'0.7');
+    l.setAttribute('opacity', same?'0.5':'0.6');
+  });
+  gNodes.forEach(({g,c,t,nd,idx})=>{
+    const cl=S.labels?S.labels[idx]:null, sel=S.sel===nd.id;
+    const col=cl!=null?PAL[cl%PAL.length]:'#94a3b8';
+    c.setAttribute('fill',  cl!=null?PAL_LIGHT[cl%PAL.length]:'#f1f5f9');
+    c.setAttribute('stroke', col);
+    c.setAttribute('stroke-width', sel?'2.5':'1.5');
+    c.setAttribute('r', sel?'9':'6');
+    t.textContent=nd.name; t.style.display=(S.showAllNames||sel)?'':'none';
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Sidebar — cluster cards
+═══════════════════════════════════════════════════════════════ */
+function renderPanel() {
+  const panel=document.getElementById('panel');
+  if(S.sel!=null){ renderDetail(panel); return; }
+  if(!S.labels){
+    panel.innerHTML=`<div style="padding:24px 16px;text-align:center;color:#94a3b8;font-size:13px;line-height:1.8">
+      Configure parameters and click<br><b style="color:#64748b">Run Clustering</b> to see results.</div>`;
+    return;
+  }
+  const maxV={}; FEAT_KEYS.forEach(k=>{ maxV[k]=Math.max(...S.nodes.map(n=>n[k])); });
+  const groups={};
+  S.nodes.forEach((n,i)=>{ const c=S.labels[i]; (groups[c]=groups[c]||[]).push(n); });
+  const html = Object.entries(groups).sort((a,b)=>+a[0]-+b[0]).map(([ci,mem])=>{
+    const col=PAL[+ci%PAL.length], lc=PAL_LIGHT[+ci%PAL.length];
+    const avg=k=>Math.round(mem.reduce((s,n)=>s+n[k],0)/mem.length);
+    const bars=FEAT_KEYS.map((k,fi)=>`
+      <div class="feat-bar">
+        <div class="feat-bar-hdr"><span>${FEAT_LBL[fi]}</span><b>${avg(k)}</b></div>
+        <div class="feat-bar-track"><div class="feat-bar-fill" style="width:${Math.round(avg(k)/maxV[k]*100)}%;background:${col}"></div></div>
+      </div>`).join('');
+    return `<div class="cluster-card" style="background:${lc};border-color:${col}44">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <div style="width:28px;height:28px;border-radius:8px;background:${col};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0">${+ci+1}</div>
+        <div><div style="font-weight:600;font-size:13px;color:#0f172a">Cluster ${+ci+1}</div>
+             <div style="font-size:10px;color:#64748b">${mem.length} municipalities</div></div>
+      </div>${bars}
+      <div class="card-places">${mem.slice(0,3).map(m=>m.name).join(', ')}${mem.length>3?` +${mem.length-3}`:''}</div>
+    </div>`;
+  }).join('');
+  panel.innerHTML=`<div style="padding:10px 12px;overflow-y:auto">
+    <div style="font-size:11px;color:#94a3b8;margin-bottom:10px;font-weight:500">${Object.keys(groups).length} clusters · ${S.nodes.length} municipalities</div>
+    ${html}</div>`;
+}
+
+function renderDetail(panel) {
+  const nd=S.nodes.find(n=>n.id===S.sel); if(!nd)return;
+  const idx=S.nodes.indexOf(nd), cl=S.labels?S.labels[idx]:null;
+  const col=cl!=null?PAL[cl%PAL.length]:'#94a3b8';
+  const nb=(S.adj[idx]||[]).map(j=>S.nodes[j]?.name).filter(Boolean);
+  const rows=[['Income (taxable)',`${nd.income}k CHF`],['Pop. density',`${nd.popDens}/km²`],
+              ['Foreign pop.',`${nd.frgPct}%`],['Emp. rate',`${nd.empRate}%`],
+              ['Dist. Zürich',`${nd.distKm} km`],
+              [S.realData?'Data source':'Data source','real data'+(S.realData?'':' (simulated)')]
+             ];
+  panel.innerHTML=`<div style="padding:12px 14px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:38px;height:38px;border-radius:10px;background:${col};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0">${cl!=null?cl+1:'?'}</div>
+        <div><div style="font-size:15px;font-weight:700;color:#0f172a">${nd.name}</div>
+             <div style="font-size:11px;color:#64748b">${nd.district} · BFS ${nd.id}</div></div>
+      </div>
+      <button onclick="selectId(null)" style="background:none;border:none;cursor:pointer;font-size:18px;color:#94a3b8;padding:0 4px">×</button>
+    </div>
+    <div class="section-title">Socio-economic profile</div>
+    ${rows.map(([k,v])=>`<div class="detail-row"><span>${k}</span><b>${v}</b></div>`).join('')}
+    ${nb.length?`<div class="section-title" style="margin-top:12px">Neighbours (${nb.length})</div>
+    <div style="font-size:11px;color:#64748b;line-height:1.9">${nb.slice(0,8).join(' · ')}${nb.length>8?` +${nb.length-8}`:''}</div>`:''}
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Stats bar & method badge
+═══════════════════════════════════════════════════════════════ */
+function updateStats() {
+  const ec=S.adj.reduce((s,a)=>s+a.length,0)/2;
+  const items=[[S.nodes.length,'municipalities'],[ec,'adjacency edges'],...(S.labels?[[S.k,'clusters']]:[])];
+  document.getElementById('stats').innerHTML=
+    items.map(([n,l])=>`<div class="stat"><div class="stat-n">${n}</div><div class="stat-l">${l}</div></div>`).join('');
+}
+function updateBadge() {
+  const b=document.getElementById('method-badge');
+  if(!S.labels){b.style.display='none';return;}
+  const py=S.method==='python';
+  b.style.cssText=`display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;background:${py?'#dbeafe':'#f0fdf4'};border:1px solid ${py?'#93c5fd':'#86efac'}`;
+  b.innerHTML=`<div style="width:6px;height:6px;border-radius:50%;background:${py?'#3b82f6':'#22c55e'}"></div>
+    <span style="font-size:11px;font-weight:600;color:${py?'#1d4ed8':'#15803d'}">${py?'Python GNN':'JS GNN'}</span>`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Actions
+═══════════════════════════════════════════════════════════════ */
+function setTab(t) {
+  S.tab=t;
+  const viz = t==='map' || t==='graph';
+  document.getElementById('main').style.display             = viz   ? 'flex' : 'none';
+  document.getElementById('map-svg').style.display          = t==='map'       ? 'block' : 'none';
+  document.getElementById('graph-svg').style.display        = t==='graph'     ? 'block' : 'none';
+  document.getElementById('names-btn').style.display        = t==='graph'     ? 'block' : 'none';
+  document.getElementById('page-method').style.display      = t==='method'    ? 'flex'  : 'none';
+  document.getElementById('page-exercises').style.display   = t==='exercises' ? 'flex'  : 'none';
+  ['map','graph','method','exercises'].forEach(id=>{
+    document.getElementById('tab-'+id).className = t===id ? 'active':'';
+  });
+}
+function toggleRef() {
+  const rb=document.getElementById('refbar');
+  rb.style.display = rb.style.display==='none'?'flex':'none';
+}
+function toggleNames() {
+  S.showAllNames = !S.showAllNames;
+  const btn = document.getElementById('names-btn');
+  btn.textContent = S.showAllNames ? 'Hide names' : 'Show names';
+  btn.style.background = S.showAllNames ? '#0f172a' : '#fff';
+  btn.style.color      = S.showAllNames ? '#fff'    : '#374151';
+  refreshGraphColors();
+}
+function selectId(id) {
+  S.sel=id; refreshMapColors(); refreshGraphColors(); renderPanel();
+}
+function runJs() {
+  const btn=document.getElementById('run-btn');
+  btn.disabled=true; btn.textContent='Running…';
+  setTimeout(()=>{
+    S.labels=kmeans(runGNN(S.nodes,S.adj,S.fw,S.layers), S.k);
+    S.method='js';
+    refreshMapColors(); refreshGraphColors(); updateStats(); updateBadge(); renderPanel();
+    btn.disabled=false; btn.textContent='Re-run JS GNN';
+  },0);
+}
+function loadPy() {
+  fetch('cluster_results.json').then(r=>r.json()).then(data=>{
+    S.labels=S.nodes.map(n=>data.clusters[String(n.id)]??0);
+    S.method='python'; S.k=data.k;
+    document.getElementById('k-sl').value=S.k;
+    document.getElementById('k-val').textContent=S.k;
+    refreshMapColors(); refreshGraphColors(); updateStats(); updateBadge(); renderPanel();
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Helpers
+═══════════════════════════════════════════════════════════════ */
+function svgDims() {
+  const w=document.getElementById('canvas-wrap');
+  return { w: w.clientWidth, h: w.clientHeight };
+}
+function buildFeatSliders() {
+  const c=document.getElementById('feat-sliders');
+  FEAT_KEYS.forEach((k,i)=>{
+    const d=document.createElement('div'); d.className='slider-row';
+    d.innerHTML=`<div class="row-hdr"><span>${FEAT_LBL[i]}</span><b id="fw-v${i}">${S.fw[i].toFixed(1)}</b></div>
+      <input type="range" min="0" max="2" step="0.1" value="${S.fw[i]}">`;
+    d.querySelector('input').addEventListener('input', e=>{
+      S.fw[i]=+e.target.value;
+      document.getElementById(`fw-v${i}`).textContent=S.fw[i].toFixed(1);
+      S.labels=null; document.getElementById('run-btn').textContent='▶ Run JS GNN';
+    });
+    c.appendChild(d);
+  });
+}
+function wireControls() {
+  document.getElementById('k-sl').addEventListener('input', e=>{
+    S.k=+e.target.value; document.getElementById('k-val').textContent=S.k;
+    S.labels=null; document.getElementById('run-btn').textContent='▶ Run JS GNN';
+  });
+  document.getElementById('l-sl').addEventListener('input', e=>{
+    S.layers=+e.target.value; document.getElementById('l-val').textContent=S.layers;
+    S.labels=null; document.getElementById('run-btn').textContent='▶ Run JS GNN';
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Init
+═══════════════════════════════════════════════════════════════ */
+async function init() {
+  buildFeatSliders();
+  wireControls();
+
+  const [geo, featData] = await Promise.all([
+    fetch('GEN_A4_GEMEINDEN_2019_epsg4326.json').then(r=>r.json()),
+    fetch('features.json').then(r=>r.ok?r.json():null).catch(()=>null),
+  ]);
+
+  S.bbox     = computeBBox(geo.features);
+  S.realData = featData !== null;
+  S.nodes    = normalise(S.realData ? buildNodes(geo.features, featData) : simFeatures(geo.features));
+  S.adj      = buildAdj(geo.features);
+
+  // Show data-source badge next to method badge
+  const dsb = document.getElementById('method-badge');
+  if (!S.realData) {
+    dsb.style.cssText='display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;background:#fef3c7;border:1px solid #fde68a';
+    dsb.innerHTML='<div style="width:6px;height:6px;border-radius:50%;background:#f59e0b"></div><span style="font-size:11px;font-weight:600;color:#92400e">Simulated data</span>';
+  }
+
+  updateStats();
+  initMap(geo.features);
+  initGraph();
+  renderPanel();
+
+  // Check for Python results
+  fetch('cluster_results.json')
+    .then(r=>{ if(!r.ok) throw 0; })
+    .then(()=>{
+      document.getElementById('py-btn').style.display='';
+      document.getElementById('py-hint').innerHTML='';
+    })
+    .catch(()=>{
+      document.getElementById('py-hint').innerHTML=
+        'Run <code>python gnn_geodemographic.py</code> to load real data and Python GNN results.';
+    });
+}
+
+init();
+</script>
+</body>
+</html>
