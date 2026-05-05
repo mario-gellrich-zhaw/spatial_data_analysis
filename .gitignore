@@ -8,3 +8,8 @@ petrol_stations.csv
 
 # Virtual environment
 .venv/
+
+# Node.js
+node_modules/
+dist/
+.vite/

@@ -2,6 +2,20 @@
 	"name": "Python 3.11 with Jupyter and PDF Preview",
 	"image": "mcr.microsoft.com/devcontainers/python:3.11",
 
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		}
+	},
+
+	"forwardPorts": [5173],
+	"portsAttributes": {
+		"5173": {
+			"label": "Vite Dev Server",
+			"onAutoForward": "openBrowser"
+		}
+	},
+
 	"customizations": {
 		"vscode": {
 		"extensions": [
@@ -25,5 +39,5 @@
 		}
 	},
 
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y gdal-bin libgdal-dev && pip install -r requirements.txt && python -m spacy download en_core_web_sm && python -m spacy download de_core_news_sm"
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y gdal-bin libgdal-dev && pip install -r requirements.txt && python -m spacy download en_core_web_sm && python -m spacy download de_core_news_sm && cd 12_React_Graph_NN_Spatial_Classification && npm install"
 }
