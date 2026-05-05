@@ -50,6 +50,31 @@ ZURICH = np.array([8.541, 47.376])
 FEAT_KEYS = ["income", "pop_density", "foreign_pct", "emp_rate"]
 
 
+def load_features_from_json(features, json_path):
+    """Load features from a previously exported features.json."""
+    with open(json_path) as fh:
+        feat = json.load(fh)
+    nodes = []
+    for f in features:
+        bfs = str(int(f["properties"]["BFS"]))
+        cen = centroid(flat_coords(f["geometry"]))
+        dist = haversine_km(cen, ZURICH)
+        d = feat[bfs]
+        nodes.append({
+            "bfs":         bfs,
+            "name":        f["properties"]["NAME"],
+            "district":    f["properties"]["BEZIRKSNAM"],
+            "lng":         round(float(cen[0]), 4),
+            "lat":         round(float(cen[1]), 4),
+            "dist_km":     round(float(dist), 2),
+            "income":      d["income"],
+            "pop_density": d["popDens"],
+            "foreign_pct": d["frgPct"],
+            "emp_rate":    d["empRate"],
+        })
+    return nodes
+
+
 def load_features(features, excel_path):
     """
     Load municipality features from Excel.
@@ -182,21 +207,22 @@ class GCNLayer:
 # ---------------------------------------------------------------------------
 
 class GCNAutoencoder:
-    def __init__(self, in_dim, hidden=16, embed=8):
-        self.enc1 = GCNLayer(in_dim, hidden, seed=1337)
-        self.enc2 = GCNLayer(hidden, embed,  seed=7777)
+    def __init__(self, in_dim, hidden=16, embed=8, layers=2):
+        dims = [in_dim] + [hidden] * (layers - 1) + [embed]
+        self.enc = [GCNLayer(dims[i], dims[i + 1], seed=1337 + i) for i in range(layers)]
         rng = np.random.default_rng(9999)
         self.Wd  = rng.normal(0, np.sqrt(2.0 / embed), (embed, in_dim))
         self.bd  = np.zeros(in_dim)
         self.vWd = np.zeros_like(self.Wd)
         self.vbd = np.zeros_like(self.bd)
         self._Z  = None
-        self._H1 = None
 
     def forward(self, A_hat, X):
-        self._H1 = self.enc1.forward(A_hat, X,        relu=True)
-        self._Z  = self.enc2.forward(A_hat, self._H1, relu=True)
-        X_rec    = self._Z @ self.Wd + self.bd
+        H = X
+        for layer in self.enc:
+            H = layer.forward(A_hat, H, relu=True)
+        self._Z = H
+        X_rec   = self._Z @ self.Wd + self.bd
         return X_rec, self._Z
 
     def backward(self, grad_rec, A_hat, lr=0.01, momentum=0.9):
@@ -204,16 +230,16 @@ class GCNAutoencoder:
         self.vbd = momentum * self.vbd - lr * grad_rec.sum(axis=0)
         self.Wd += self.vWd
         self.bd += self.vbd
-        grad_Z  = grad_rec @ self.Wd.T
-        grad_H1 = self.enc2.backward(grad_Z,  relu=True, lr=lr, momentum=momentum)
-        self.enc1.backward(grad_H1, relu=True, lr=lr, momentum=momentum)
+        grad = grad_rec @ self.Wd.T
+        for layer in reversed(self.enc):
+            grad = layer.backward(grad, relu=True, lr=lr, momentum=momentum)
 
 # ---------------------------------------------------------------------------
 # Training loop
 # ---------------------------------------------------------------------------
 
-def train_autoencoder(A_hat, X_norm, hidden=16, embed=8, epochs=400, lr=0.015, verbose=True):
-    model = GCNAutoencoder(in_dim=X_norm.shape[1], hidden=hidden, embed=embed)
+def train_autoencoder(A_hat, X_norm, hidden=16, embed=8, layers=2, epochs=400, lr=0.015, verbose=True):
+    model = GCNAutoencoder(in_dim=X_norm.shape[1], hidden=hidden, embed=embed, layers=layers)
     for ep in range(epochs):
         X_rec, Z = model.forward(A_hat, X_norm)
         loss     = float(np.mean((X_rec - X_norm) ** 2))
@@ -229,9 +255,16 @@ def train_autoencoder(A_hat, X_norm, hidden=16, embed=8, epochs=400, lr=0.015, v
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--k",      type=int, default=5)
+    parser.add_argument("--layers", type=int, default=2)
+    args = parser.parse_args()
+
     base       = Path(__file__).parent
     excel_path = base.parent / "municipality_data_with_taxable_income.xlsx"
-    K          = 5      # number of geodemographic clusters
+    K      = args.k
+    LAYERS = args.layers
 
     print("─" * 55)
     print("Graph-NN Geodemographic Segmentation")
@@ -243,13 +276,22 @@ if __name__ == "__main__":
     features = geo["features"]
     print(f"      {len(features)} municipalities")
 
-    print("\n[2/5] Loading socio-economic features from Excel …")
-    nodes = load_features(features, excel_path)
+    feat_json = base / "features.json"
+    if feat_json.exists():
+        print("\n[2/5] Loading socio-economic features from features.json …")
+        nodes = load_features_from_json(features, feat_json)
+        src = feat_json.name
+    elif excel_path.exists():
+        print("\n[2/5] Loading socio-economic features from Excel …")
+        nodes = load_features(features, excel_path)
+        src = excel_path.name
+    else:
+        raise FileNotFoundError(f"No feature source found: expected {feat_json} or {excel_path}")
     X_raw = np.array([[n[k] for k in FEAT_KEYS] for n in nodes], dtype=float)
     scaler = StandardScaler()
     X_norm = scaler.fit_transform(X_raw)
     print(f"      Features: {FEAT_KEYS}")
-    print(f"      Source: {excel_path.name}")
+    print(f"      Source: {src}")
 
     print("\n[3/5] Building spatial adjacency graph …")
     adj = build_adjacency(features)
@@ -257,9 +299,10 @@ if __name__ == "__main__":
     degrees = [len(a) for a in adj]
     print(f"      {edge_count} edges  (mean degree {np.mean(degrees):.1f})")
 
-    print("\n[4/5] Training GCN autoencoder (2 layers: 4→16→8) …")
+    dims_str = "→".join(["4"] + ["16"] * (LAYERS - 1) + ["8"])
+    print(f"\n[4/5] Training GCN autoencoder ({LAYERS} layers: {dims_str}) …")
     A_hat = normalised_adj(adj, len(nodes))
-    Z = train_autoencoder(A_hat, X_norm, hidden=16, embed=8, epochs=400, lr=0.015)
+    Z = train_autoencoder(A_hat, X_norm, hidden=16, embed=8, layers=LAYERS, epochs=400, lr=0.015)
 
     print(f"\n[5/5] K-Means clustering (k={K}) …")
     km = KMeans(n_clusters=K, random_state=42, n_init=20)
@@ -286,7 +329,7 @@ if __name__ == "__main__":
     # ── Export cluster_results.json for web app ─────────────────────────────
     results = {
         "k":      K,
-        "method": "GCN autoencoder (2-layer, 4→16→8) + K-Means",
+        "method": f"GCN autoencoder ({LAYERS}-layer, {dims_str}) + K-Means",
         "clusters": {n["bfs"]: int(labels[i]) for i, n in enumerate(nodes)},
         "nodes": [
             {**n, "cluster": int(labels[i]), "embed": Z[i].tolist()}

@@ -64,7 +64,8 @@
     .btn-primary:disabled { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; }
     .btn-secondary { flex: 1; padding: 11px 0; border-radius: 8px;
       border: 1px solid #3b82f6; cursor: pointer; background: #eff6ff;
-      color: #1d4ed8; font-weight: 700; font-size: 16px; display: none; }
+      color: #1d4ed8; font-weight: 700; font-size: 16px; }
+    .btn-secondary:disabled { background: #e2e8f0; border-color: #e2e8f0; color: #94a3b8; cursor: not-allowed; }
     #py-hint { margin-top: 6px; font-size: 14px; color: #94a3b8; text-align: center; line-height: 1.6; }
     #py-hint code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; color: #475569; }
 
@@ -204,23 +205,18 @@
 
   <div id="sidebar">
     <div id="controls-section">
-      <div class="section-title">GNN Parameters</div>
-
       <div class="slider-row">
         <div class="row-hdr"><span>Clusters (k)</span><b id="k-val">5</b></div>
-        <input type="range" id="k-sl" min="2" max="8" value="5">
+        <input type="range" id="k-sl" min="2" max="10" value="5"
+               oninput="S.k=+this.value; document.getElementById('k-val').textContent=S.k; markStale();">
       </div>
       <div class="slider-row">
         <div class="row-hdr"><span>Message-passing layers</span><b id="l-val">2</b></div>
-        <input type="range" id="l-sl" min="0" max="3" value="2">
+        <input type="range" id="l-sl" min="1" max="4" value="2"
+               oninput="S.layers=+this.value; document.getElementById('l-val').textContent=S.layers; markStale();">
       </div>
-
-      <div class="section-title" style="margin-top:4px">Feature weights</div>
-      <div id="feat-sliders"></div>
-
       <div class="btn-row">
-        <button class="btn-primary"   id="run-btn" onclick="runJs()">▶ Run JS GNN</button>
-        <button class="btn-secondary" id="py-btn"  onclick="loadPy()">Load Python</button>
+        <button class="btn-primary" id="py-btn" onclick="loadPy()">▶ Run Python GNN</button>
       </div>
       <div id="py-hint"></div>
     </div>
@@ -342,24 +338,24 @@
 <div id="page-exercises" style="display:none">
   <div class="page-inner">
     <h1 class="page-h1">Student Exercises</h1>
-    <p class="page-sub">Work through the exercises in the interactive lab. Use the controls in the sidebar to adjust parameters and observe how the map and graph change. All exercises can be completed in the browser — no coding required unless marked ★.</p>
+    <p class="page-sub">Work through the exercises in the interactive lab. Use the Map, Graph, and Scatter tabs to explore the results. All exercises can be completed in the browser — no coding required unless marked ★.</p>
 
     <div class="ex-card">
       <div class="ex-hdr">
         <div class="ex-num">1</div>
         <div class="ex-meta">
-          <div class="ex-title">Explore the spatial adjacency graph</div>
+          <div class="ex-title">Run the GNN and explore the map</div>
           <span class="ex-badge ex-basic">Basic</span>
         </div>
       </div>
       <div class="ex-body">
         <ul>
-          <li>Click <strong>Run JS GNN</strong> with the default settings (k = 5, layers = 2).</li>
+          <li>Click <strong>▶ Run Python GNN</strong>. The map colours 162 municipalities into 5 geodemographic clusters.</li>
+          <li>Click on any municipality. Read its feature values and cluster profile in the sidebar. Do the values match the visual impression of the cluster on the map?</li>
           <li>Switch to the <strong>Graph</strong> tab. Edges between municipalities in the same cluster are coloured; cross-cluster edges are grey.</li>
-          <li>Click on a municipality node to see its neighbours listed in the sidebar. Find one with many neighbours (high degree) and one with few.</li>
-          <li>Do municipalities that share an edge tend to be in the same cluster? Give two counter-examples where they are not.</li>
+          <li>Do municipalities that share an edge tend to be in the same cluster? Find two counter-examples where they are not, and suggest why.</li>
         </ul>
-        <div class="hint">Tip: drag nodes to untangle the layout. The graph uses force-directed placement seeded from geographic coordinates.</div>
+        <div class="hint">Tip: drag nodes in the Graph tab to untangle the layout. The initial positions are seeded from geographic coordinates.</div>
       </div>
     </div>
 
@@ -367,17 +363,18 @@
       <div class="ex-hdr">
         <div class="ex-num">2</div>
         <div class="ex-meta">
-          <div class="ex-title">Effect of the number of clusters k</div>
+          <div class="ex-title">Interpret and label the geodemographic segments</div>
           <span class="ex-badge ex-basic">Basic</span>
         </div>
       </div>
       <div class="ex-body">
         <ul>
-          <li>Run the GNN with k = 2. Describe the two clusters in geographic terms (e.g. urban vs. rural).</li>
-          <li>Increase k step by step to 4, 6, and 8. Sketch or note how the map changes each time.</li>
-          <li>At which k do the clusters become most interpretable? Is there a "correct" value of k? Justify your answer.</li>
+          <li>Read the five cluster profile cards in the sidebar. For each cluster note its mean income, population density, share of foreign residents, and employment rate.</li>
+          <li>Assign a descriptive label to each cluster, e.g. <em>urban core</em>, <em>affluent lakeside</em>, <em>working-class suburban</em>, <em>small town</em>, <em>rural peripheral</em>.</li>
+          <li>Click on the city of Zürich on the map. Which cluster does it belong to? Does the profile match your expectations?</li>
+          <li>Find at least one municipality whose cluster assignment surprises you. How do you explain it?</li>
         </ul>
-        <div class="hint">Cluster profiles (mean income, age, density, etc.) are shown in the sidebar after each run — use them to label each cluster.</div>
+        <div class="hint">Hover over any municipality on the map to see its individual feature values alongside the cluster average.</div>
       </div>
     </div>
 
@@ -385,16 +382,16 @@
       <div class="ex-hdr">
         <div class="ex-num">3</div>
         <div class="ex-meta">
-          <div class="ex-title">Feature importance through weighting</div>
-          <span class="ex-badge ex-inter">Intermediate</span>
+          <div class="ex-title">Explore feature distributions in the scatter plot</div>
+          <span class="ex-badge ex-basic">Basic</span>
         </div>
       </div>
       <div class="ex-body">
         <ul>
-          <li>Run with all feature weights = 1 (default). Note the cluster boundaries.</li>
-          <li>Set <strong>Population density</strong> weight to 0 and re-run. Describe how the clusters change. Which municipalities move?</li>
-          <li>Now set <strong>Income</strong> to 2 and all other weights to 0.5. Which spatial pattern dominates?</li>
-          <li>Which single feature seems to drive the urban–rural split most strongly? Verify your hypothesis by setting all weights to 0 except that one.</li>
+          <li>Switch to the <strong>Scatter</strong> tab. The axes show two features; points are coloured by cluster.</li>
+          <li>Which pair of features produces the clearest cluster separation? Which pair overlaps the most?</li>
+          <li>Click a point in the scatter plot to highlight the same municipality on the map. Find a municipality that is an outlier in the scatter plot but centrally located on the map — how do you explain the discrepancy?</li>
+          <li>Which feature do you think contributes most to the urban–rural split visible on the map? Justify your answer using the scatter plot.</li>
         </ul>
       </div>
     </div>
@@ -403,16 +400,15 @@
       <div class="ex-hdr">
         <div class="ex-num">4</div>
         <div class="ex-meta">
-          <div class="ex-title">The role of spatial context (message-passing depth)</div>
+          <div class="ex-title">Spatial coherence of clusters</div>
           <span class="ex-badge ex-inter">Intermediate</span>
         </div>
       </div>
       <div class="ex-body">
         <ul>
-          <li>Set <strong>Message-passing layers</strong> to <strong>0</strong> and run. With 0 layers the GNN reduces to a simple projection of raw features — no spatial aggregation occurs.</li>
-          <li>Set layers to <strong>2</strong> (default) and re-run. Compare the two maps.</li>
-          <li>Are the clusters more spatially compact (contiguous) with 0 or with 2 layers? Measure informally by counting isolated municipalities.</li>
-          <li>Set layers to <strong>3</strong>. Does adding a third hop improve or worsen compactness? Why might very deep GNNs over-smooth?</li>
+          <li>In the <strong>Graph</strong> tab, enable <strong>Show names</strong>. Count how many municipalities in the largest cluster are isolated (surrounded only by nodes of a different cluster).</li>
+          <li>The GCN aggregates each node's features with its neighbours before clustering. Would you expect more or fewer isolated nodes if the model used the raw features without any graph convolution? Explain your reasoning.</li>
+          <li>Read Step 5 (Message-passing layers) on the <strong>Method</strong> page. What happens to cluster coherence when the number of layers is very large? What is this phenomenon called?</li>
         </ul>
         <div class="hint">Over-smoothing: with many layers every node aggregates an increasingly large neighbourhood, eventually causing all embeddings to converge — analogous to blurring an image too many times.</div>
       </div>
@@ -422,16 +418,16 @@
       <div class="ex-hdr">
         <div class="ex-num">5</div>
         <div class="ex-meta">
-          <div class="ex-title">Compare JS GNN with the trained Python GNN</div>
+          <div class="ex-title">Adjacency graph degree and cluster membership</div>
           <span class="ex-badge ex-inter">Intermediate</span>
         </div>
       </div>
       <div class="ex-body">
         <ul>
-          <li>In a terminal, run: <code>python gnn_geodemographic.py</code> (conda env: <code>gisenv</code>).</li>
-          <li>Click <strong>Load Python</strong> in the sidebar. The map now shows clusters from the fully trained autoencoder.</li>
-          <li>Compare with the JS result (click <strong>Re-run JS GNN</strong> to switch back). Which municipalities change cluster? How many?</li>
-          <li>The JS version uses random fixed weights; the Python version minimises reconstruction loss over 400 epochs. Which produces more spatially coherent clusters, and why?</li>
+          <li>In the <strong>Graph</strong> tab, click on several nodes and note their degree (number of neighbours listed in the sidebar).</li>
+          <li>Do high-degree nodes (many neighbours) tend to stay within their own cluster, or do they act as bridges between clusters? Why might this be?</li>
+          <li>Find the municipality with the highest degree. Look up its geographic position on the map. Does its location explain its high connectivity?</li>
+          <li>In a GCN, a high-degree node aggregates many neighbours during message-passing. How might this affect its embedding compared to a low-degree node?</li>
         </ul>
       </div>
     </div>
@@ -446,7 +442,7 @@
       </div>
       <div class="ex-body">
         <ul>
-          <li>Run the Python results (or JS with k = 5). Read the cluster profile cards in the sidebar.</li>
+          <li>Run the Python GNN and read the cluster profile cards in the sidebar.</li>
           <li>Assign a descriptive label to each cluster, e.g. <em>urban core</em>, <em>affluent suburban</em>, <em>working-class suburban</em>, <em>small town</em>, <em>rural peripheral</em>.</li>
           <li>Click on the city of Zürich on the map. Which cluster does it belong to? Does the profile match your expectations?</li>
           <li>Find at least one municipality whose cluster assignment surprises you. How do you explain it?</li>
@@ -465,8 +461,8 @@
       </div>
       <div class="ex-body">
         <ul>
-          <li><strong>Simulated data:</strong> In what ways could synthetic features mislead the classification compared to real census data? Give two concrete examples of bias the simulation might introduce.</li>
-          <li><strong>Feature selection:</strong> What additional socio-economic or environmental features would you include in a real study of Kanton Zürich? Consult the Swiss Federal Statistical Office (BFS) website for ideas.</li>
+          <li><strong>Feature selection:</strong> The model uses four BFS variables. What additional socio-economic or environmental features would you include? Consult the Swiss Federal Statistical Office (BFS) website for ideas.</li>
+          <li><strong>Number of clusters:</strong> k = 5 is fixed. How would you choose k objectively? Describe one internal validation measure (e.g. silhouette score) and explain what it measures.</li>
           <li><strong>Validation:</strong> No ground-truth geodemographic labels exist. Propose two methods for evaluating the quality of the classification — one internal (using only the data) and one external (using an independent source).</li>
           <li><strong>Loss function:</strong> The autoencoder uses MSE reconstruction loss. Is this the right objective for geodemographic classification? What alternative training objectives could be used?</li>
         </ul>
@@ -494,9 +490,8 @@ const NS = 'http://www.w3.org/2000/svg';
 ═══════════════════════════════════════════════════════════════ */
 const S = {
   nodes: [], adj: [], bbox: null,
-  labels: null, method: 'js',
+  labels: null, method: 'python',
   tab: 'map', k: 5, layers: 2,
-  fw: [1,1,1,1],
   sel: null,
   realData: false,
   showAllNames: false,
@@ -617,60 +612,6 @@ function buildAdj(features) {
   return adj;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   JS GNN  (2-layer GCN, mean aggregation)
-═══════════════════════════════════════════════════════════════ */
-function mmul(A, B) {
-  const R=A.length, C=B[0].length, K=B.length;
-  return Array.from({length:R}, (_,i) =>
-    Array.from({length:C}, (_,j) =>
-      A[i].reduce((s,v,k)=>s+v*B[k][j], 0)));
-}
-function relu(M) { return M.map(r=>r.map(v=>Math.max(0,v))); }
-function mkW(rows, cols, seed) {
-  const rng=mkRNG(seed), sc=Math.sqrt(2/rows);
-  return Array.from({length:rows}, ()=>Array.from({length:cols},()=>rng.norm(0,sc)));
-}
-function ahat(adj, n) {
-  const A = Array.from({length:n}, (_,i) => { const r=new Array(n).fill(0); r[i]=1; adj[i].forEach(j=>r[j]=1); return r; });
-  const d = A.map(r=>1/Math.sqrt(r.reduce((s,v)=>s+v,0)));
-  return A.map((r,i)=>r.map((v,j)=>d[i]*v*d[j]));
-}
-function runGNN(nodes, adj, fw, layers) {
-  const n=nodes.length, Ah=ahat(adj,n);
-  const W1=mkW(4,16,1337), W2=mkW(16,8,7777);
-  const X = nodes.map(nd=>FEAT_KEYS.map((k,i)=>nd.norm[k]*(fw[i]??1)));
-  let H = relu(mmul(mmul(Ah,X),W1));
-  for(let l=0;l<layers;l++) H=relu(mmul(mmul(Ah,H),W2));
-  return H;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   K-Means
-═══════════════════════════════════════════════════════════════ */
-function kmeans(embs, k) {
-  const n=embs.length, rng=mkRNG(k*17+3);
-  const C=[embs[Math.floor(rng.next()*n)].slice()];
-  while(C.length<k){
-    const ds=embs.map(e=>Math.min(...C.map(c=>c.reduce((s,v,j)=>s+(v-e[j])**2,0))));
-    const tot=ds.reduce((a,b)=>a+b,0);
-    let r=rng.next()*tot, idx=0;
-    for(;idx<n-1;idx++){r-=ds[idx];if(r<=0)break;}
-    C.push(embs[idx].slice());
-  }
-  let L=new Array(n).fill(0);
-  for(let it=0;it<100;it++){
-    const nL=embs.map(e=>{let b=0,bd=Infinity; C.forEach((c,ci)=>{const d=c.reduce((s,v,j)=>s+(v-e[j])**2,0);if(d<bd){bd=d;b=ci;}}); return b;});
-    if(nL.every((l,i)=>l===L[i]))break;
-    L=nL;
-    C.forEach((c,ci)=>{
-      const m=embs.filter((_,i)=>L[i]===ci);
-      if(!m.length)return;
-      c.forEach((_,j)=>{c[j]=m.reduce((s,e)=>s+e[j],0)/m.length;});
-    });
-  }
-  return L;
-}
 
 /* ═══════════════════════════════════════════════════════════════
    SVG Map
@@ -1010,24 +951,51 @@ function toggleNames() {
 function selectId(id) {
   S.sel=id; refreshMapColors(); refreshGraphColors(); renderPanel();
 }
-function runJs() {
-  const btn=document.getElementById('run-btn');
-  btn.disabled=true; btn.textContent='Running…';
-  setTimeout(()=>{
-    S.labels=kmeans(runGNN(S.nodes,S.adj,S.fw,S.layers), S.k);
-    S.method='js';
-    refreshMapColors(); refreshGraphColors(); updateStats(); updateBadge(); renderPanel();
-    btn.disabled=false; btn.textContent='Re-run JS GNN';
-  },0);
-}
+
 function loadPy() {
-  fetch('cluster_results.json').then(r=>r.json()).then(data=>{
-    S.labels=S.nodes.map(n=>data.clusters[String(n.id)]??0);
-    S.method='python'; S.k=data.k;
-    document.getElementById('k-sl').value=S.k;
-    document.getElementById('k-val').textContent=S.k;
-    refreshMapColors(); refreshGraphColors(); updateStats(); updateBadge(); renderPanel();
-  });
+  const btn  = document.getElementById('py-btn');
+  const hint = document.getElementById('py-hint');
+  btn.disabled = true;
+  btn.textContent = 'Running Python GNN…';
+  hint.textContent = 'Training GCN autoencoder (400 epochs)…';
+
+  fetch('/run-gnn', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({k:S.k, layers:S.layers})})
+    .then(r => r.ok ? r.json() : Promise.reject('server error'))
+    .then(data => {
+      if (!data.ok) {
+        hint.textContent = 'Error: ' + (data.stderr || 'unknown error');
+        btn.disabled = false; btn.textContent = '▶ Run Python GNN';
+        return;
+      }
+      return fetch('cluster_results.json?t=' + Date.now()).then(r=>r.json()).then(res=>{
+        applyPyResults(res);
+        hint.textContent = 'Python GNN results loaded.';
+        btn.disabled = false; btn.textContent = '↺ Re-run Python GNN';
+      });
+    })
+    .catch(() => {
+      // Fallback: static server — just load pre-existing cluster_results.json
+      fetch('cluster_results.json?t=' + Date.now())
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(res => {
+          applyPyResults(res);
+          hint.textContent = 'Loaded existing results (start server.py to re-run).';
+          btn.disabled = false; btn.textContent = '↺ Re-run Python GNN';
+        })
+        .catch(() => {
+          hint.textContent = 'Start server.py and click again to run the Python GNN.';
+          btn.disabled = false; btn.textContent = '▶ Run Python GNN';
+        });
+    });
+}
+function markStale() {
+  const btn = document.getElementById('py-btn');
+  if (btn && !btn.disabled) btn.textContent = '▶ Run Python GNN';
+}
+function applyPyResults(data) {
+  S.labels=S.nodes.map(n=>data.clusters[String(n.id)]??0);
+  S.method='python'; S.k=data.k;
+  refreshMapColors(); refreshGraphColors(); updateStats(); updateBadge(); renderPanel();
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1037,38 +1005,11 @@ function svgDims() {
   const w=document.getElementById('canvas-wrap');
   return { w: w.clientWidth, h: w.clientHeight };
 }
-function buildFeatSliders() {
-  const c=document.getElementById('feat-sliders');
-  FEAT_KEYS.forEach((k,i)=>{
-    const d=document.createElement('div'); d.className='slider-row';
-    d.innerHTML=`<div class="row-hdr"><span>${FEAT_LBL[i]}</span><b id="fw-v${i}">${S.fw[i].toFixed(1)}</b></div>
-      <input type="range" min="0" max="2" step="0.1" value="${S.fw[i]}">`;
-    d.querySelector('input').addEventListener('input', e=>{
-      S.fw[i]=+e.target.value;
-      document.getElementById(`fw-v${i}`).textContent=S.fw[i].toFixed(1);
-      S.labels=null; document.getElementById('run-btn').textContent='▶ Run JS GNN';
-    });
-    c.appendChild(d);
-  });
-}
-function wireControls() {
-  document.getElementById('k-sl').addEventListener('input', e=>{
-    S.k=+e.target.value; document.getElementById('k-val').textContent=S.k;
-    S.labels=null; document.getElementById('run-btn').textContent='▶ Run JS GNN';
-  });
-  document.getElementById('l-sl').addEventListener('input', e=>{
-    S.layers=+e.target.value; document.getElementById('l-val').textContent=S.layers;
-    S.labels=null; document.getElementById('run-btn').textContent='▶ Run JS GNN';
-  });
-}
 
 /* ═══════════════════════════════════════════════════════════════
    Init
 ═══════════════════════════════════════════════════════════════ */
 async function init() {
-  buildFeatSliders();
-  wireControls();
-
   const [geo, featData] = await Promise.all([
     fetch('GEN_A4_GEMEINDEN_2019_epsg4326.json').then(r=>r.json()),
     fetch('features.json').then(r=>r.ok?r.json():null).catch(()=>null),
@@ -1091,16 +1032,12 @@ async function init() {
   initGraph();
   renderPanel();
 
-  // Check for Python results
-  fetch('cluster_results.json')
+  // Show a hint when running on a static server (no Flask /health endpoint)
+  fetch('/health')
     .then(r=>{ if(!r.ok) throw 0; })
-    .then(()=>{
-      document.getElementById('py-btn').style.display='';
-      document.getElementById('py-hint').innerHTML='';
-    })
     .catch(()=>{
       document.getElementById('py-hint').innerHTML=
-        'Run <code>python gnn_geodemographic.py</code> to load real data and Python GNN results.';
+        'Start <code>python server.py</code> to enable the Python GNN button.';
     });
 }
 

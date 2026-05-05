@@ -43,28 +43,18 @@ No deep-learning framework is required — the GCN is implemented from scratch i
 conda activate gisenv
 ```
 
-### 2. Run the Python script
+### 2. Start the Flask server
 
 ```powershell
 cd U:\Lektionen\GitHub_Repositories\spatial_data_analysis\12_Python_Graph_NN_Spatial_Classification
-python gnn_geodemographic.py
+python server.py
 ```
 
-The script prints training progress and a cluster profile summary, then writes `cluster_results.json`.
-
-### 3. Start a local HTTP server
-
-The web app loads JSON files via `fetch()`, so it must be served over HTTP (not opened as a file):
-
-```powershell
-python -m http.server 8000
-```
-
-### 4. Open the browser
+### 3. Open the browser
 
 Navigate to [http://localhost:8000](http://localhost:8000).
 
-Click **Load Python Results** in the sidebar to display the GCN cluster assignments on the map.
+Click **▶ Run Python GNN** in the sidebar to train the GCN autoencoder and display the cluster assignments on the map.
 
 ---
 
@@ -72,6 +62,7 @@ Click **Load Python Results** in the sidebar to display the GCN cluster assignme
 
 | File | Description |
 |---|---|
+| `server.py` | Flask server — serves the app and exposes `/run-gnn` endpoint |
 | `gnn_geodemographic.py` | GCN autoencoder, adjacency builder, K-Means clustering |
 | `index.html` | Interactive visualisation (map, graph, scatter, profiles) |
 | `GEN_A4_GEMEINDEN_2019_epsg4326.json` | Municipality boundaries, Kanton Zürich, EPSG:4326 |
