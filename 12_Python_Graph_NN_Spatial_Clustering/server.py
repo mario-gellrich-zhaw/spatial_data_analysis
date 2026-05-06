@@ -60,5 +60,9 @@ def run_gnn():
 
 
 if __name__ == '__main__':
+    stale = BASE / 'cluster_results.json'
+    if stale.exists():
+        stale.unlink()
+        print('Removed stale cluster_results.json — starting fresh.')
     print('Geodemographic Lab  ->  http://localhost:8000')
     app.run(port=8000, debug=False)

@@ -1032,19 +1032,6 @@ async function init() {
   initGraph();
   renderPanel();
 
-  // Auto-load existing Python results so clusters are visible after a server restart
-  fetch('cluster_results.json?t=' + Date.now())
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(res => {
-      if (!res || !res.clusters) return;
-      applyPyResults(res);
-      const btn = document.getElementById('py-btn');
-      const hint = document.getElementById('py-hint');
-      btn.textContent = '↺ Re-run Python GNN';
-      hint.textContent = 'Loaded existing Python GNN results.';
-    })
-    .catch(() => {});
-
   // Show a hint when running on a static server (no Flask /health endpoint)
   fetch('/health')
     .then(r=>{ if(!r.ok) throw 0; })
