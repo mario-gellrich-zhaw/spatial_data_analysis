@@ -1,6 +1,6 @@
-# Graph Neural Network Geodemographic Classification
+# Graph Neural Network Geodemographic Clustering
 
-A Python implementation of a **Graph Convolutional Network (GCN) autoencoder** for geodemographic classification of Swiss municipalities (Kanton Zürich), paired with an interactive browser visualisation.
+A Python implementation of a **Graph Neural Network (GNN) Geodemographic Clustering** for geodemographic clustering of Swiss municipalities (Kanton Zürich), paired with an interactive browser visualisation.
 
 Reference: De Sabbata S, Liu P (2023). *A graph neural network framework for spatial geodemographic classification*. IJGIS 37(12), 2464–2486.
 
@@ -46,7 +46,7 @@ conda activate gisenv
 ### 2. Start the Flask server
 
 ```powershell
-cd U:\Lektionen\GitHub_Repositories\spatial_data_analysis\12_Python_Graph_NN_Spatial_Classification
+cd U:\Lektionen\GitHub_Repositories\spatial_data_analysis\12_Python_Graph_NN_Spatial_Clustering
 python server.py
 ```
 
