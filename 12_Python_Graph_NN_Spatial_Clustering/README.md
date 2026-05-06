@@ -9,11 +9,7 @@ Reference: De Sabbata S, Liu P (2023). *A graph neural network framework for spa
 ## What it does
 
 1. **Loads** municipality boundaries from a GeoJSON file (`GEN_A4_GEMEINDEN_2019_epsg4326.json`).
-<<<<<<< HEAD
 2. **Loads** socio-economic features per municipality from `features.json` (or from an Excel source if available):
-=======
-2. **Loads** socio-economic features per municipality from `features.json` (or from an Excel source if available):
->>>>>>> b9ce39f (Align GNN lab docs and exercises with current app)
    - **Mean taxable income per taxpayer** (`mean_taxable_income`, BFS: *pro Steuerpflichtigen/-r*, divided by 1 000 → kCHF)
    - **Population density** (`pop_dens`, inhabitants per km²)
    - **Share of foreign residents** (`frg_pct`, %)
@@ -21,11 +17,7 @@ Reference: De Sabbata S, Liu P (2023). *A graph neural network framework for spa
 
    Missing values are imputed from the mean of the 5 spatially nearest municipalities with a valid value.
 3. **Builds a spatial adjacency graph** by detecting shared boundary coordinates between polygons (two or more shared vertices → neighbours).
-<<<<<<< HEAD
 4. **Trains a GCN autoencoder** (architecture: 4 → 16 → 8, two graph-convolutional encoder layers + linear decoder by default) using MSE reconstruction loss and SGD with momentum. The encoder compresses each node into an 8-dimensional embedding that captures both feature similarity and spatial neighbourhood structure.
-=======
-4. **Trains a GCN autoencoder** (architecture: 4 → 16 → 8, two graph-convolutional encoder layers + linear decoder by default) using MSE reconstruction loss and SGD with momentum. The encoder compresses each node into an 8-dimensional embedding that captures both feature similarity and spatial neighbourhood structure.
->>>>>>> b9ce39f (Align GNN lab docs and exercises with current app)
 5. **Clusters** the embeddings with K-Means (k = 5) to produce geodemographic segments.
 6. **Writes** `cluster_results.json` and prints a cluster profile summary to the terminal.
 7. **Visualises** results in `index.html`: choropleth map, force-directed graph, and per-cluster statistics.
