@@ -338,7 +338,7 @@
 <div id="page-exercises" style="display:none">
   <div class="page-inner">
     <h1 class="page-h1">Student Exercises</h1>
-    <p class="page-sub">Work through the exercises in the interactive lab. Use the Map, Graph, and Scatter tabs to explore the results. All exercises can be completed in the browser — no coding required unless marked ★.</p>
+    <p class="page-sub">Work through the exercises in the interactive lab. Use the Map and Graph tabs to explore the results. All exercises can be completed in the browser — no coding required unless marked ★.</p>
 
     <div class="ex-card">
       <div class="ex-hdr">
@@ -374,7 +374,7 @@
           <li>Click on the city of Zürich on the map. Which cluster does it belong to? Does the profile match your expectations?</li>
           <li>Find at least one municipality whose cluster assignment surprises you. How do you explain it?</li>
         </ul>
-        <div class="hint">Hover over any municipality on the map to see its individual feature values alongside the cluster average.</div>
+        <div class="hint">Hover over any municipality on the map to see its individual feature values and cluster assignment.</div>
       </div>
     </div>
 
@@ -382,16 +382,16 @@
       <div class="ex-hdr">
         <div class="ex-num">3</div>
         <div class="ex-meta">
-          <div class="ex-title">Explore feature distributions in the scatter plot</div>
+          <div class="ex-title">Parameter sensitivity: clusters and message-passing depth</div>
           <span class="ex-badge ex-basic">Basic</span>
         </div>
       </div>
       <div class="ex-body">
         <ul>
-          <li>Switch to the <strong>Scatter</strong> tab. The axes show two features; points are coloured by cluster.</li>
-          <li>Which pair of features produces the clearest cluster separation? Which pair overlaps the most?</li>
-          <li>Click a point in the scatter plot to highlight the same municipality on the map. Find a municipality that is an outlier in the scatter plot but centrally located on the map — how do you explain the discrepancy?</li>
-          <li>Which feature do you think contributes most to the urban–rural split visible on the map? Justify your answer using the scatter plot.</li>
+          <li>Run the model with <strong>k = 3</strong>, then with <strong>k = 8</strong>. Compare how cluster sizes and map patterns change.</li>
+          <li>Keep k fixed (e.g. k = 5) and vary <strong>message-passing layers</strong> from 1 to 4. Re-run after each change.</li>
+          <li>Which setting gives the most interpretable spatial segmentation for Zürich Canton? Justify your choice using both map and graph views.</li>
+          <li>Do higher layer counts make clusters spatially smoother, noisier, or mixed? Relate your observation to the over-smoothing concept on the Method page.</li>
         </ul>
       </div>
     </div>
@@ -436,18 +436,18 @@
       <div class="ex-hdr">
         <div class="ex-num">6</div>
         <div class="ex-meta">
-          <div class="ex-title">Interpret and label the geodemographic segments</div>
+          <div class="ex-title">Cluster stability across re-runs</div>
           <span class="ex-badge ex-inter">Intermediate</span>
         </div>
       </div>
       <div class="ex-body">
         <ul>
-          <li>Run the Python GNN and read the cluster profile cards in the sidebar.</li>
-          <li>Assign a descriptive label to each cluster, e.g. <em>urban core</em>, <em>affluent suburban</em>, <em>working-class suburban</em>, <em>small town</em>, <em>rural peripheral</em>.</li>
-          <li>Click on the city of Zürich on the map. Which cluster does it belong to? Does the profile match your expectations?</li>
-          <li>Find at least one municipality whose cluster assignment surprises you. How do you explain it?</li>
+          <li>Choose one configuration (for example <code>k = 5</code>, <code>layers = 2</code>) and run the Python GNN three times.</li>
+          <li>Track the cluster assignment of at least five municipalities (including Zürich) across runs.</li>
+          <li>Are assignments stable, or do some municipalities switch clusters? Identify where switches happen most often (e.g. urban fringe, district borders).</li>
+          <li>Explain why some instability is expected when K-Means is part of the pipeline and suggest one way to improve reproducibility.</li>
         </ul>
-        <div class="hint">Use the tooltip (hover over any municipality) to see its individual feature values alongside the cluster average.</div>
+        <div class="hint">Use the municipality detail panel and cluster cards to compare assignments and profiles between runs.</div>
       </div>
     </div>
 
