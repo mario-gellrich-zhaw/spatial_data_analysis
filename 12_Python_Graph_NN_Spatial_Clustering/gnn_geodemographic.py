@@ -1,5 +1,5 @@
 """
-Graph Convolutional Network for spatial geodemographic classification.
+Graph Convolutional Network for spatial geodemographic clustering.
 
 Architecture: 2-layer GCN encoder + linear decoder (graph autoencoder).
 Training: MSE reconstruction of normalised features via SGD with momentum.
@@ -251,38 +251,37 @@ def train_autoencoder(A_hat, X_norm, hidden=16, embed=8, layers=2, epochs=400, l
     return Z
 
 # ---------------------------------------------------------------------------
-# Main
+# Main pipeline (callable from Flask without spawning a subprocess)
 # ---------------------------------------------------------------------------
 
-if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--k",      type=int, default=5)
-    parser.add_argument("--layers", type=int, default=2)
-    args = parser.parse_args()
-
-    base       = Path(__file__).parent
+def run_pipeline(k=5, layers=2, verbose=True):
+    base = Path(__file__).parent
     excel_path = base.parent / "municipality_data_with_taxable_income.xlsx"
-    K      = args.k
-    LAYERS = args.layers
+    K = int(k)
+    LAYERS = int(layers)
 
-    print("─" * 55)
-    print("Graph-NN Geodemographic Segmentation")
-    print("─" * 55)
+    if verbose:
+        print("-" * 55)
+        print("Graph-NN Geodemographic Segmentation")
+        print("-" * 55)
 
-    print("\n[1/5] Loading GeoJSON …")
+    if verbose:
+        print("\n[1/5] Loading GeoJSON ...")
     with open(base / "GEN_A4_GEMEINDEN_2019_epsg4326.json") as fh:
         geo = json.load(fh)
     features = geo["features"]
-    print(f"      {len(features)} municipalities")
+    if verbose:
+        print(f"      {len(features)} municipalities")
 
     feat_json = base / "features.json"
     if feat_json.exists():
-        print("\n[2/5] Loading socio-economic features from features.json …")
+        if verbose:
+            print("\n[2/5] Loading socio-economic features from features.json ...")
         nodes = load_features_from_json(features, feat_json)
         src = feat_json.name
     elif excel_path.exists():
-        print("\n[2/5] Loading socio-economic features from Excel …")
+        if verbose:
+            print("\n[2/5] Loading socio-economic features from Excel ...")
         nodes = load_features(features, excel_path)
         src = excel_path.name
     else:
@@ -290,41 +289,47 @@ if __name__ == "__main__":
     X_raw = np.array([[n[k] for k in FEAT_KEYS] for n in nodes], dtype=float)
     scaler = StandardScaler()
     X_norm = scaler.fit_transform(X_raw)
-    print(f"      Features: {FEAT_KEYS}")
-    print(f"      Source: {src}")
+    if verbose:
+        print(f"      Features: {FEAT_KEYS}")
+        print(f"      Source: {src}")
 
-    print("\n[3/5] Building spatial adjacency graph …")
+    if verbose:
+        print("\n[3/5] Building spatial adjacency graph ...")
     adj = build_adjacency(features)
     edge_count = sum(len(a) for a in adj) // 2
     degrees = [len(a) for a in adj]
-    print(f"      {edge_count} edges  (mean degree {np.mean(degrees):.1f})")
+    if verbose:
+        print(f"      {edge_count} edges  (mean degree {np.mean(degrees):.1f})")
 
-    dims_str = "→".join(["4"] + ["16"] * (LAYERS - 1) + ["8"])
-    print(f"\n[4/5] Training GCN autoencoder ({LAYERS} layers: {dims_str}) …")
+    dims_str = "->".join(["4"] + ["16"] * (LAYERS - 1) + ["8"])
+    if verbose:
+        print(f"\n[4/5] Training GCN autoencoder ({LAYERS} layers: {dims_str}) ...")
     A_hat = normalised_adj(adj, len(nodes))
-    Z = train_autoencoder(A_hat, X_norm, hidden=16, embed=8, layers=LAYERS, epochs=400, lr=0.015)
+    Z = train_autoencoder(A_hat, X_norm, hidden=16, embed=8, layers=LAYERS, epochs=400, lr=0.015, verbose=verbose)
 
-    print(f"\n[5/5] K-Means clustering (k={K}) …")
+    if verbose:
+        print(f"\n[5/5] K-Means clustering (k={K}) ...")
     km = KMeans(n_clusters=K, random_state=42, n_init=20)
     labels = km.fit_predict(Z)
 
     # ── Print cluster profiles ──────────────────────────────────────────────
-    print("\n" + "─" * 55)
-    print("Cluster profiles")
-    print("─" * 55)
-    for c in range(K):
-        idx     = [i for i, l in enumerate(labels) if l == c]
-        members = [nodes[i] for i in idx]
-        avg     = lambda key: float(np.mean([m[key] for m in members]))
-        names   = ", ".join(m["name"] for m in members[:5])
-        if len(members) > 5:
-            names += f" +{len(members)-5}"
-        print(f"\nCluster {c+1}  ({len(members)} municipalities)")
-        print(f"  income      {avg('income'):.1f}k CHF")
-        print(f"  density     {avg('pop_density'):.0f}/km²")
-        print(f"  foreign     {avg('foreign_pct'):.1f}%")
-        print(f"  emp. rate   {avg('emp_rate'):.1f}%")
-        print(f"  places:     {names}")
+    if verbose:
+        print("\n" + "-" * 55)
+        print("Cluster profiles")
+        print("-" * 55)
+        for c in range(K):
+            idx     = [i for i, l in enumerate(labels) if l == c]
+            members = [nodes[i] for i in idx]
+            avg     = lambda key: float(np.mean([m[key] for m in members]))
+            names   = ", ".join(m["name"] for m in members[:5])
+            if len(members) > 5:
+                names += f" +{len(members)-5}"
+            print(f"\nCluster {c+1}  ({len(members)} municipalities)")
+            print(f"  income      {avg('income'):.1f}k CHF")
+            print(f"  density     {avg('pop_density'):.0f}/km^2")
+            print(f"  foreign     {avg('foreign_pct'):.1f}%")
+            print(f"  emp. rate   {avg('emp_rate'):.1f}%")
+            print(f"  places:     {names}")
 
     # ── Export cluster_results.json for web app ─────────────────────────────
     results = {
@@ -339,7 +344,8 @@ if __name__ == "__main__":
     out = base / "cluster_results.json"
     with open(out, "w") as fh:
         json.dump(results, fh, indent=2)
-    print(f"\n✓ Results written to {out.name}")
+    if verbose:
+        print(f"\n[OK] Results written to {out.name}")
 
     # ── Export features.json for interactive JS GNN ─────────────────────────
     feat_export = {
@@ -354,6 +360,18 @@ if __name__ == "__main__":
     feat_out = base / "features.json"
     with open(feat_out, "w") as fh:
         json.dump(feat_export, fh, indent=2)
-    print(f"✓ Features written to {feat_out.name}")
-    print("  Open the web app and click 'Load Python Results'.")
-    print("─" * 55)
+    if verbose:
+        print(f"[OK] Features written to {feat_out.name}")
+        print("  Open the web app and click 'Load Python Results'.")
+        print("-" * 55)
+
+    return results
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--k", type=int, default=5)
+    parser.add_argument("--layers", type=int, default=2)
+    args = parser.parse_args()
+    run_pipeline(k=args.k, layers=args.layers, verbose=True)

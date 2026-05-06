@@ -1,4 +1,9 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:system",
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python.defaultInterpreterPath": "C:\\Users\\gell\\AppData\\Local\\anaconda3\\envs\\gisenv\\python.exe",
+    "python.terminal.activateEnvironment": false,
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.automationProfile.windows": {
+        "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    }
 }

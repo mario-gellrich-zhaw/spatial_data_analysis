@@ -1,0 +1,105 @@
+Traceback (most recent call last):
+  File "u:\Lektionen\GitHub_Repositories\spatial_data_analysis\12_Python_Graph_NN_Spatial_Clustering\server.py", line 56, in <module>
+    print('Geodemographic Lab  \u2192  http://localhost:8000')
+  File "c:\Users\gell\AppData\Local\anaconda3\envs\gisenv\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 20: character maps to <undefined>
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8000
+Press CTRL+C to quit
+127.0.0.1 - - [06/May/2026 08:39:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:39:30] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:39:30] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:40:12] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:41:37] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:41:51] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:41:51] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:41:51] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:41:56] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:41:56] "GET /cluster_results.json?t=1778049716140 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:24] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:24] "GET /cluster_results.json?t=1778049744772 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:32] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:32] "GET /cluster_results.json?t=1778049752422 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:39] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:39] "GET /cluster_results.json?t=1778049759618 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:54] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:42:54] "GET /cluster_results.json?t=1778049774461 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:43:01] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:43:01] "GET /cluster_results.json?t=1778049781546 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:44:30] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:44:30] "GET /cluster_results.json?t=1778049870383 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:45:28] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:45:28] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:45:28] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:45:34] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:45:34] "GET /cluster_results.json?t=1778049934256 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:47:26] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:47:36] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:47:36] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:47:36] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:47:41] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:47:41] "GET /cluster_results.json?t=1778050061694 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:48:45] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:49:00] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:49:00] "GET /cluster_results.json?t=1778050140047 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:50:12] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:50:31] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:50:31] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:50:31] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:50:39] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:50:39] "GET /cluster_results.json?t=1778050239340 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:51:56] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:51:56] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:51:56] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:52:01] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:52:02] "GET /cluster_results.json?t=1778050321797 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:55:17] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:55:17] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:55:17] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:55:23] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:55:23] "GET /cluster_results.json?t=1778050523432 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:56:18] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:56:44] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:56:50] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:56:50] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:56:50] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:56:55] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:56:56] "GET /cluster_results.json?t=1778050615801 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:57:10] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:57:10] "GET /cluster_results.json?t=1778050630056 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:57:50] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:57:50] "GET /cluster_results.json?t=1778050670200 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:02] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:02] "GET /cluster_results.json?t=1778050682134 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:18] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:46] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [06/May/2026 08:58:46] "GET /GEN_A4_GEMEINDEN_2019_epsg4326.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:46] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:46] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:51] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:51] "GET /cluster_results.json?t=1778050731797 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:54] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:58] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:58:58] "GET /cluster_results.json?t=1778050738353 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:03] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:04] "GET /cluster_results.json?t=1778050743730 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:27] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:27] "GET /GEN_A4_GEMEINDEN_2019_epsg4326.json HTTP/1.1" 304 -
+127.0.0.1 - - [06/May/2026 08:59:28] "GET /cluster_results.json?t=1778050767884 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:28] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:45] "GET /GEN_A4_GEMEINDEN_2019_epsg4326.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:45] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [06/May/2026 08:59:45] "GET /features.json HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:45] "GET /cluster_results.json?t=1778050785577 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:45] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:48] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:49] "GET /cluster_results.json?t=1778050788977 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:57] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 08:59:57] "GET /cluster_results.json?t=1778050797053 HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 09:01:34] "POST /run-gnn HTTP/1.1" 200 -
+127.0.0.1 - - [06/May/2026 09:01:34] "GET /cluster_results.json?t=1778050894108 HTTP/1.1" 200 -

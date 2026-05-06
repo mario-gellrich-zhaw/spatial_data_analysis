@@ -185,7 +185,7 @@
   <b>De Sabbata S, Liu P (2023).</b>
   <span>"A GNN framework for spatial geodemographic classification."</span>
   <i>IJGIS, 37(12), 2464–2486.</i>
-  <span style="color:#93c5fd">· Features are simulated (BFS-seeded synthetic data)</span>
+  <span style="color:#93c5fd">· This app is a simplified teaching adaptation with local data.</span>
 </div>
 
 <!-- Main -->
@@ -231,13 +231,13 @@
 <div id="page-method" style="display:none">
   <div class="page-inner">
     <h1 class="page-h1">Method &amp; Data</h1>
-    <p class="page-sub">Step-by-step explanation of the GCN-based geodemographic classification pipeline, following De Sabbata &amp; Liu (2023).</p>
+    <p class="page-sub">Step-by-step explanation of a simplified, didactic GCN-based geodemographic clustering pipeline inspired by De Sabbata &amp; Liu (2023).</p>
 
     <div class="method-step">
       <div class="step-num">1</div>
       <div class="step-body">
-        <h2 class="step-title">What is geodemographic classification?</h2>
-        <p>Geodemographic classification groups geographic areas by socio-economic similarity. Traditional methods such as K-Means treat each area independently. <strong>Graph Neural Networks (GNNs)</strong> go further by incorporating <em>spatial neighbourhood structure</em>: a municipality's representation is shaped not only by its own features, but also by those of its neighbours.</p>
+        <h2 class="step-title">What is geodemographic clustering?</h2>
+        <p>Geodemographic clustering groups geographic areas by socio-economic similarity. Traditional methods such as K-Means treat each area independently. <strong>Graph Neural Networks (GNNs)</strong> go further by incorporating <em>spatial neighbourhood structure</em>: a municipality's representation is shaped not only by its own features, but also by those of its neighbours.</p>
         <p>This matters because neighbouring areas often share infrastructure, labour markets, and cultural characteristics — patterns that attribute-only clustering misses. De Sabbata &amp; Liu (2023) proposed the first GNN framework designed specifically for this task.</p>
       </div>
     </div>
@@ -266,7 +266,7 @@
         <p>Spatial relationships are encoded as an <strong>undirected graph G = (V, E)</strong>:</p>
         <ul class="method-list">
           <li><strong>Nodes V</strong> — one per municipality (|V| = 162)</li>
-          <li><strong>Edges E</strong> — an edge (i, j) is added if municipalities i and j share ≥ 2 boundary coordinate pairs, i.e. they have a common border segment (Queen's-case contiguity)</li>
+          <li><strong>Edges E</strong> — an edge (i, j) is added if municipalities i and j share ≥ 2 boundary coordinate pairs, i.e. they have a common border segment (Queen contiguity)</li>
         </ul>
         <p>The resulting planar graph has roughly 400 edges and a mean degree of ~5. You can inspect it in the <strong>Graph</strong> tab. After clustering, within-cluster edges are highlighted in the cluster colour.</p>
       </div>
@@ -288,17 +288,17 @@
         <h2 class="step-title">GCN autoencoder</h2>
         <p>The model is a <strong>graph autoencoder</strong> trained unsupervised to reconstruct the standardised feature matrix from a compact spatial embedding:</p>
         <div class="arch-diagram">
-          <div class="arch-box arch-in">Input X<br><span>n × 6</span></div>
+          <div class="arch-box arch-in">Input X<br><span>n × 4</span></div>
           <div class="arch-arrow">→</div>
-          <div class="arch-box arch-enc">GCN enc 1<br><span>6 → 16, ReLU</span></div>
+          <div class="arch-box arch-enc">GCN enc 1<br><span>4 → 16, ReLU</span></div>
           <div class="arch-arrow">→</div>
           <div class="arch-box arch-enc">GCN enc 2<br><span>16 → 8, ReLU</span></div>
           <div class="arch-arrow">→</div>
           <div class="arch-box arch-lat">Embedding Z<br><span>n × 8</span></div>
           <div class="arch-arrow">→</div>
-          <div class="arch-box arch-dec">Decoder<br><span>8 → 6, linear</span></div>
+          <div class="arch-box arch-dec">Decoder<br><span>8 → 4, linear</span></div>
           <div class="arch-arrow">→</div>
-          <div class="arch-box arch-out">X̂ (recon.)<br><span>n × 6</span></div>
+          <div class="arch-box arch-out">X̂ (recon.)<br><span>n × 4</span></div>
         </div>
         <p>Each GCN layer applies a graph-aware linear transform:</p>
         <div class="formula">H<sup>(l+1)</sup> = ReLU( Â · H<sup>(l)</sup> · W<sup>(l)</sup> )</div>
@@ -463,8 +463,8 @@
         <ul>
           <li><strong>Feature selection:</strong> The model uses four BFS variables. What additional socio-economic or environmental features would you include? Consult the Swiss Federal Statistical Office (BFS) website for ideas.</li>
           <li><strong>Number of clusters:</strong> k = 5 is fixed. How would you choose k objectively? Describe one internal validation measure (e.g. silhouette score) and explain what it measures.</li>
-          <li><strong>Validation:</strong> No ground-truth geodemographic labels exist. Propose two methods for evaluating the quality of the classification — one internal (using only the data) and one external (using an independent source).</li>
-          <li><strong>Loss function:</strong> The autoencoder uses MSE reconstruction loss. Is this the right objective for geodemographic classification? What alternative training objectives could be used?</li>
+          <li><strong>Validation:</strong> No ground-truth geodemographic labels exist. Propose two methods for evaluating clustering quality — one internal (using only the data) and one external (using an independent source).</li>
+          <li><strong>Loss function:</strong> The autoencoder uses MSE reconstruction loss. Is this the right objective for geodemographic clustering? What alternative training objectives could be used?</li>
         </ul>
         <div class="hint">★ These questions require written reflection (no browser interaction needed). Suitable as a homework or seminar task.</div>
       </div>
@@ -1031,6 +1031,19 @@ async function init() {
   initMap(geo.features);
   initGraph();
   renderPanel();
+
+  // Auto-load existing Python results so clusters are visible after a server restart
+  fetch('cluster_results.json?t=' + Date.now())
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(res => {
+      if (!res || !res.clusters) return;
+      applyPyResults(res);
+      const btn = document.getElementById('py-btn');
+      const hint = document.getElementById('py-hint');
+      btn.textContent = '↺ Re-run Python GNN';
+      hint.textContent = 'Loaded existing Python GNN results.';
+    })
+    .catch(() => {});
 
   // Show a hint when running on a static server (no Flask /health endpoint)
   fetch('/health')

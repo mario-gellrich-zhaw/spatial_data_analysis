@@ -1,6 +1,6 @@
 # Graph Neural Network Geodemographic Clustering
 
-A Python implementation of a **Graph Neural Network (GNN) Geodemographic Clustering** for geodemographic clustering of Swiss municipalities (Kanton Zürich), paired with an interactive browser visualisation.
+A didactic adaptation of a **Graph Neural Network (GNN) geodemographic clustering** workflow for Swiss municipalities (Kanton Zürich), paired with an interactive browser visualisation.
 
 Reference: De Sabbata S, Liu P (2023). *A graph neural network framework for spatial geodemographic classification*. IJGIS 37(12), 2464–2486.
 
@@ -9,7 +9,7 @@ Reference: De Sabbata S, Liu P (2023). *A graph neural network framework for spa
 ## What it does
 
 1. **Loads** municipality boundaries from a GeoJSON file (`GEN_A4_GEMEINDEN_2019_epsg4326.json`).
-2. **Simulates** realistic socio-economic features per municipality — income, mean age, population density, share of foreigners, tertiary education rate, unemployment — using two spatial gradients and BFS-seeded random noise:
+2. **Loads socio-economic features** per municipality from prepared data files:
    - **Mean taxable income per taxpayer** (`mean_taxable_income`, BFS: *pro Steuerpflichtigen/-r*, divided by 1 000 → kCHF)
    - **Population density** (`pop_dens`, inhabitants per km²)
    - **Share of foreign residents** (`frg_pct`, %)
@@ -17,10 +17,12 @@ Reference: De Sabbata S, Liu P (2023). *A graph neural network framework for spa
 
    Missing values are imputed from the mean of the 5 spatially nearest municipalities with a valid value.
 3. **Builds a spatial adjacency graph** by detecting shared boundary coordinates between polygons (two or more shared vertices → neighbours).
-4. **Trains a GCN autoencoder** (architecture: 6 → 16 → 8, two graph-convolutional encoder layers + linear decoder) using MSE reconstruction loss and SGD with momentum. The encoder compresses each node into an 8-dimensional embedding that captures both feature similarity and spatial neighbourhood structure.
+4. **Trains a GCN autoencoder** (architecture: 4 → 16 → 8, two graph-convolutional encoder layers + linear decoder) using MSE reconstruction loss and SGD with momentum. The encoder compresses each node into an 8-dimensional embedding that captures both feature similarity and spatial neighbourhood structure.
 5. **Clusters** the embeddings with K-Means (k = 5) to produce geodemographic segments.
 6. **Writes** `cluster_results.json` and prints a cluster profile summary to the terminal.
 7. **Visualises** results in `index.html`: choropleth map, force-directed graph, scatter plot, and per-cluster statistics.
+
+This implementation follows the paper's core idea (graph-based unsupervised embeddings for geodemographic clustering) but is a simplified teaching version, not a full reproduction of the Greater London study design.
 
 ---
 
@@ -48,6 +50,13 @@ conda activate gisenv
 ```powershell
 cd U:\Lektionen\GitHub_Repositories\spatial_data_analysis\12_Python_Graph_NN_Spatial_Clustering
 python server.py
+```
+
+Windows no-console start (recommended if you do not want a terminal window):
+
+```powershell
+cd U:\Lektionen\GitHub_Repositories\spatial_data_analysis\12_Python_Graph_NN_Spatial_Clustering
+Start-Process -FilePath pythonw -ArgumentList 'server.py' -WorkingDirectory (Get-Location)
 ```
 
 ### 3. Open the browser

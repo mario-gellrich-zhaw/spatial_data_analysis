@@ -11,9 +11,11 @@ Usage:
 """
 
 from flask import Flask, jsonify, request, send_from_directory
-import subprocess
-import sys
+import traceback
+import io
+from contextlib import redirect_stdout, redirect_stderr
 from pathlib import Path
+import gnn_geodemographic
 
 BASE = Path(__file__).parent
 app  = Flask(__name__)
@@ -39,19 +41,24 @@ def run_gnn():
     body   = request.get_json(silent=True) or {}
     k      = int(body.get('k', 5))
     layers = int(body.get('layers', 2))
-    result = subprocess.run(
-        [sys.executable, str(BASE / 'gnn_geodemographic.py'), '--k', str(k), '--layers', str(layers)],
-        capture_output=True,
-        text=True,
-        cwd=str(BASE),
-    )
+    out_buf = io.StringIO()
+    err_buf = io.StringIO()
+    ok = True
+
+    with redirect_stdout(out_buf), redirect_stderr(err_buf):
+        try:
+            gnn_geodemographic.run_pipeline(k=k, layers=layers, verbose=True)
+        except Exception:
+            ok = False
+            traceback.print_exc()
+
     return jsonify({
-        'ok':     result.returncode == 0,
-        'stdout': result.stdout,
-        'stderr': result.stderr,
+        'ok': ok,
+        'stdout': out_buf.getvalue(),
+        'stderr': err_buf.getvalue(),
     })
 
 
 if __name__ == '__main__':
-    print('Geodemographic Lab  →  http://localhost:8000')
+    print('Geodemographic Lab  ->  http://localhost:8000')
     app.run(port=8000, debug=False)
