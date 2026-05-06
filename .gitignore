@@ -6,6 +6,9 @@ getting_swiss_petrol_stations.ipynb
 petrol_stations.json
 petrol_stations.csv
 
+# Generated outputs
+12_Python_Graph_NN_Spatial_Clustering/cluster_results.json
+
 # Virtual environment
 .venv/
 
