@@ -27,37 +27,6 @@
 
 ---
 
-## 🧭 Learning Path
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '20px', 'fontFamily': 'monospace'}}}%%
-flowchart LR
-    M01["📐<br/><br/><b>01 · Basic GIS</b><br/><br/>Read · Write<br/>Visualise"]
-    M02["📍<br/><br/><b>02 · Geocoding</b><br/><br/>Address<br/>→ Coordinates"]
-    M03["🔍<br/><br/><b>03 · Nearest</b><br/><b>Neighbor</b><br/><br/>BallTree<br/>Haversine"]
-    M04["🗺️<br/><br/><b>04 · Catchment</b><br/><b>Area</b><br/><br/>ORS<br/>Isochrones"]
-    M05["🏢<br/><br/><b>05 · GWR Data</b><br/><br/>Swiss Building<br/>Register"]
-    M06["🛰️<br/><br/><b>06 · Raster</b><br/><b>Data</b><br/><br/>Pixels · Bands<br/>Clip"]
-    M07["✍️<br/><br/><b>07 · Tripadvisor</b><br/><b>NLP</b><br/><br/>NER<br/>Heatmaps"]
-    M08["⚙️<br/><br/><b>08 · PyQGIS</b><br/><br/>Headless<br/>Choropleth"]
-
-    M09["🌊<br/><br/><b>09 · Flood</b><br/><b>Simulator</b><br/><br/>DEM · Canvas<br/>WebGIS"]
-
-    M01 ==> M02 ==> M03 ==> M04 ==> M05 ==> M06 ==> M07 ==> M08 ==> M09
-
-    linkStyle default stroke:#aaa,stroke-width:3px
-
-    style M01 fill:#1a4a2e,stroke:#4CAF50,stroke-width:2px,color:#fff
-    style M02 fill:#1a4a2e,stroke:#4CAF50,stroke-width:2px,color:#fff
-    style M03 fill:#1a3a5f,stroke:#2196F3,stroke-width:2px,color:#fff
-    style M04 fill:#1a3a5f,stroke:#2196F3,stroke-width:2px,color:#fff
-    style M05 fill:#1a3a5f,stroke:#2196F3,stroke-width:2px,color:#fff
-    style M06 fill:#3d2a0a,stroke:#FF9800,stroke-width:2px,color:#fff
-    style M07 fill:#3d2a0a,stroke:#FF9800,stroke-width:2px,color:#fff
-    style M08 fill:#3d0a0a,stroke:#f44336,stroke-width:2px,color:#fff
-    style M09 fill:#0a1f3d,stroke:#1d8cf8,stroke-width:2px,color:#fff
-```
-
 ---
 
 ## 📋 Module Overview
@@ -73,6 +42,9 @@ flowchart LR
 | 07 | **Tripadvisor NLP → Map** | spaCy, Folium, WordCloud | Extract place names from reviews and map them | ⭐⭐⭐ |
 | 08 | **QGIS / PyQGIS** | PyQGIS, GADM, QgsProject | Script a styled choropleth map with zero GUI interaction | ⭐⭐⭐⭐ |
 | 09 | **Flood Simulator** | Leaflet.js, HTML5 Canvas, AWS Terrain Tiles | Interactive web app simulating flood levels for Swiss cities | ⭐⭐⭐ |
+| 10 | **Urban Activity Analysis** | Streamlit, Pandas, scikit-learn, Altair | Explore Zurich mobility counts and cluster temporal activity profiles | ⭐⭐⭐⭐ |
+| 11 | **Geomarketing Simulator (MCI)** | Streamlit, Plotly, NumPy | Simulate supermarket choice probabilities and competitive trade areas | ⭐⭐⭐⭐ |
+| 12 | **Graph NN Spatial Clustering** | NumPy, scikit-learn, Flask | Train a GCN autoencoder and map geodemographic municipality clusters | ⭐⭐⭐⭐⭐ |
 
 ---
 
