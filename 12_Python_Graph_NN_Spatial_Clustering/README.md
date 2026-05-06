@@ -15,7 +15,7 @@ Reference: De Sabbata S, Liu P (2023). *A graph neural network framework for spa
    - **Share of foreign residents** (`frg_pct`, %)
    - **Employment rate** (`emp / pop × 100`, %; values above 100 indicate net job importers)
 
-   Missing values are imputed from the mean of the 5 spatially nearest municipalities with a valid value.
+   - Missing values are imputed from the mean of the 5 spatially nearest municipalities with a valid value.
 3. **Builds a spatial adjacency graph** by detecting shared boundary coordinates between polygons (two or more shared vertices → neighbours).
 4. **Trains a GCN autoencoder** (architecture: 4 → 16 → 8, two graph-convolutional encoder layers + linear decoder by default) using MSE reconstruction loss and SGD with momentum. The encoder compresses each node into an 8-dimensional embedding that captures both feature similarity and spatial neighbourhood structure.
 5. **Clusters** the embeddings with K-Means (k = 5) to produce geodemographic segments.
@@ -48,11 +48,11 @@ python server.py
 
 ### 2. Open the browser
 
-Windows no-console start (recommended if you do not want a terminal window):
+Linux/Codespaces start:
 
-```powershell
-cd U:\Lektionen\GitHub_Repositories\spatial_data_analysis\12_Python_Graph_NN_Spatial_Clustering
-Start-Process -FilePath pythonw -ArgumentList 'server.py' -WorkingDirectory (Get-Location)
+```bash
+cd /workspaces/spatial_data_analysis/12_Python_Graph_NN_Spatial_Clustering
+python3 server.py
 ```
 
 Navigate to [http://localhost:8000](http://localhost:8000).
