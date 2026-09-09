@@ -5,14 +5,13 @@
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "lts"
-		},
-		"ghcr.io/devcontainers/features/anaconda:1": {}
+		}
 	},
 
-	"forwardPorts": [5173],
+	"forwardPorts": [8000],
 	"portsAttributes": {
-		"5173": {
-			"label": "Vite Dev Server",
+		"8000": {
+			"label": "GNN Flask App",
 			"onAutoForward": "openBrowser"
 		}
 	},
