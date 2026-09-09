@@ -4,12 +4,12 @@
 		{
 			"label": "Run Graph NN App",
 			"type": "shell",
-			"command": "c:\\Users\\gell\\AppData\\Local\\anaconda3\\envs\\gisenv\\pythonw.exe",
+			"command": "python",
 			"args": [
 				"server.py"
 			],
 			"options": {
-				"cwd": "u:\\Lektionen\\GitHub_Repositories\\spatial_data_analysis\\12_Python_Graph_NN_Spatial_Clustering"
+				"cwd": "${workspaceFolder}/12_Python_Graph_NN_Spatial_Clustering"
 			},
 			"isBackground": true
 		}
