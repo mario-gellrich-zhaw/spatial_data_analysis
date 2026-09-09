@@ -554,10 +554,10 @@ with left:
         impact = pd.DataFrame(
             {
                 "Store":           [s["name"] for s in stores] + ["New Store"],
-                "Before (%)":      [round(shares[j], 1) for j in range(n_stores)] + ["—"],
+                "Before (%)":      [f"{shares[j]:.1f}" for j in range(n_stores)] + ["—"],
                 "After (%)":       [round(shares_ext[j], 1) for j in range(n_stores + 1)],
                 "Change (pp)":     (
-                    [round(shares_ext[j] - shares[j], 1) for j in range(n_stores)] + ["—"]
+                    [f"{shares_ext[j] - shares[j]:.1f}" for j in range(n_stores)] + ["—"]
                 ),
                 "Est. Sales (€M)": [round(est_ext[j], 2) for j in range(n_stores + 1)],
             }
