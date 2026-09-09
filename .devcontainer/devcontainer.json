@@ -1,6 +1,6 @@
 {
-	"name": "Python 3.11 with Jupyter and PDF Preview",
-	"image": "mcr.microsoft.com/devcontainers/python:3.11",
+	"name": "Python 3.12 with Jupyter and PDF Preview",
+	"image": "mcr.microsoft.com/devcontainers/python:3.12",
 
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
@@ -28,8 +28,7 @@
 			"grapecity.gc-excelviewer",
 			"github.copilot",
 			"github.copilot-chat",
-			"mechatroner.rainbow-csv",
-			"analytic-signal.preview-html"
+			"mechatroner.rainbow-csv"
 		],
 		"settings": {
 			"workbench.colorTheme": "Default Dark+",
@@ -39,5 +38,5 @@
 		}
 	},
 
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y gdal-bin libgdal-dev && pip install -r requirements.txt && python -m spacy download en_core_web_sm && python -m spacy download de_core_news_sm && cd 12_React_Graph_NN_Spatial_Classification && npm install"
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y gdal-bin libgdal-dev && pip install -r requirements.txt && python -m spacy download en_core_web_sm && python -m spacy download de_core_news_sm"
 }
