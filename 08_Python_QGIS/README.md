@@ -44,6 +44,9 @@ source .venv/bin/activate
 # 4. Run the script
 cd 08_Python_QGIS
 python swiss_cantons_language_map.py
+
+# 5. Deactivate the virtual environment when done
+deactivate
 ```
 
 > **VSCode users:** after creating the venv, open the Command Palette →
