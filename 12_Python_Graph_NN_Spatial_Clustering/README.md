@@ -30,10 +30,19 @@ This implementation follows the paper's core idea (graph-based unsupervised embe
 
 | Package | Purpose |
 |---|---|
+| `flask` | Web server — serves `index.html` and the `/run-gnn` endpoint |
 | `numpy` | Matrix operations, GCN forward/backward pass |
+| `pandas` | Feature table handling |
 | `scikit-learn` | `StandardScaler`, `KMeans` |
 
 No deep-learning framework is required — the GCN is implemented from scratch in NumPy.
+
+In the devcontainer / GitHub Codespace these packages are already installed
+(root `requirements.txt`). Otherwise install them with:
+
+```bash
+pip install flask numpy pandas scikit-learn
+```
 
 ---
 
@@ -41,23 +50,24 @@ No deep-learning framework is required — the GCN is implemented from scratch i
 
 ### 1. Start the Flask server
 
-```Terminal
-cd 12_Python_Graph_NN_Spatial_Clustering
+```bash
+cd /workspaces/spatial_data_analysis/12_Python_Graph_NN_Spatial_Clustering
 python server.py
 ```
 
+On start, a previous `cluster_results.json` is deleted so every session starts fresh.
+
 ### 2. Open the browser
 
-Linux/Codespaces start:
-
-```bash
-cd /workspaces/spatial_data_analysis/12_Python_Graph_NN_Spatial_Clustering
-python3 server.py
-```
-
 Navigate to [http://localhost:8000](http://localhost:8000).
+In VS Code / GitHub Codespaces the port is forwarded automatically; otherwise use
+the **Ports** tab → port **8000** → *Open in Browser*.
 
 Click **▶ Run Python GNN** in the sidebar to train the GCN autoencoder and display the cluster assignments on the map.
+
+### 3. Stop the server
+
+Press `Ctrl+C` in the terminal.
 
 ---
 

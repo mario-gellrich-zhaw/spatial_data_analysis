@@ -24,15 +24,27 @@ graduate lectures in spatial data analysis and geomarketing.
 
 ## Running the app
 
-**Requirements:** Python 3.11+, conda environment `gisenv`.
+**Requirements:** Python 3.11+ with `streamlit`, `plotly`, `pandas` and `numpy`.
+In the devcontainer / GitHub Codespace these are already installed (root
+`requirements.txt`). Otherwise install them with:
 
 ```bash
-conda activate gisenv
-pip install plotly          # if not already installed
+pip install streamlit plotly pandas numpy
+```
+
+**Start** (the `.streamlit/` theme is only picked up when started from this folder):
+
+```bash
+cd /workspaces/spatial_data_analysis/11_Python_Geomarketing_Simulator
 streamlit run app.py
 ```
 
-The app opens at `http://localhost:8501`.
+Then open **http://localhost:8501** in your browser.
+In VS Code / GitHub Codespaces: **Ports** tab → port **8501** → *Open in Browser*.
+If another Streamlit app is already running, Streamlit uses the next free port
+(8502, …) — the terminal output shows the actual URL.
+
+**Stop:** press `Ctrl+C` in the terminal.
 
 ---
 

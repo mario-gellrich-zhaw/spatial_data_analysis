@@ -22,12 +22,28 @@ designed for use in undergraduate / graduate lectures.
 
 ## Running the app
 
-**Requirements:** Python 3.10+.
+**Requirements:** Python 3.10+ with `streamlit`, `pandas`, `numpy`,
+`scikit-learn`, `altair` and `pydeck`. In the devcontainer / GitHub Codespace
+these are already installed (root `requirements.txt`). Otherwise install them
+from the repository root with:
 
 ```bash
-pip install streamlit pandas numpy scikit-learn altair pydeck
+pip install -r 10_Python_Urban_Activity_Analysis/requirements.txt
+```
+
+**Start** (the `.streamlit/` theme is only picked up when started from this folder):
+
+```bash
+cd /workspaces/spatial_data_analysis/10_Python_Urban_Activity_Analysis
 streamlit run app.py
 ```
+
+Then open **http://localhost:8501** in your browser.
+In VS Code / GitHub Codespaces: **Ports** tab → port **8501** → *Open in Browser*.
+If another Streamlit app is already running, Streamlit uses the next free port
+(8502, …) — the terminal output shows the actual URL.
+
+**Stop:** press `Ctrl+C` in the terminal.
 
 The app has six pages, navigable via the left sidebar:
 

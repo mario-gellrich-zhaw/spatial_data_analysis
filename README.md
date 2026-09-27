@@ -256,7 +256,82 @@ In GitHub Codespaces: go to the **Ports** tab → port **8080** → click the gl
 ![JavaScript](https://img.shields.io/badge/-Vanilla_JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![AWS](https://img.shields.io/badge/-AWS_Terrain_Tiles-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
 
+Details: [09_JS_Flood_Simulator/README.md](09_JS_Flood_Simulator/README.md)
+
 ---
+
+### 10 · Urban Activity Analysis
+
+A Streamlit prototype that re-implements a machine-learning study of spatiotemporal urban activity patterns (Barrena-Herrán et al. 2025) using open pedestrian & bicycle count data of the City of Zurich. Explore the counting stations on a map and cluster their temporal activity profiles with K-Means.
+
+**How to start and stop:**
+
+```bash
+cd /workspaces/spatial_data_analysis/10_Python_Urban_Activity_Analysis
+
+# Start
+streamlit run app.py
+
+# Stop: Ctrl+C in the terminal
+```
+
+Then open **http://localhost:8501** in your browser (Ports tab → port **8501**).
+
+![Streamlit](https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![Altair](https://img.shields.io/badge/-Altair-888?style=flat-square)
+
+Details: [10_Python_Urban_Activity_Analysis/README.md](10_Python_Urban_Activity_Analysis/README.md)
+
+---
+
+### 11 · Geomarketing Simulator (MCI)
+
+An interactive Streamlit simulation of the **Multiplicative Competitive Interaction (MCI) model** for supermarket location analysis (Baviera-Puig et al. 2016). Change store attractiveness and distance sensitivity and see how choice probabilities and trade areas shift.
+
+**How to start and stop:**
+
+```bash
+cd /workspaces/spatial_data_analysis/11_Python_Geomarketing_Simulator
+
+# Start
+streamlit run app.py
+
+# Stop: Ctrl+C in the terminal
+```
+
+Then open **http://localhost:8501** in your browser (Ports tab → port **8501**).
+If module 10 is already running, Streamlit uses the next free port (8502) — the terminal shows the actual URL.
+
+![Streamlit](https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+![Plotly](https://img.shields.io/badge/-Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
+
+Details: [11_Python_Geomarketing_Simulator/README.md](11_Python_Geomarketing_Simulator/README.md)
+
+---
+
+### 12 · Graph NN Spatial Clustering
+
+A didactic **Graph Neural Network** workflow for geodemographic clustering of the municipalities in the Canton of Zurich (De Sabbata & Liu 2023). A GCN autoencoder implemented from scratch in NumPy learns embeddings from socio-economic features and the spatial neighbourhood graph; K-Means turns them into clusters, shown on an interactive map.
+
+**How to start and stop:**
+
+```bash
+cd /workspaces/spatial_data_analysis/12_Python_Graph_NN_Spatial_Clustering
+
+# Start
+python server.py
+
+# Stop: Ctrl+C in the terminal
+```
+
+Then open **http://localhost:8000** in your browser and click **▶ Run Python GNN** in the sidebar.
+
+![Flask](https://img.shields.io/badge/-Flask-000000?style=flat-square&logo=flask&logoColor=white)
+![NumPy](https://img.shields.io/badge/-NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+
+Details: [12_Python_Graph_NN_Spatial_Clustering/README.md](12_Python_Graph_NN_Spatial_Clustering/README.md)
 
 ---
 

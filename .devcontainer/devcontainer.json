@@ -8,10 +8,18 @@
 		}
 	},
 
-	"forwardPorts": [8000],
+	"forwardPorts": [8000, 8080, 8501],
 	"portsAttributes": {
 		"8000": {
 			"label": "GNN Flask App",
+			"onAutoForward": "openBrowser"
+		},
+		"8080": {
+			"label": "Flood Simulator",
+			"onAutoForward": "openBrowser"
+		},
+		"8501": {
+			"label": "Streamlit App",
 			"onAutoForward": "openBrowser"
 		}
 	},
