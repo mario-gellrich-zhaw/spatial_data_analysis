@@ -40,11 +40,22 @@ const CITIES = {
 const MAX_FLOOD_M = 25;
 
 // Terrain tile source (Terrarium format, CORS enabled)
-const TERRARIUM_URL = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png';
-const MAX_TERRAIN_ZOOM = 14;   // terrarium tiles exist up to z=15; cap at 14
+// S3 only speaks HTTP/1.1, so browsers open max. 6 connections per hostname.
+// The same bucket is reachable under several hostnames — spreading the tiles
+// over them allows 4 x 6 parallel downloads (domain sharding).
+const TERRARIUM_HOSTS = [
+    'https://s3.amazonaws.com/elevation-tiles-prod',
+    'https://elevation-tiles-prod.s3.amazonaws.com',
+    'https://elevation-tiles-prod.s3.us-east-1.amazonaws.com',
+    'https://elevation-tiles-prod.s3.dualstack.us-east-1.amazonaws.com'
+];
+const MAX_TERRAIN_ZOOM = 14;   // above this zoom the zoom warning is shown
+// Zoom of the fetched elevation tiles. z14 adds almost no detail over z13 in
+// Switzerland (RMSE ~0.1 m) but needs 4x as many requests.
+const TERRAIN_DATA_ZOOM = 13;
 
 // ── State ─────────────────────────────────────────────────────
-let currentCity = CITIES.bern;
+let currentCity = CITIES.zuerich;   // start view
 let floodRiseM  = 0;            // metres above base
 let animating   = false;
 let animFrame   = null;
@@ -96,12 +107,37 @@ const FloodLayer = L.GridLayer.extend({
         opacity:    0.9,
         tileSize:   256,
         zIndex:     400,
-        pane:       'overlayPane'
+        pane:       'overlayPane',
+        // Don't load tiles for intermediate zoom levels (e.g. during flyTo)
+        updateWhenZooming: false
     },
 
     initialize(options) {
         L.GridLayer.prototype.initialize.call(this, options);
-        this._elevCache = {};   // key: "z/x/y" → Float32Array(256*256)
+        this._elevCache   = {};   // key: "z/x/y" → Float32Array(256*256)
+        this._elevPending = {};   // key: "z/x/y" → { promise, refs, abort } (request in flight)
+
+        // Abort downloads nobody is waiting for anymore (tile panned out of view)
+        this.on('tileunload', e => this._releaseElevation(this._terrainRef(e.coords).key));
+    },
+
+    // ── Map tile coords → elevation tile key + sub-tile crop ──
+    _terrainRef(coords) {
+        // Use lower-res tile when zoomed in beyond TERRAIN_DATA_ZOOM
+        const tz    = Math.min(coords.z, TERRAIN_DATA_ZOOM);
+        const scale = Math.pow(2, coords.z - tz);  // > 1 when zoomed beyond
+        const tx    = Math.floor(coords.x / scale);
+        const ty    = Math.floor(coords.y / scale);
+
+        // Pixel offset within the lower-res tile (for sub-tile crop)
+        const subSize = Math.floor(256 / scale);
+        return {
+            tz, tx, ty,
+            key:     `${tz}/${tx}/${ty}`,
+            subSize,
+            subOffX: (coords.x % scale) * subSize,
+            subOffY: (coords.y % scale) * subSize
+        };
     },
 
     // ── createTile called by Leaflet for each visible tile ────
@@ -110,69 +146,95 @@ const FloodLayer = L.GridLayer.extend({
         canvas.width  = 256;
         canvas.height = 256;
 
-        // Clamp terrain zoom: use lower-res tile when zoomed in beyond MAX_TERRAIN_ZOOM
-        const tz = Math.min(coords.z, MAX_TERRAIN_ZOOM);
-        const scale = Math.pow(2, coords.z - tz);  // > 1 when zoomed beyond max
-        const tx = Math.floor(coords.x / scale);
-        const ty = Math.floor(coords.y / scale);
-
-        // Pixel offset within the lower-res tile (for sub-tile crop)
-        const subSize  = Math.floor(256 / scale);
-        const subOffX  = (coords.x % scale) * subSize;
-        const subOffY  = (coords.y % scale) * subSize;
-
-        const key = `${tz}/${tx}/${ty}`;
+        const ref = this._terrainRef(coords);
 
         const render = (elevations) => {
-            this._renderTile(canvas, elevations, subOffX, subOffY, subSize);
+            this._renderTile(canvas, elevations, ref.subOffX, ref.subOffY, ref.subSize);
             done(null, canvas);
         };
 
-        if (this._elevCache[key]) {
-            render(this._elevCache[key]);
+        if (this._elevCache[ref.key]) {
+            render(this._elevCache[ref.key]);
             return canvas;
         }
 
-        setPending(+1);
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-
-        img.onload = () => {
-            try {
-                const off  = document.createElement('canvas');
-                off.width  = 256;
-                off.height = 256;
-                const ctx  = off.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const data = ctx.getImageData(0, 0, 256, 256).data;
-
-                const elevs = new Float32Array(256 * 256);
-                for (let i = 0; i < 256 * 256; i++) {
-                    const r = data[i * 4];
-                    const g = data[i * 4 + 1];
-                    const b = data[i * 4 + 2];
-                    elevs[i] = (r * 256 + g + b / 256) - 32768;
-                }
-                this._elevCache[key] = elevs;
-                render(elevs);
-            } catch (e) {
-                // CORS or taint error — render empty tile silently
-                done(null, canvas);
-            }
-            setPending(-1);
-        };
-
-        img.onerror = () => {
-            setPending(-1);
-            done(null, canvas);
-        };
-
-        img.src = TERRARIUM_URL
-            .replace('{z}', tz)
-            .replace('{x}', tx)
-            .replace('{y}', ty);
+        this._loadElevation(ref)
+            .then(render)
+            .catch(() => done(null, canvas));   // network / CORS error — empty tile
 
         return canvas;
+    },
+
+    // ── Fetch + decode one elevation tile (shared by all callers) ──
+    _loadElevation({ tz, tx, ty, key }) {
+        const pending = this._elevPending[key];
+        if (pending) {
+            pending.refs++;
+            return pending.promise;
+        }
+
+        const entry = { refs: 1, abort: null, promise: null };
+
+        // Remove the entry exactly once (on load, error or abort)
+        const settle = () => {
+            if (this._elevPending[key] !== entry) return;
+            delete this._elevPending[key];
+            setPending(-1);
+        };
+
+        setPending(+1);
+        entry.promise = new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+
+            entry.abort = () => {
+                img.onload = img.onerror = null;
+                img.src = '';           // cancels the download
+                settle();
+                reject(new Error('aborted'));
+            };
+
+            img.onload = () => {
+                settle();
+                try {
+                    const off  = document.createElement('canvas');
+                    off.width  = 256;
+                    off.height = 256;
+                    const ctx  = off.getContext('2d', { willReadFrequently: true });
+                    ctx.drawImage(img, 0, 0);
+                    const data = ctx.getImageData(0, 0, 256, 256).data;
+
+                    const elevs = new Float32Array(256 * 256);
+                    for (let i = 0; i < 256 * 256; i++) {
+                        const r = data[i * 4];
+                        const g = data[i * 4 + 1];
+                        const b = data[i * 4 + 2];
+                        elevs[i] = (r * 256 + g + b / 256) - 32768;
+                    }
+                    this._elevCache[key] = elevs;
+                    resolve(elevs);
+                } catch (e) {
+                    reject(e);
+                }
+            };
+            img.onerror = (e) => {
+                settle();
+                reject(e);
+            };
+
+            // Fixed host per tile, so the browser cache still hits on reload
+            const host = TERRARIUM_HOSTS[(tx + ty) % TERRARIUM_HOSTS.length];
+            img.src = `${host}/terrarium/${tz}/${tx}/${ty}.png`;
+        });
+
+        this._elevPending[key] = entry;
+        return entry.promise;
+    },
+
+    // ── A map tile waiting for this elevation tile was removed ──
+    _releaseElevation(key) {
+        const pending = this._elevPending[key];
+        if (pending && --pending.refs <= 0) pending.abort();
     },
 
     // ── Pixel rendering ───────────────────────────────────────
@@ -225,19 +287,11 @@ const FloodLayer = L.GridLayer.extend({
         if (!tiles) return;
 
         Object.values(tiles).forEach(tile => {
-            const c = tile.coords;
-            const tz    = Math.min(c.z, MAX_TERRAIN_ZOOM);
-            const scale = Math.pow(2, c.z - tz);
-            const tx    = Math.floor(c.x / scale);
-            const ty    = Math.floor(c.y / scale);
-            const key   = `${tz}/${tx}/${ty}`;
-            const elevs = this._elevCache[key];
+            const ref   = this._terrainRef(tile.coords);
+            const elevs = this._elevCache[ref.key];
             if (!elevs) return;
 
-            const subSize = Math.floor(256 / scale);
-            const subOffX = (c.x % scale) * subSize;
-            const subOffY = (c.y % scale) * subSize;
-            this._renderTile(tile.el, elevs, subOffX, subOffY, subSize);
+            this._renderTile(tile.el, elevs, ref.subOffX, ref.subOffY, ref.subSize);
         });
     }
 });

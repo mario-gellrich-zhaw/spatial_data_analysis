@@ -50,14 +50,15 @@ Alternative with Node.js: `npx serve .`
 
 ## Using the app
 
-1. **Select a city** in the dropdown (top right). The map flies to the city and
+1. The app starts with a view of **Zürich**. **Select another city** in the
+   dropdown (top right). The map flies to the city and
    the reference level of its river or lake is shown below the slider.
 2. **Move the slider** to raise the water level from 0 to 25 m above the
    reference level. The current absolute level (m a.s.l.) is displayed.
 3. Press **▶ Animieren** to let the water rise automatically from 0 to 25 m
    (≈ 25 s). Press again to stop, **↻ Reset** returns to 0 m.
-4. Pan and zoom freely. Above zoom level 14 a warning appears because no finer
-   elevation data is available — the coarser tiles are then upscaled.
+4. Pan and zoom freely. Above zoom level 13 the elevation tiles are upscaled;
+   above zoom level 14 a warning appears.
 
 ### Legend
 
@@ -103,7 +104,14 @@ elevation [m] = (R × 256 + G + B / 256) − 32768
 A custom Leaflet `GridLayer` (`FloodLayer` in `app.js`) does the following for
 every visible map tile:
 
-1. Loads the matching Terrarium tile (max. zoom 14) with CORS enabled.
+1. Loads the matching Terrarium tile with CORS enabled. Elevation tiles are
+   fetched at max. zoom 13 (z14 adds almost no detail but 4× the requests);
+   when zoomed in further, one elevation tile is shared by several map tiles
+   and fetched only once. No tiles are loaded for intermediate zoom levels
+   while the map is flying to another city.
+   Because the S3 bucket only supports HTTP/1.1 (max. 6 parallel downloads per
+   hostname), the tiles are spread over 4 hostnames of the same bucket, and
+   downloads for tiles that were panned out of view are cancelled.
 2. Draws it on an off-screen canvas and decodes all 256 × 256 pixels into a
    `Float32Array` of elevations, which is cached per tile.
 3. Compares each pixel with the flood line

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schweizer Hochwasser-Simulator</title>
+    <!-- Open the connections to the elevation tile servers early -->
+    <link rel="preconnect" href="https://s3.amazonaws.com" crossorigin/>
+    <link rel="preconnect" href="https://elevation-tiles-prod.s3.amazonaws.com" crossorigin/>
+    <link rel="preconnect" href="https://elevation-tiles-prod.s3.us-east-1.amazonaws.com" crossorigin/>
+    <link rel="preconnect" href="https://elevation-tiles-prod.s3.dualstack.us-east-1.amazonaws.com" crossorigin/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -18,7 +23,7 @@
                 <label for="city-select">Stadt:</label>
                 <select id="city-select">
                     <option value="bern">Bern</option>
-                    <option value="zuerich">Zürich</option>
+                    <option value="zuerich" selected>Zürich</option>
                     <option value="genf">Genf</option>
                     <option value="basel">Basel</option>
                     <option value="lausanne">Lausanne</option>
@@ -65,9 +70,9 @@
                     <input type="range" id="flood-slider" min="0" max="2000" value="0" step="5"/>
                 </div>
                 <div id="elevation-info">
-                    <span>Referenzpegel: <strong id="ref-elevation">511</strong> m ü.M.</span>
-                    <span>Aktuell: <strong id="current-elevation">511.0</strong> m ü.M.</span>
-                    <span id="river-name">Aare</span>
+                    <span>Referenzpegel: <strong id="ref-elevation">406</strong> m ü.M.</span>
+                    <span>Aktuell: <strong id="current-elevation">406.0</strong> m ü.M.</span>
+                    <span id="river-name">Zürichsee / Limmat</span>
                 </div>
             </div>
 
