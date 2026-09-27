@@ -28,13 +28,13 @@ these are already installed (root `requirements.txt`). Otherwise install them
 from the repository root with:
 
 ```bash
-pip install -r 10_Python_Urban_Activity_Analysis/requirements.txt
+pip install -r 09_Python_Urban_Activity_Analysis/requirements.txt
 ```
 
 **Start** (the `.streamlit/` theme is only picked up when started from this folder):
 
 ```bash
-cd /workspaces/spatial_data_analysis/10_Python_Urban_Activity_Analysis
+cd /workspaces/spatial_data_analysis/09_Python_Urban_Activity_Analysis
 streamlit run app.py
 ```
 

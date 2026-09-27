@@ -35,7 +35,7 @@ pip install streamlit plotly pandas numpy
 **Start** (the `.streamlit/` theme is only picked up when started from this folder):
 
 ```bash
-cd /workspaces/spatial_data_analysis/11_Python_Geomarketing_Simulator
+cd /workspaces/spatial_data_analysis/10_Python_Geomarketing_Simulator
 streamlit run app.py
 ```
 

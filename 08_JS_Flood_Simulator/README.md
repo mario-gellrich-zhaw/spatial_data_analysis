@@ -1,4 +1,4 @@
-# 09 · Swiss Flood Simulator
+# 08 · Swiss Flood Simulator
 
 A client-side web application that simulates rising water levels over Swiss cities
 using a freely available digital elevation model (DEM). Move a slider (or press
@@ -25,7 +25,7 @@ No backend, no build step and no API key required — just static HTML, CSS and 
 (Python is already available in the devcontainer).
 
 ```bash
-cd /workspaces/spatial_data_analysis/09_JS_Flood_Simulator
+cd /workspaces/spatial_data_analysis/08_JS_Flood_Simulator
 
 # Start
 python -m http.server 8080

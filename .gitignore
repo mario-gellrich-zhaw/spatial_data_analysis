@@ -7,12 +7,9 @@ petrol_stations.json
 petrol_stations.csv
 
 # Generated outputs
-12_Python_Graph_NN_Spatial_Clustering/cluster_results.json
-12_Python_Graph_NN_Spatial_Clustering/server_stdout.log
-12_Python_Graph_NN_Spatial_Clustering/server_stderr.log
-
-# Virtual environment
-.venv/
+11_Python_Graph_NN_Spatial_Clustering/cluster_results.json
+11_Python_Graph_NN_Spatial_Clustering/server_stdout.log
+11_Python_Graph_NN_Spatial_Clustering/server_stderr.log
 
 # Node.js
 node_modules/

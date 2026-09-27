@@ -51,7 +51,7 @@ pip install flask numpy pandas scikit-learn
 ### 1. Start the Flask server
 
 ```bash
-cd /workspaces/spatial_data_analysis/12_Python_Graph_NN_Spatial_Clustering
+cd /workspaces/spatial_data_analysis/11_Python_Graph_NN_Spatial_Clustering
 python server.py
 ```
 

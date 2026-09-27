@@ -9,7 +9,7 @@
 				"server.py"
 			],
 			"options": {
-				"cwd": "${workspaceFolder}/12_Python_Graph_NN_Spatial_Clustering"
+				"cwd": "${workspaceFolder}/11_Python_Graph_NN_Spatial_Clustering"
 			},
 			"isBackground": true
 		}

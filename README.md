@@ -17,7 +17,6 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
 ![GeoPandas](https://img.shields.io/badge/GeoPandas-0.14-139C5A?style=flat-square&logo=pandas&logoColor=white)
 ![Folium](https://img.shields.io/badge/Folium-Maps-77B829?style=flat-square&logo=leaflet&logoColor=white)
-![QGIS](https://img.shields.io/badge/QGIS-PyQGIS-589632?style=flat-square&logo=qgis&logoColor=white)
 ![spaCy](https://img.shields.io/badge/spaCy-NLP-09A3D5?style=flat-square&logo=spacy&logoColor=white)
 ![Leaflet](https://img.shields.io/badge/Leaflet-WebGIS-77B829?style=flat-square&logo=leaflet&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/Vanilla_JS-ES2022-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -40,11 +39,10 @@
 | 05 | **GWR Building Data** | Pandas, GeoPandas, SQLAlchemy | Query & visualise Switzerland's full building register | ⭐⭐ |
 | 06 | **Raster Data** | Rasterio, NumPy, Matplotlib | Read, clip, and analyse raster grids band by band | ⭐⭐⭐ |
 | 07 | **Tripadvisor NLP → Map** | spaCy, Folium, WordCloud | Extract place names from reviews and map them | ⭐⭐⭐ |
-| 08 | **QGIS / PyQGIS** | PyQGIS, GADM, QgsProject | Script a styled choropleth map with zero GUI interaction | ⭐⭐⭐⭐ |
-| 09 | **Flood Simulator** | Leaflet.js, HTML5 Canvas, AWS Terrain Tiles | Interactive web app simulating flood levels for Swiss cities | ⭐⭐⭐ |
-| 10 | **Urban Activity Analysis** | Streamlit, Pandas, scikit-learn, Altair | Explore Zurich mobility counts and cluster temporal activity profiles | ⭐⭐⭐⭐ |
-| 11 | **Geomarketing Simulator (MCI)** | Streamlit, Plotly, NumPy | Simulate supermarket choice probabilities and competitive trade areas | ⭐⭐⭐⭐ |
-| 12 | **Graph NN Spatial Clustering** | NumPy, scikit-learn, Flask | Train a GCN autoencoder and map geodemographic municipality clusters | ⭐⭐⭐⭐⭐ |
+| 08 | **Flood Simulator** | Leaflet.js, HTML5 Canvas, AWS Terrain Tiles | Interactive web app simulating flood levels for Swiss cities | ⭐⭐⭐ |
+| 09 | **Urban Activity Analysis** | Streamlit, Pandas, scikit-learn, Altair | Explore Zurich mobility counts and cluster temporal activity profiles | ⭐⭐⭐⭐ |
+| 10 | **Geomarketing Simulator (MCI)** | Streamlit, Plotly, NumPy | Simulate supermarket choice probabilities and competitive trade areas | ⭐⭐⭐⭐ |
+| 11 | **Graph NN Spatial Clustering** | NumPy, scikit-learn, Flask | Train a GCN autoencoder and map geodemographic municipality clusters | ⭐⭐⭐⭐⭐ |
 
 ---
 
@@ -181,33 +179,7 @@ Applies **Named Entity Recognition (NER)** to Tripadvisor review text to extract
 
 ---
 
-### 08 · QGIS / PyQGIS
-
-> ⚠️ **Requires a local QGIS installation to open the generated `.qgz` output file.**
-
-Runs **headless** (no QGIS GUI needed) via the PyQGIS API. A single script downloads Swiss canton boundaries, enriches the features, applies a categorised colour renderer by language region, and saves a ready-to-open `.qgz` project file.
-
-**You'll learn:**
-- Running PyQGIS headless (no QGIS Desktop required to execute)
-- Loading and enriching vector layers programmatically
-- Applying a categorised renderer and saving a `.qgz` project
-
-```
-  Language regions of Switzerland
-  ────────────────────────────────
-  🟦  German          (17 cantons)
-  🟥  French/Romandy  ( 4 cantons)
-  🟩  Italian/Ticino  ( 1 canton )
-  🟪  Bilingual DE/FR ( 3 cantons)
-  🟧  DE/RM/IT mix    ( 1 canton )
-```
-
-![QGIS](https://img.shields.io/badge/-PyQGIS-589632?style=flat-square&logo=qgis&logoColor=white)
-![GADM](https://img.shields.io/badge/-GADM_Data-888?style=flat-square)
-
----
-
-### 09 · Flood Simulator
+### 08 · Flood Simulator
 
 A client-side web application that simulates rising flood levels over Swiss cities using a freely available digital elevation model (DEM). No backend or API key required.
 
@@ -234,7 +206,7 @@ A custom **Leaflet `GridLayer`** decodes each tile into a `Float32Array` elevati
 
 ```bash
 # cd into app folder
-cd /workspaces/spatial_data_analysis/09_JS_Flood_Simulator
+cd /workspaces/spatial_data_analysis/08_JS_Flood_Simulator
 
 # Start
 python -m http.server 8080
@@ -256,18 +228,18 @@ In GitHub Codespaces: go to the **Ports** tab → port **8080** → click the gl
 ![JavaScript](https://img.shields.io/badge/-Vanilla_JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![AWS](https://img.shields.io/badge/-AWS_Terrain_Tiles-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
 
-Details: [09_JS_Flood_Simulator/README.md](09_JS_Flood_Simulator/README.md)
+Details: [08_JS_Flood_Simulator/README.md](08_JS_Flood_Simulator/README.md)
 
 ---
 
-### 10 · Urban Activity Analysis
+### 09 · Urban Activity Analysis
 
 A Streamlit prototype that re-implements a machine-learning study of spatiotemporal urban activity patterns (Barrena-Herrán et al. 2025) using open pedestrian & bicycle count data of the City of Zurich. Explore the counting stations on a map and cluster their temporal activity profiles with K-Means.
 
 **How to start and stop:**
 
 ```bash
-cd /workspaces/spatial_data_analysis/10_Python_Urban_Activity_Analysis
+cd /workspaces/spatial_data_analysis/09_Python_Urban_Activity_Analysis
 
 # Start
 streamlit run app.py
@@ -281,18 +253,18 @@ Then open **http://localhost:8501** in your browser (Ports tab → port **8501**
 ![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
 ![Altair](https://img.shields.io/badge/-Altair-888?style=flat-square)
 
-Details: [10_Python_Urban_Activity_Analysis/README.md](10_Python_Urban_Activity_Analysis/README.md)
+Details: [09_Python_Urban_Activity_Analysis/README.md](09_Python_Urban_Activity_Analysis/README.md)
 
 ---
 
-### 11 · Geomarketing Simulator (MCI)
+### 10 · Geomarketing Simulator (MCI)
 
 An interactive Streamlit simulation of the **Multiplicative Competitive Interaction (MCI) model** for supermarket location analysis (Baviera-Puig et al. 2016). Change store attractiveness and distance sensitivity and see how choice probabilities and trade areas shift.
 
 **How to start and stop:**
 
 ```bash
-cd /workspaces/spatial_data_analysis/11_Python_Geomarketing_Simulator
+cd /workspaces/spatial_data_analysis/10_Python_Geomarketing_Simulator
 
 # Start
 streamlit run app.py
@@ -301,23 +273,23 @@ streamlit run app.py
 ```
 
 Then open **http://localhost:8501** in your browser (Ports tab → port **8501**).
-If module 10 is already running, Streamlit uses the next free port (8502) — the terminal shows the actual URL.
+If module 09 is already running, Streamlit uses the next free port (8502) — the terminal shows the actual URL.
 
 ![Streamlit](https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
 ![Plotly](https://img.shields.io/badge/-Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
 
-Details: [11_Python_Geomarketing_Simulator/README.md](11_Python_Geomarketing_Simulator/README.md)
+Details: [10_Python_Geomarketing_Simulator/README.md](10_Python_Geomarketing_Simulator/README.md)
 
 ---
 
-### 12 · Graph NN Spatial Clustering
+### 11 · Graph NN Spatial Clustering
 
 A didactic **Graph Neural Network** workflow for geodemographic clustering of the municipalities in the Canton of Zurich (De Sabbata & Liu 2023). A GCN autoencoder implemented from scratch in NumPy learns embeddings from socio-economic features and the spatial neighbourhood graph; K-Means turns them into clusters, shown on an interactive map.
 
 **How to start and stop:**
 
 ```bash
-cd /workspaces/spatial_data_analysis/12_Python_Graph_NN_Spatial_Clustering
+cd /workspaces/spatial_data_analysis/11_Python_Graph_NN_Spatial_Clustering
 
 # Start
 python server.py
@@ -331,7 +303,7 @@ Then open **http://localhost:8000** in your browser and click **▶ Run Python G
 ![NumPy](https://img.shields.io/badge/-NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
 
-Details: [12_Python_Graph_NN_Spatial_Clustering/README.md](12_Python_Graph_NN_Spatial_Clustering/README.md)
+Details: [11_Python_Graph_NN_Spatial_Clustering/README.md](11_Python_Graph_NN_Spatial_Clustering/README.md)
 
 ---
 
