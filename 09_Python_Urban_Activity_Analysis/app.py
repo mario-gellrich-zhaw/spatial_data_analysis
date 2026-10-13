@@ -38,6 +38,9 @@ from sklearn.metrics import silhouette_score
 
 DATA_DIR = Path(__file__).parent / "data"
 
+# Public OpenFreeMap basemap: no API key or account required.
+BASEMAP_STYLE = "https://tiles.openfreemap.org/styles/positron"
+
 # --------------------------------------------------------------------------- #
 # Page configuration
 # --------------------------------------------------------------------------- #
@@ -285,7 +288,8 @@ elif page == "2. Dataset exploration":
         layers=[loc_layer],
         initial_view_state=view,
         tooltip={"text": "{bezeichnung}\nvelo={velo}  fuss={fuss}"},
-        map_style="light",
+        map_provider="maplibre",
+        map_style=BASEMAP_STYLE,
     ))
 
     col1, col2 = st.columns(2)
@@ -515,7 +519,8 @@ elif page == "5. Spatial analysis":
         layers=layers,
         initial_view_state=view,
         tooltip={"text": "{bezeichnung}\nCluster: {cluster_label}"},
-        map_style="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
+        map_provider="maplibre",
+        map_style=BASEMAP_STYLE,
     ))
 
     # Legend

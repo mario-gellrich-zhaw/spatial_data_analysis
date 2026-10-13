@@ -20,6 +20,6 @@ fiona
 python-pptx
 streamlit>=1.30
 altair>=5.0
-pydeck>=0.8
+pydeck>=0.9.3
 plotly>=6.7.0
 flask>=3.1.3
