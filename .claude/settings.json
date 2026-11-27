@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:playground.heigit.org)",
+      "WebFetch(domain:giscience.github.io)",
+      "WebFetch(domain:openrouteservice.org)",
+      "WebFetch(domain:api.heigit.org)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}
